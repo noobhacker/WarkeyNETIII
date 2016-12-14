@@ -1,0 +1,31 @@
+﻿<Page x:Class="WarkeyNETIII.Pages.WarkeyPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WarkeyNETIII.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="323"
+      d:DesignWidth="388"
+      Title="WarkeyPage">
+    <Grid>
+        <Image Source="/Images/War3Inventory.png"
+               Stretch="Fill"
+               RenderOptions.BitmapScalingMode="HighQuality" />
+
+        <Grid Margin="60,48,80,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="8" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            
+        </Grid>
+    </Grid>
+</Page>
