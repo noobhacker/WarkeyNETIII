@@ -91,7 +91,7 @@
                                     Height="50"
                                     Margin="4,0">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       Text=""
+                                       Text=""
                                        FontSize="16"
                                        VerticalAlignment="Center"
                                        Margin="12" />

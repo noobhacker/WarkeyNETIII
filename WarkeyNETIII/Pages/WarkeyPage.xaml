@@ -16,7 +16,9 @@
         <Grid Margin="60,48,80,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
+                <RowDefinition Height="4" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="4" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -24,8 +26,17 @@
                 <ColumnDefinition Width="8" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
-            
+
+            <TextBox Background="Transparent"
+                    BorderThickness="0" 
+                    Foreground="White" 
+                    FontSize="28"
+                    Text="ALT + Q"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"/>
+
         </Grid>
     </Grid>
 </Page>

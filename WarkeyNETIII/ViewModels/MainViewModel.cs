@@ -11,6 +11,7 @@ namespace WarkeyNETIII.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        private static string highlighted = "#FFBEE6FD";
 
         private string title;
 
