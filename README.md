@@ -6,3 +6,5 @@
 - High performance code
 - No ads
 - Open source!
+
+Some of the parts are hardcoded because applying style seems doesn't work in Windows 10
