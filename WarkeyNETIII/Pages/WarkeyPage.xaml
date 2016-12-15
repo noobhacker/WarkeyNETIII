@@ -34,13 +34,15 @@
                 <ColumnDefinition Width="0.66*" />
             </Grid.ColumnDefinitions>
 
-            <Button Background="Transparent"
+            <TextBox Background="Transparent"
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Content="{Binding Slot1, Converter={StaticResource HotkeyToStringConverter}}"
-                     HorizontalContentAlignment="Stretch"
-                     VerticalAlignment="Stretch"
+                     Text="{Binding Slot1, Converter={StaticResource HotkeyToStringConverter}}"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap" 
                      Grid.Row="1"
                      Grid.Column="1"
                      Margin="8"

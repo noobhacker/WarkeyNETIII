@@ -21,9 +21,10 @@ namespace WarkeyNETIII.Converters
                 var hotkey = (HotkeyItem)value;
 
                 if (hotkey.Alt)
-                    str += "ALT ";
+                    str += "ALT+";
 
-                str += kc.ConvertToString(hotkey.Key);
+                if(hotkey.Key != Key.LeftAlt)
+                    str += kc.ConvertToString(hotkey.Key);
 
                 return str;
             }

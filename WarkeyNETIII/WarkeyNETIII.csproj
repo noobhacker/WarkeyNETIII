@@ -41,6 +41,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,6 +64,9 @@
     <Compile Include="Converters\HexToColorConverter.cs" />
     <Compile Include="Converters\HotkeyToStringConverter.cs" />
     <Compile Include="Items\HotkeyItem.cs" />
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\WarkeyPage.xaml.cs">
       <DependentUpon>WarkeyPage.xaml</DependentUpon>
     </Compile>
@@ -71,6 +75,8 @@
     <Compile Include="Services\MainService.cs" />
     <Compile Include="Services\MainWindowHandleService.cs" />
     <Compile Include="Services\PostMessageService.cs" />
+    <Compile Include="Services\RegistryService.cs" />
+    <Compile Include="Services\ScreenResolutionService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\WarkeyViewModel.cs" />
@@ -86,6 +92,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\WarkeyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -34,19 +34,20 @@ namespace WarkeyNETIII.Pages
 
         private void itemSlots_Keydown(object sender, KeyEventArgs e)
         {
-            var textbox = (Button)sender;
+            var textbox = (TextBox)sender;
             var tag = textbox.Tag.ToString();
 
             bool alt = Keyboard.IsKeyDown(Key.LeftAlt) ? true : false;
-            var key = e.Key;
+            var key = alt ? e.SystemKey : e.Key;
 
             var prop = vm.GetType().GetProperty(tag);
             prop.SetValue(vm, new HotkeyItem()
             {
-                 Alt=alt,
-                  Key=key
+                Alt = alt,
+                Key = key
             }, null);
 
         }
+        
     }
 }

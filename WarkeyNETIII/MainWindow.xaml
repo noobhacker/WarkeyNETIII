@@ -93,7 +93,7 @@
                             BorderThickness="0"
                             HorizontalContentAlignment="Left"
                             Click="menuItems_Click"
-                            Tag="Optimize">
+                            Tag="Settings">
                         <StackPanel Orientation="Horizontal"
                                     Height="50"
                                     Margin="4,0">

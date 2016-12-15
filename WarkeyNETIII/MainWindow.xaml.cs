@@ -28,13 +28,16 @@ namespace WarkeyNETIII
         public static MainViewModel vm = new MainViewModel();
         public static WarkeyViewModel WarkeyVm = new WarkeyViewModel();
 
+        static WarkeyPage warkeyPage = new WarkeyPage();
+        static SettingsPage settingsPage = new SettingsPage();
+
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = vm;
 
             MainService.InitializeServicesAsync();
-            NavFrame.Navigate(new WarkeyPage());
+            NavFrame.Navigate(warkeyPage);
         }
 
         private const double paneWidth = 200;
@@ -87,13 +90,13 @@ namespace WarkeyNETIII
             switch (button.Tag.ToString())
             {
                 case "Warkey":
-
+                    NavFrame.Navigate(warkeyPage);
                     break;
                 case "AutoChat":
 
                     break;
-                case "Optimize":
-
+                case "Settings":
+                    NavFrame.Navigate(settingsPage);
                     break;
                 case "About":
 
