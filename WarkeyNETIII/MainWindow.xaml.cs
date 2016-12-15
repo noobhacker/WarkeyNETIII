@@ -35,6 +35,8 @@ namespace WarkeyNETIII
             NavFrame.Navigate(new WarkeyPage());
         }
 
+        private const double paneWidth = 200;
+
         private void startAnimationByName(string name)
         {
             Storyboard sb = this.FindResource(name) as Storyboard;
@@ -45,17 +47,59 @@ namespace WarkeyNETIII
         {
             if (hamMenu.Width == 50)
                 startAnimationByName("SideOpen");
-            else if (hamMenu.Width == 200)
+            else if (hamMenu.Width == paneWidth)
                 startAnimationByName("SideClose");
         }
 
+        private void removeUIElementsHighlights(UIElementCollection items)
+        {
+            foreach (var item in items)
+            {
+                if (item.GetType() == typeof(Button))
+                {
+                    var button = (Button)item;
+                    if (button.Tag != null)
+                    {
+                        button.Background = new SolidColorBrush(Colors.Transparent);
+                    }
+                }
+            }
+        }
+
+        private void removeMenuItemHighlights()
+        {
+            removeUIElementsHighlights(hamMenu.Children);
+            removeUIElementsHighlights(menuList.Children);
+        }
+
+        private SolidColorBrush menuHighlightedColor = 
+            new SolidColorBrush(Color.FromArgb(255, 190, 230, 253));
+
         private void menuItems_Click(object sender, RoutedEventArgs e)
         {
-            var button = (Button)sender;
-            switch(button.Tag.ToString())
-            {
+            removeMenuItemHighlights();
 
+            var button = (Button)sender;
+            button.Background = menuHighlightedColor;
+
+            switch (button.Tag.ToString())
+            {
+                case "Warkey":
+
+                    break;
+                case "AutoChat":
+
+                    break;
+                case "Optimize":
+
+                    break;
+                case "About":
+
+                    break;
             }
+
+            if (hamMenu.Width == paneWidth)
+                startAnimationByName("SideClose");
         }
     }
 }

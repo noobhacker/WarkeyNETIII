@@ -56,7 +56,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\HexToColorConverter.cs" />
-    <Compile Include="Converters\StatusToTitleConverter.cs" />
     <Compile Include="Pages\WarkeyPage.xaml.cs">
       <DependentUpon>WarkeyPage.xaml</DependentUpon>
     </Compile>

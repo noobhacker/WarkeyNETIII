@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WarkeyNETIII"
         xmlns:converters="clr-namespace:WarkeyNETIII.Converters"
         mc:Ignorable="d"
-        Title="{Binding Status, Converter={StaticResource StatusToTitleConverter}}"
+        Title="{Binding Title}"
         Height="323"
         Width="438"
         WindowStartupLocation="CenterScreen">
@@ -25,9 +25,6 @@
                                       Value="50" />
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-
-        <converters:HexToColorConverter x:Key="HexToColorConverter" />
-        <converters:StatusToTitleConverter x:Key="StatusToTitleConverter" />
     </Window.Resources>
     <Grid>
         <Grid Margin="50,0,0,0">
@@ -54,8 +51,9 @@
                         HorizontalAlignment="Left"
                         Name="hamButton"
                         Click="hamButton_Click" />
-                <StackPanel Width="200">
-                    <Button Background="{Binding WarkeyBackground, Converter={StaticResource HexToColorConverter}}"
+                <StackPanel Width="200"
+                            Name="menuList">
+                    <Button Background="Transparent"
                             BorderThickness="0"
                             HorizontalContentAlignment="Left"
                             Click="menuItems_Click"
@@ -73,7 +71,7 @@
                                        Margin="8" />
                         </StackPanel>
                     </Button>
-                    <Button Background="{Binding AutoChatBackground, Converter={StaticResource HexToColorConverter}}"
+                    <Button Background="Transparent"
                             BorderThickness="0"
                             HorizontalContentAlignment="Left"
                             Click="menuItems_Click"
@@ -91,7 +89,7 @@
                                        Margin="8" />
                         </StackPanel>
                     </Button>
-                    <Button Background="{Binding OptimizeBackground, Converter={StaticResource HexToColorConverter}}"
+                    <Button Background="Transparent"
                             BorderThickness="0"
                             HorizontalContentAlignment="Left"
                             Click="menuItems_Click"
@@ -111,7 +109,7 @@
                     </Button>
                 </StackPanel>
             </StackPanel>
-            <Button Background="{Binding AboutBackground, Converter={StaticResource HexToColorConverter}}"
+            <Button Background="Transparent"
                     BorderThickness="0"
                     HorizontalContentAlignment="Left"
                     Grid.Row="1"
