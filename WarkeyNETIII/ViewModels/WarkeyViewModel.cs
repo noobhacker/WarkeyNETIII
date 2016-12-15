@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarkeyNETIII.Items;
 
 namespace WarkeyNETIII.ViewModels
 {
     public class WarkeyViewModel : BaseViewModel
     {
-        private string slot1;
-        private string slot2;
-        private string slot3;
-        private string slot4;
-        private string slot5;
-        private string slot6;
+        private HotkeyItem slot1;
+        private HotkeyItem slot2;
+        private HotkeyItem slot3;
+        private HotkeyItem slot4;
+        private HotkeyItem slot5;
+        private HotkeyItem slot6;
 
-        public string Slot1
+        public HotkeyItem Slot1
         {
             get
             {
@@ -29,7 +30,7 @@ namespace WarkeyNETIII.ViewModels
             }
         }
 
-        public string Slot2
+        public HotkeyItem Slot2
         {
             get
             {
@@ -43,7 +44,7 @@ namespace WarkeyNETIII.ViewModels
             }
         }
 
-        public string Slot3
+        public HotkeyItem Slot3
         {
             get
             {
@@ -57,7 +58,7 @@ namespace WarkeyNETIII.ViewModels
             }
         }
 
-        public string Slot4
+        public HotkeyItem Slot4
         {
             get
             {
@@ -71,7 +72,7 @@ namespace WarkeyNETIII.ViewModels
             }
         }
 
-        public string Slot5
+        public HotkeyItem Slot5
         {
             get
             {
@@ -85,7 +86,7 @@ namespace WarkeyNETIII.ViewModels
             }
         }
 
-        public string Slot6
+        public HotkeyItem Slot6
         {
             get
             {

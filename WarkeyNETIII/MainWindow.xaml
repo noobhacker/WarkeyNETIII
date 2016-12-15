@@ -53,7 +53,7 @@
                         Click="hamButton_Click" />
                 <StackPanel Width="200"
                             Name="menuList">
-                    <Button Background="Transparent"
+                    <Button Background="#FFBEE6FD"
                             BorderThickness="0"
                             HorizontalContentAlignment="Left"
                             Click="menuItems_Click"

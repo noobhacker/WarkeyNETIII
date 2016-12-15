@@ -4,10 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WarkeyNETIII.Pages"
+      xmlns:converters="clr-namespace:WarkeyNETIII.Converters"
       mc:Ignorable="d"
       d:DesignHeight="323"
       d:DesignWidth="388"
       Title="WarkeyPage">
+    <Page.Resources>
+        <converters:HotkeyToStringConverter x:Key="HotkeyToStringConverter" />
+    </Page.Resources>
     <Grid>
         <Image Source="/Images/War3Inventory.png"
                Stretch="Fill"
@@ -30,83 +34,93 @@
                 <ColumnDefinition Width="0.66*" />
             </Grid.ColumnDefinitions>
 
-            <TextBox Background="Transparent"
+            <Button Background="Transparent"
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slot1}"
-                     HorizontalContentAlignment="Center"
-                     VerticalAlignment="Center"
-                     IsReadOnly="True"
-                     TextWrapping="Wrap" 
+                     Content="{Binding Slot1, Converter={StaticResource HotkeyToStringConverter}}"
+                     HorizontalContentAlignment="Stretch"
+                     VerticalAlignment="Stretch"
                      Grid.Row="1"
                      Grid.Column="1"
-                     Margin="8" />
+                     Margin="8"
+                     Tag="Slot1"
+                     KeyDown="itemSlots_Keydown" />
 
             <TextBox Background="Transparent"
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slot2}"
+                     Text="{Binding Slot2, Converter={StaticResource HotkeyToStringConverter}}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Center"
                      IsReadOnly="True"
                      TextWrapping="Wrap"
                      Grid.Column="3"
                      Grid.Row="1"
-                     Margin="8" />
+                     Margin="8"
+                     Tag="Slot2"
+                     KeyDown="itemSlots_Keydown" />
 
             <TextBox Background="Transparent"
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slot3}"
+                     Text="{Binding Slot3, Converter={StaticResource HotkeyToStringConverter}}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Center"
                      IsReadOnly="True"
                      TextWrapping="Wrap"
                      Grid.Row="3"
                      Grid.Column="1"
-                     Margin="8" />
+                     Margin="8"
+                     Tag="Slot3"
+                     KeyDown="itemSlots_Keydown" />
 
             <TextBox Background="Transparent"
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slot4}"
+                     Text="{Binding Slot4, Converter={StaticResource HotkeyToStringConverter}}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Center"
                      IsReadOnly="True"
                      TextWrapping="Wrap"
                      Grid.Column="3"
                      Grid.Row="3"
-                     Margin="8" />
+                     Margin="8"
+                     Tag="Slot4"
+                     KeyDown="itemSlots_Keydown" />
 
             <TextBox Background="Transparent"
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slot5}"
+                     Text="{Binding Slot5, Converter={StaticResource HotkeyToStringConverter}}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Center"
                      IsReadOnly="True"
                      TextWrapping="Wrap"
                      Grid.Row="5"
                      Grid.Column="1"
-                     Margin="8" />
+                     Margin="8"
+                     Tag="Slot5"
+                     KeyDown="itemSlots_Keydown" />
 
             <TextBox Background="Transparent"
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slot6}"
+                     Text="{Binding Slot6, Converter={StaticResource HotkeyToStringConverter}}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Center"
                      IsReadOnly="True"
                      TextWrapping="Wrap"
                      Grid.Row="5"
                      Grid.Column="3"
-                     Margin="8" />
+                     Margin="8"
+                     Tag="Slot6"
+                     KeyDown="itemSlots_Keydown" />
 
         </Grid>
     </Grid>
