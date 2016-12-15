@@ -13,8 +13,9 @@
                Stretch="Fill"
                RenderOptions.BitmapScalingMode="HighQuality" />
 
-        <Grid Margin="60,48,80,0">
+        <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4" />
                 <RowDefinition Height="*" />
@@ -22,20 +23,90 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="8" />
+                <ColumnDefinition Width="0.06*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="0.66*" />
             </Grid.ColumnDefinitions>
 
             <TextBox Background="Transparent"
-                    BorderThickness="0" 
-                    Foreground="White" 
-                    FontSize="28"
-                    Text="ALT + Q"
+                     BorderThickness="0"
+                     Foreground="White"
+                     FontSize="28"
+                     Text="{Binding Slot1}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Center"
                      IsReadOnly="True"
-                     TextWrapping="Wrap"/>
+                     TextWrapping="Wrap" 
+                     Grid.Row="1"
+                     Grid.Column="1"
+                     Margin="8" />
+
+            <TextBox Background="Transparent"
+                     BorderThickness="0"
+                     Foreground="White"
+                     FontSize="28"
+                     Text="{Binding Slot2}"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"
+                     Grid.Column="3"
+                     Grid.Row="1"
+                     Margin="8" />
+
+            <TextBox Background="Transparent"
+                     BorderThickness="0"
+                     Foreground="White"
+                     FontSize="28"
+                     Text="{Binding Slot3}"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"
+                     Grid.Row="3"
+                     Grid.Column="1"
+                     Margin="8" />
+
+            <TextBox Background="Transparent"
+                     BorderThickness="0"
+                     Foreground="White"
+                     FontSize="28"
+                     Text="{Binding Slot4}"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"
+                     Grid.Column="3"
+                     Grid.Row="3"
+                     Margin="8" />
+
+            <TextBox Background="Transparent"
+                     BorderThickness="0"
+                     Foreground="White"
+                     FontSize="28"
+                     Text="{Binding Slot5}"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"
+                     Grid.Row="5"
+                     Grid.Column="1"
+                     Margin="8" />
+
+            <TextBox Background="Transparent"
+                     BorderThickness="0"
+                     Foreground="White"
+                     FontSize="28"
+                     Text="{Binding Slot6}"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"
+                     Grid.Row="5"
+                     Grid.Column="3"
+                     Margin="8" />
 
         </Grid>
     </Grid>

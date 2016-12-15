@@ -4,33 +4,37 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WarkeyNETIII"
+        xmlns:converters="clr-namespace:WarkeyNETIII.Converters"
         mc:Ignorable="d"
-        Title="{Binding Title}"
+        Title="{Binding Status, Converter={StaticResource StatusToTitleConverter}}"
         Height="323"
         Width="438"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Storyboard x:Key="SideOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
-                                           Storyboard.TargetName="HamMenu">
+                                           Storyboard.TargetName="hamMenu">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.16"
                                       Value="200" />
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="SideClose">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
-                                           Storyboard.TargetName="HamMenu">
+                                           Storyboard.TargetName="hamMenu">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.16"
                                       Value="50" />
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+
+        <converters:HexToColorConverter x:Key="HexToColorConverter" />
+        <converters:StatusToTitleConverter x:Key="StatusToTitleConverter" />
     </Window.Resources>
     <Grid>
         <Grid Margin="50,0,0,0">
             <Frame Name="NavFrame"
                    NavigationUIVisibility="Hidden" />
         </Grid>
-        <Grid Name="HamMenu"
+        <Grid Name="hamMenu"
               Width="50"
               HorizontalAlignment="Left"
               Background="WhiteSmoke">
@@ -44,17 +48,18 @@
                         FontSize="16"
                         FontFamily="Segoe MDL2 Assets"
                         Content=""
-                        Background="Transparent"
+                        Background="#FF0063B1"
+                        Foreground="White"
                         BorderThickness="0"
                         HorizontalAlignment="Left"
-                        Name="HamButton"
-                        Click="HamButton_Click" />
+                        Name="hamButton"
+                        Click="hamButton_Click" />
                 <StackPanel Width="200">
-                    <Button Background="Transparent"
+                    <Button Background="{Binding WarkeyBackground, Converter={StaticResource HexToColorConverter}}"
                             BorderThickness="0"
                             HorizontalContentAlignment="Left"
-                            Name="WarkeyPageBtn"
-                            Click="WarkeyPageBtn_Click">
+                            Click="menuItems_Click"
+                            Tag="Warkey">
                         <StackPanel Orientation="Horizontal"
                                     Height="50"
                                     Margin="4,0">
@@ -68,9 +73,11 @@
                                        Margin="8" />
                         </StackPanel>
                     </Button>
-                    <Button Background="Transparent"
+                    <Button Background="{Binding AutoChatBackground, Converter={StaticResource HexToColorConverter}}"
                             BorderThickness="0"
-                            HorizontalContentAlignment="Left">
+                            HorizontalContentAlignment="Left"
+                            Click="menuItems_Click"
+                            Tag="AutoChat">
                         <StackPanel Orientation="Horizontal"
                                     Height="50"
                                     Margin="4,0">
@@ -84,9 +91,11 @@
                                        Margin="8" />
                         </StackPanel>
                     </Button>
-                    <Button Background="Transparent"
+                    <Button Background="{Binding OptimizeBackground, Converter={StaticResource HexToColorConverter}}"
                             BorderThickness="0"
-                            HorizontalContentAlignment="Left">
+                            HorizontalContentAlignment="Left"
+                            Click="menuItems_Click"
+                            Tag="Optimize">
                         <StackPanel Orientation="Horizontal"
                                     Height="50"
                                     Margin="4,0">
@@ -102,10 +111,12 @@
                     </Button>
                 </StackPanel>
             </StackPanel>
-            <Button Background="Transparent"
+            <Button Background="{Binding AboutBackground, Converter={StaticResource HexToColorConverter}}"
                     BorderThickness="0"
                     HorizontalContentAlignment="Left"
-                    Grid.Row="1">
+                    Grid.Row="1"
+                    Click="menuItems_Click"
+                    Tag="About">
                 <StackPanel Orientation="Horizontal"
                             Height="50"
                             Margin="4,0">

@@ -11,28 +11,88 @@ namespace WarkeyNETIII.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private static string highlighted = "#FFBEE6FD";
+        public const string MenuHighlightedColor = "#FFBEE6FD";
 
-        private string title;
+        private string status;
+        private string warkeyBackground;
+        private string autoChatBackground;
+        private string optimizeBackground;
+        private string aboutBackground;
 
-        public string Title
+        public string Status
         {
             get
             {
-                return title;
+                return status;
             }
 
             set
             {
-                title = value;
+                status = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string WarkeyBackground
+        {
+            get
+            {
+                return warkeyBackground;
+            }
+
+            set
+            {
+                warkeyBackground = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string AutoChatBackground
+        {
+            get
+            {
+                return autoChatBackground;
+            }
+
+            set
+            {
+                autoChatBackground = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string OptimizeBackground
+        {
+            get
+            {
+                return optimizeBackground;
+            }
+
+            set
+            {
+                optimizeBackground = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string AboutBackground
+        {
+            get
+            {
+                return aboutBackground;
+            }
+
+            set
+            {
+                aboutBackground = value;
                 OnPropertyChanged();
             }
         }
 
         public MainViewModel()
         {
-            Title = "Warkey.NET III";
+            Status = "Idle";
         }
-
+               
     }
 }

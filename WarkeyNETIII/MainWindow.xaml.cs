@@ -23,7 +23,9 @@ namespace WarkeyNETIII
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainViewModel vm = new MainViewModel();
+        // public them so services can access
+        public static MainViewModel vm = new MainViewModel();
+        public static WarkeyViewModel WarkeyVm = new WarkeyViewModel();
 
         public MainWindow()
         {
@@ -39,17 +41,21 @@ namespace WarkeyNETIII
             sb.Begin();
         }
 
-        private void HamButton_Click(object sender, RoutedEventArgs e)
+        private void hamButton_Click(object sender, RoutedEventArgs e)
         {
-            if (HamMenu.Width == 50)
+            if (hamMenu.Width == 50)
                 startAnimationByName("SideOpen");
-            else if (HamMenu.Width == 200)
+            else if (hamMenu.Width == 200)
                 startAnimationByName("SideClose");
         }
 
-        private void WarkeyPageBtn_Click(object sender, RoutedEventArgs e)
+        private void menuItems_Click(object sender, RoutedEventArgs e)
         {
-            NavFrame.Navigate(new WarkeyPage());
+            var button = (Button)sender;
+            switch(button.Tag.ToString())
+            {
+
+            }
         }
     }
 }
