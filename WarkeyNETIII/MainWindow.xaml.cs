@@ -41,7 +41,7 @@ namespace WarkeyNETIII
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MainService.InitializeServicesAsync();
-            NavFrame.Navigate(warkeyPage);          
+            navFrame.Navigate(warkeyPage);          
         }
 
         private const double paneWidth = 200;
@@ -94,13 +94,13 @@ namespace WarkeyNETIII
             switch (button.Tag.ToString())
             {
                 case "Warkey":
-                    NavFrame.Navigate(warkeyPage);
+                    navFrame.Navigate(warkeyPage);
                     break;
                 case "AutoChat":
 
                     break;
                 case "Settings":
-                    NavFrame.Navigate(settingsPage);
+                    navFrame.Navigate(settingsPage);
                     break;
                 case "About":
 

@@ -14,8 +14,7 @@
     </Page.Resources>
     <Grid>
         <Image Source="/Images/War3Inventory.png"
-               Stretch="Fill"
-               RenderOptions.BitmapScalingMode="HighQuality" />
+               Stretch="Fill"/>
 
         <Grid>
             <Grid.RowDefinitions>

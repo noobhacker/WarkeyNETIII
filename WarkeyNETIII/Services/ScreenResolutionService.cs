@@ -4,15 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WarkeyNETIII.Items;
 
 namespace WarkeyNETIII.Services
 {
     public static class ScreenResolutionService
     {
-        public static Tuple<int, int> GetCurrentResolution()
+        public static ScreenResolutionItem GetCurrentResolution()
         {
             var resolution = Screen.PrimaryScreen.Bounds;
-            return new Tuple<int, int>(resolution.Width, resolution.Height);
+            return new ScreenResolutionItem()
+            {
+                Width = resolution.Width,
+                Height = resolution.Height
+            };
         }
     }
 }

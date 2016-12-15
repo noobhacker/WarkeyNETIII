@@ -3,83 +3,70 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarkeyNETIII.Items;
 using WarkeyNETIII.Services;
 
 namespace WarkeyNETIII.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
-        private int gameWidth;
-        private int gameHeight;
-        private int screenWidth;
-        private int screenHeight;
+        private ScreenResolutionItem currentResolution;
+        private ScreenResolutionItem gameResolution;
+        private string lockFbStatus;
 
-        public int GameWidth
+        public ScreenResolutionItem CurrentResolution
         {
             get
             {
-                return gameWidth;
+                return currentResolution;
             }
 
             set
             {
-                gameWidth = value;
+                currentResolution = value;
                 OnPropertyChanged();
             }
         }
 
-        public int GameHeight
+        public ScreenResolutionItem GameResolution
         {
             get
             {
-                return gameHeight;
+                return gameResolution;
             }
 
             set
             {
-                gameHeight = value;
+                gameResolution = value;
                 OnPropertyChanged();
             }
         }
 
-        public int ScreenWidth
+        public string LockFbStatus
         {
             get
             {
-                return screenWidth;
+                return lockFbStatus;
             }
 
             set
             {
-                screenWidth = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int ScreenHeight
-        {
-            get
-            {
-                return screenHeight;
-            }
-
-            set
-            {
-                screenHeight = value;
+                lockFbStatus = value;
                 OnPropertyChanged();
             }
         }
 
         public SettingsViewModel()
         {
-            var gameResolution = ScreenResolutionService.GetCurrentResolution();
-            var screenResolution = RegistryService.ReadResolution();
-
-            GameWidth = gameResolution.Item1;
-            GameHeight = gameResolution.Item2;
-
-            ScreenWidth = screenResolution.Item1;
-            screenHeight = screenResolution.Item2;
+            GameResolution = RegistryService.ReadResolution();
+            CurrentResolution = ScreenResolutionService.GetCurrentResolution();
+            var lockfbValue = RegistryService.ReadLockFb();
+            if (lockfbValue == 0)
+                LockFbStatus = "Optimized";
+            else 
+                LockFbStatus = "Not optimized";
         }
+
+
     }
 }

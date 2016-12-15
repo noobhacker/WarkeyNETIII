@@ -1,28 +1,65 @@
 ﻿<Page x:Class="WarkeyNETIII.Pages.SettingsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WarkeyNETIII.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="323" d:DesignWidth="388"
+      xmlns:converters="clr-namespace:WarkeyNETIII.Converters"
+      mc:Ignorable="d"
+      d:DesignHeight="323"
+      d:DesignWidth="388"
       Title="SettingsPage">
+    <Page.Resources>
+        <converters:ResolutionToStringConverter x:Key="ResolutionToStringConverter" />
+    </Page.Resources>
+    <Grid Background="White">
+        <StackPanel Margin="16, 8">
+            <TextBlock Text="Warcraft III"
+                       FontSize="28"
+                       FontWeight="Light" />
 
-    <Grid>
-        <StackPanel Margin="8">
-            <TextBlock Text="Warcraft III" FontSize="16"/>
-            <TextBlock Text="Game Resolution: " />
-            <TextBlock>
-<Run Text="{Binding GameWidth}" />
-                <Run Text=" x " />
-                <Run Text="{Binding GameHeight}" />
-            </TextBlock>
-            <TextBlock Text="Screen Resolution:" />
-            <TextBlock>
-                <Run Text="{Binding ScreenWidth}" />
-                <Run Text=" x " />
-                <Run Text="{Binding ScreenHeight}" />
-            </TextBlock>
+
+            <TextBlock Text="Screen Resolution: "
+                       Margin="0,8,0,0" />
+            <TextBlock Text="{Binding CurrentResolution, Converter={StaticResource ResolutionToStringConverter}}"
+                       FontSize="16" />
+
+            <Grid Margin="0,8,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="Game Resolution: " />
+                    <TextBlock Text="{Binding GameResolution, Converter={StaticResource ResolutionToStringConverter}}" 
+                               FontSize="16"/>
+                </StackPanel>
+                <Button Grid.Column="1"
+                        Content="Optimize"
+                        Width="80"
+                        HorizontalAlignment="Left"
+                        Margin="4"
+                        BorderThickness="0"/>
+            </Grid>
+
+            <Grid Margin="0,16,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="lockfb status: "/>
+                    <TextBlock Text="{Binding LockFbStatus}"
+                               FontSize="16"/>
+                </StackPanel>
+                <Button Grid.Column="1"
+                        Content="Optimize"
+                        Width="80"
+                        HorizontalAlignment="Left" 
+                        Margin="4"
+                        BorderThickness="0"/>
+            </Grid>
+
         </StackPanel>
     </Grid>
 </Page>

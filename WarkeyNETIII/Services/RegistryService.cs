@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarkeyNETIII.Items;
 
 namespace WarkeyNETIII.Services
 {
@@ -15,12 +16,22 @@ namespace WarkeyNETIII.Services
             writeKey("resheight", height);
         }
 
-        public static Tuple<int, int> ReadResolution()
+        public static ScreenResolutionItem ReadResolution()
         {
             var width = (int)readKey("reswidth");
             var height = (int)readKey("resheight");
-            return new Tuple<int, int>(width, height);
+            return new ScreenResolutionItem()
+            {
+                Width = width,
+                Height = height
+            };
         }
+
+        public static int ReadLockFb()
+            => (int)readKey("lockfb");
+
+        public static void WriteLockFb()
+            => writeKey("lockfb", 0);
 
         static RegistryKey baseKey = Registry.CurrentUser;
         static string KeyPath = @"SOFTWARE\Blizzard Entertainment\Warcraft III\Video";

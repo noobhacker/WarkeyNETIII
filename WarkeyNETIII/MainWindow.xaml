@@ -29,7 +29,7 @@
     </Window.Resources>
     <Grid>
         <Grid Margin="50,0,0,0">
-            <Frame Name="NavFrame"
+            <Frame Name="navFrame"
                    NavigationUIVisibility="Hidden" />
         </Grid>
         <Grid Name="hamMenu"
