@@ -31,6 +31,7 @@ namespace WarkeyNETIII.Pages
             InitializeComponent();
             this.DataContext = vm;
         }
+
         private void itemSlots_Keydown(object sender, KeyEventArgs e)
         {
             var textbox = (Button)sender;

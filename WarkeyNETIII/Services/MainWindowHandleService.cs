@@ -16,7 +16,7 @@ namespace WarkeyNETIII.Services
             foreach(var item in processName)
             {
                 var process = Process.GetProcessesByName(item);
-                if (process != null)
+                if (process.Count() != 0)
                     return process[0].MainWindowHandle;
             }
 

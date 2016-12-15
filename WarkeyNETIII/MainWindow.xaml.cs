@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WarkeyNETIII.Pages;
+using WarkeyNETIII.Services;
 using WarkeyNETIII.ViewModels;
 
 namespace WarkeyNETIII
@@ -32,6 +33,7 @@ namespace WarkeyNETIII
             InitializeComponent();
             this.DataContext = vm;
 
+            MainService.InitializeServicesAsync();
             NavFrame.Navigate(new WarkeyPage());
         }
 
