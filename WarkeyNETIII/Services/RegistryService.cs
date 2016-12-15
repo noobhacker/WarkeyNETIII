@@ -23,7 +23,7 @@ namespace WarkeyNETIII.Services
         }
 
         static RegistryKey baseKey = Registry.CurrentUser;
-        static string KeyPath = @"SOFTWARE\Blizzard Entertainment\Video";
+        static string KeyPath = @"SOFTWARE\Blizzard Entertainment\Warcraft III\Video";
         private static void writeKey(string keyName, object value)
         {
             var key = baseKey.CreateSubKey(KeyPath);

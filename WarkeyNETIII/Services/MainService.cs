@@ -41,7 +41,7 @@ namespace WarkeyNETIII.Services
             }
             else
             {
-                MainWindow.vm.Title = "Idle";
+                MainWindow.vm.Title = "";
             }            
         }
 

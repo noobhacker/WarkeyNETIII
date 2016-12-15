@@ -9,6 +9,20 @@
       Title="SettingsPage">
 
     <Grid>
-        
+        <StackPanel Margin="8">
+            <TextBlock Text="Warcraft III" FontSize="16"/>
+            <TextBlock Text="Game Resolution: " />
+            <TextBlock>
+<Run Text="{Binding GameWidth}" />
+                <Run Text=" x " />
+                <Run Text="{Binding GameHeight}" />
+            </TextBlock>
+            <TextBlock Text="Screen Resolution:" />
+            <TextBlock>
+                <Run Text="{Binding ScreenWidth}" />
+                <Run Text=" x " />
+                <Run Text="{Binding ScreenHeight}" />
+            </TextBlock>
+        </StackPanel>
     </Grid>
 </Page>

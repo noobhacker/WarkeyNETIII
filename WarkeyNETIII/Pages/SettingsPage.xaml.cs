@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WarkeyNETIII.ViewModels;
 
 namespace WarkeyNETIII.Pages
 {
@@ -20,9 +21,12 @@ namespace WarkeyNETIII.Pages
     /// </summary>
     public partial class SettingsPage : Page
     {
+        SettingsViewModel vm = MainWindow.settingsVm;
+
         public SettingsPage()
         {
             InitializeComponent();
+            this.DataContext = vm;
         }
     }
 }

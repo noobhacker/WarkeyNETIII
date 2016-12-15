@@ -9,7 +9,8 @@
         Title="{Binding Title}"
         Height="323"
         Width="438"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
     <Window.Resources>
         <Storyboard x:Key="SideOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"

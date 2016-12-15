@@ -17,7 +17,10 @@ namespace WarkeyNETIII.ViewModels
         {
             get
             {
-                return $"Warkey.NET III - {title}";
+                if (title == "")
+                    return "Warkey.NET III";
+                else
+                    return $"Warkey.NET III - {title}";
             }
 
             set
@@ -25,11 +28,6 @@ namespace WarkeyNETIII.ViewModels
                 title = value;
                 OnPropertyChanged();
             }
-        }
-
-        public MainViewModel()
-        {
-            Title = "Idle";
         }
 
     }

@@ -27,6 +27,7 @@ namespace WarkeyNETIII
         // public them so services can access
         public static MainViewModel vm = new MainViewModel();
         public static WarkeyViewModel WarkeyVm = new WarkeyViewModel();
+        public static SettingsViewModel settingsVm = new SettingsViewModel();
 
         static WarkeyPage warkeyPage = new WarkeyPage();
         static SettingsPage settingsPage = new SettingsPage();
@@ -35,9 +36,12 @@ namespace WarkeyNETIII
         {
             InitializeComponent();
             this.DataContext = vm;
+        }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
             MainService.InitializeServicesAsync();
-            NavFrame.Navigate(warkeyPage);
+            NavFrame.Navigate(warkeyPage);          
         }
 
         private const double paneWidth = 200;
@@ -106,5 +110,6 @@ namespace WarkeyNETIII
             if (hamMenu.Width == paneWidth)
                 startAnimationByName("SideClose");
         }
+
     }
 }
