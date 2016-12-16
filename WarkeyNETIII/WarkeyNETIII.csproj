@@ -65,8 +65,15 @@
     <Compile Include="Converters\HotkeyToStringConverter.cs" />
     <Compile Include="Converters\IsOptimizedToStringConverter.cs" />
     <Compile Include="Converters\ResolutionToStringConverter.cs" />
+    <Compile Include="Items\AutoChatItem.cs" />
     <Compile Include="Items\HotkeyItem.cs" />
     <Compile Include="Items\ScreenResolutionItem.cs" />
+    <Compile Include="Pages\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AutoChatPage.xaml.cs">
+      <DependentUpon>AutoChatPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -80,6 +87,7 @@
     <Compile Include="Services\PostMessageService.cs" />
     <Compile Include="Services\RegistryService.cs" />
     <Compile Include="Services\ScreenResolutionService.cs" />
+    <Compile Include="ViewModels\AutoChatViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
@@ -96,6 +104,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AutoChatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +153,8 @@
   <ItemGroup>
     <Resource Include="Images\War3Inventory.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\GithubLogo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

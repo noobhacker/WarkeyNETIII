@@ -13,65 +13,65 @@
         <converters:ResolutionToStringConverter x:Key="ResolutionToStringConverter" />
         <converters:IsOptimizedToStringConverter x:Key="IsOptimizedToStringConverter" />
     </Page.Resources>
-            <Grid Background="White">
-                <StackPanel Margin="8">
-                    <TextBlock Text="Warcraft III"
-                               FontSize="28"
-                               FontWeight="Light"
-                               Margin="8,0" />
+    <Grid Background="White">
+        <StackPanel Margin="8">
+            <TextBlock Text="Warcraft III"
+                       FontSize="28"
+                       FontWeight="Light"
+                       Margin="8,0" />
 
-                    <StackPanel Margin="8">
-                        <TextBlock Text="Screen Resolution: " />
-                        <TextBlock Text="{Binding CurrentResolution, Converter={StaticResource ResolutionToStringConverter}}"
-                                   FontSize="16" />
-                    </StackPanel>
+            <StackPanel Margin="8">
+                <TextBlock Text="Screen Resolution: " />
+                <TextBlock Text="{Binding CurrentResolution, Converter={StaticResource ResolutionToStringConverter}}"
+                           FontSize="16" />
+            </StackPanel>
 
-                    <Grid Margin="8">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <StackPanel>
-                            <TextBlock Text="Game Resolution: " />
-                            <TextBlock Text="{Binding GameResolution, Converter={StaticResource ResolutionToStringConverter}}"
-                                       FontSize="16" />
-                        </StackPanel>
-                        <Button Grid.Column="1"
-                                Content="{Binding IsGameResolutionOptimized, Converter={StaticResource IsOptimizedToStringConverter}}"
-                                Width="80"
-                                HorizontalAlignment="Left"
-                                Margin="4"
-                                BorderThickness="0"
-                                IsEnabled="{Binding IsGameResolutionOptimized}"
-                                Name="OptimizeGameResolutionbtn" />
-                    </Grid>
-
-                    <Grid Margin="8">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <StackPanel>
-                            <TextBlock Text="lockfb status: " />
-                            <TextBlock Text="{Binding LockFbStatus}"
-                                       FontSize="16" />
-                        </StackPanel>
-                        <Button Grid.Column="1"
-                                Content="{Binding IsLockFbOptimized, Converter={StaticResource IsOptimizedToStringConverter} }"
-                                Width="80"
-                                HorizontalAlignment="Left"
-                                Margin="4"
-                                BorderThickness="0"
-                                IsEnabled="{Binding IsLockFbOptimized}"
-                                Name="btnOptimizeLockFbbtn" />
-                    </Grid>
-                    <Grid Margin="8" />
-                    <CheckBox Content="Automatically start Warcraft III if exist"
-                              Margin="8" />
-
-                    <CheckBox Content="Disable image on warkey page"
-                              Margin="8,0" />
-
+            <Grid Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="Game Resolution: " />
+                    <TextBlock Text="{Binding GameResolution, Converter={StaticResource ResolutionToStringConverter}}"
+                               FontSize="16" />
                 </StackPanel>
+                <Button Grid.Column="1"
+                        Content="{Binding IsGameResolutionNeedsOptimize, Converter={StaticResource IsOptimizedToStringConverter}}"
+                        Width="80"
+                        HorizontalAlignment="Left"
+                        Margin="4"
+                        BorderThickness="0"
+                        IsEnabled="{Binding IsGameResolutionNeedsOptimize}"
+                        Name="OptimizeGameResolutionbtn"
+                        Click="OptimizeGameResolutionbtn_Click" />
             </Grid>
+
+            <Grid Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="lockfb status: " />
+                    <TextBlock Text="{Binding LockFbStatus}"
+                               FontSize="16" />
+                </StackPanel>
+                <Button Grid.Column="1"
+                        Content="{Binding IsLockFbNeedsOptimize, Converter={StaticResource IsOptimizedToStringConverter} }"
+                        Width="80"
+                        HorizontalAlignment="Left"
+                        Margin="4"
+                        BorderThickness="0"
+                        IsEnabled="{Binding IsLockFbNeedsOptimize}"
+                        Name="OptimizeLockFbbtn"
+                        Click="OptimizeLockFbbtn_Click" />
+            </Grid>
+            <Grid Margin="8" />
+            <CheckBox Content="Automatically start Warcraft III if exist"
+                      Margin="8"
+                      IsChecked="{Binding IsAutoStartWar3}" />
+
+        </StackPanel>
+    </Grid>
 </Page>

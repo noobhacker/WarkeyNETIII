@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WarkeyNETIII.Services;
 using WarkeyNETIII.ViewModels;
 
 namespace WarkeyNETIII.Pages
@@ -21,12 +22,30 @@ namespace WarkeyNETIII.Pages
     /// </summary>
     public partial class SettingsPage : Page
     {
-        SettingsViewModel vm = MainWindow.settingsVm;
+        SettingsViewModel vm = new SettingsViewModel();
 
         public SettingsPage()
         {
             InitializeComponent();
             this.DataContext = vm;
+        }
+
+        private void OptimizeGameResolutionbtn_Click(object sender, RoutedEventArgs e)
+        {
+            RegistryService.WriteResolution(vm.CurrentResolution.Width, vm.CurrentResolution.Height);
+            vm.GameResolution.Width = vm.CurrentResolution.Width;
+            vm.GameResolution.Height = vm.CurrentResolution.Height;
+            // trigger onpropertychanged
+            vm.GameResolution = vm.CurrentResolution;
+
+            vm.IsGameResolutionNeedsOptimize = false;
+        }
+
+        private void OptimizeLockFbbtn_Click(object sender, RoutedEventArgs e)
+        {
+            RegistryService.WriteLockFb();
+            vm.LockFbStatus = "Optimized";
+            vm.IsLockFbNeedsOptimize = false;
         }
     }
 }

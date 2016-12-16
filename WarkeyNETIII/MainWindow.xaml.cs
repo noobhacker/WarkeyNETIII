@@ -27,10 +27,7 @@ namespace WarkeyNETIII
         // public them so services can access
         public static MainViewModel vm = new MainViewModel();
         public static WarkeyViewModel WarkeyVm = new WarkeyViewModel();
-        public static SettingsViewModel settingsVm = new SettingsViewModel();
-
-        static WarkeyPage warkeyPage = new WarkeyPage();
-        static SettingsPage settingsPage = new SettingsPage();
+        public static AutoChatViewModel autoChatVm = new AutoChatViewModel();
 
         public MainWindow()
         {
@@ -41,7 +38,7 @@ namespace WarkeyNETIII
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MainService.InitializeServicesAsync();
-            navFrame.Navigate(warkeyPage);          
+            navFrame.Navigate(new WarkeyPage());          
         }
 
         private const double paneWidth = 200;
@@ -94,16 +91,16 @@ namespace WarkeyNETIII
             switch (button.Tag.ToString())
             {
                 case "Warkey":
-                    navFrame.Navigate(warkeyPage);
+                    navFrame.Navigate(new WarkeyPage());
                     break;
                 case "AutoChat":
-
+                    navFrame.Navigate(new AutoChatPage());
                     break;
                 case "Settings":
-                    navFrame.Navigate(settingsPage);
+                    navFrame.Navigate(new SettingsPage());
                     break;
                 case "About":
-
+                    navFrame.Navigate(new AboutPage());
                     break;
             }
 

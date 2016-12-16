@@ -15,8 +15,9 @@ namespace WarkeyNETIII.ViewModels
         private string lockFbStatus;
         private bool autoStartWar3;
         private bool disableImage;
-        private bool isGameResolutionOptimized;
-        private bool isLockFbOptimized;
+        private bool isGameResolutionNeedsOptimize;
+        private bool isLockFbNeedsOptimize;
+        private bool isAutoStartWar3;
 
         public ScreenResolutionItem CurrentResolution
         {
@@ -88,30 +89,44 @@ namespace WarkeyNETIII.ViewModels
             }
         }
 
-        public bool IsGameResolutionOptimized
+        public bool IsGameResolutionNeedsOptimize
         {
             get
             {
-                return isGameResolutionOptimized;
+                return isGameResolutionNeedsOptimize;
             }
 
             set
             {
-                isGameResolutionOptimized = value;
+                isGameResolutionNeedsOptimize = value;
                 OnPropertyChanged();
             }
         }
 
-        public bool IsLockFbOptimized
+        public bool IsLockFbNeedsOptimize
         {
             get
             {
-                return isLockFbOptimized;
+                return isLockFbNeedsOptimize;
             }
 
             set
             {
-                isLockFbOptimized = value;
+                isLockFbNeedsOptimize = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsAutoStartWar3
+        {
+            get
+            {
+                return isAutoStartWar3;
+            }
+
+            set
+            {
+                isAutoStartWar3 = value;
                 OnPropertyChanged();
             }
         }
@@ -126,8 +141,13 @@ namespace WarkeyNETIII.ViewModels
             else 
                 LockFbStatus = "Not optimized";
 
-            IsGameResolutionOptimized = GameResolution == CurrentResolution;
-            IsLockFbOptimized = (Convert.ToBoolean(lockfbValue));
+            IsGameResolutionNeedsOptimize = !(
+                GameResolution.Width == CurrentResolution.Width && 
+                GameResolution.Height == CurrentResolution.Height);
+
+            IsLockFbNeedsOptimize = (Convert.ToBoolean(lockfbValue));
+
+            IsAutoStartWar3 = true;
         }
 
 
