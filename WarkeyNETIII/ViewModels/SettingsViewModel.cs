@@ -13,6 +13,10 @@ namespace WarkeyNETIII.ViewModels
         private ScreenResolutionItem currentResolution;
         private ScreenResolutionItem gameResolution;
         private string lockFbStatus;
+        private bool autoStartWar3;
+        private bool disableImage;
+        private bool isGameResolutionOptimized;
+        private bool isLockFbOptimized;
 
         public ScreenResolutionItem CurrentResolution
         {
@@ -56,6 +60,62 @@ namespace WarkeyNETIII.ViewModels
             }
         }
 
+        public bool AutoStartWar3
+        {
+            get
+            {
+                return autoStartWar3;
+            }
+
+            set
+            {
+                autoStartWar3 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool DisableImage
+        {
+            get
+            {
+                return disableImage;
+            }
+
+            set
+            {
+                disableImage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsGameResolutionOptimized
+        {
+            get
+            {
+                return isGameResolutionOptimized;
+            }
+
+            set
+            {
+                isGameResolutionOptimized = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsLockFbOptimized
+        {
+            get
+            {
+                return isLockFbOptimized;
+            }
+
+            set
+            {
+                isLockFbOptimized = value;
+                OnPropertyChanged();
+            }
+        }
+
         public SettingsViewModel()
         {
             GameResolution = RegistryService.ReadResolution();
@@ -65,6 +125,9 @@ namespace WarkeyNETIII.ViewModels
                 LockFbStatus = "Optimized";
             else 
                 LockFbStatus = "Not optimized";
+
+            IsGameResolutionOptimized = GameResolution == CurrentResolution;
+            IsLockFbOptimized = (Convert.ToBoolean(lockfbValue));
         }
 
 

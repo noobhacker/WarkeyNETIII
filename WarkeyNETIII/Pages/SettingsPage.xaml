@@ -11,55 +11,67 @@
       Title="SettingsPage">
     <Page.Resources>
         <converters:ResolutionToStringConverter x:Key="ResolutionToStringConverter" />
+        <converters:IsOptimizedToStringConverter x:Key="IsOptimizedToStringConverter" />
     </Page.Resources>
-    <Grid Background="White">
-        <StackPanel Margin="16, 8">
-            <TextBlock Text="Warcraft III"
-                       FontSize="28"
-                       FontWeight="Light" />
+            <Grid Background="White">
+                <StackPanel Margin="8">
+                    <TextBlock Text="Warcraft III"
+                               FontSize="28"
+                               FontWeight="Light"
+                               Margin="8,0" />
 
+                    <StackPanel Margin="8">
+                        <TextBlock Text="Screen Resolution: " />
+                        <TextBlock Text="{Binding CurrentResolution, Converter={StaticResource ResolutionToStringConverter}}"
+                                   FontSize="16" />
+                    </StackPanel>
 
-            <TextBlock Text="Screen Resolution: "
-                       Margin="0,8,0,0" />
-            <TextBlock Text="{Binding CurrentResolution, Converter={StaticResource ResolutionToStringConverter}}"
-                       FontSize="16" />
+                    <Grid Margin="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="Game Resolution: " />
+                            <TextBlock Text="{Binding GameResolution, Converter={StaticResource ResolutionToStringConverter}}"
+                                       FontSize="16" />
+                        </StackPanel>
+                        <Button Grid.Column="1"
+                                Content="{Binding IsGameResolutionOptimized, Converter={StaticResource IsOptimizedToStringConverter}}"
+                                Width="80"
+                                HorizontalAlignment="Left"
+                                Margin="4"
+                                BorderThickness="0"
+                                IsEnabled="{Binding IsGameResolutionOptimized}"
+                                Name="OptimizeGameResolutionbtn" />
+                    </Grid>
 
-            <Grid Margin="0,8,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <StackPanel>
-                    <TextBlock Text="Game Resolution: " />
-                    <TextBlock Text="{Binding GameResolution, Converter={StaticResource ResolutionToStringConverter}}" 
-                               FontSize="16"/>
+                    <Grid Margin="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="lockfb status: " />
+                            <TextBlock Text="{Binding LockFbStatus}"
+                                       FontSize="16" />
+                        </StackPanel>
+                        <Button Grid.Column="1"
+                                Content="{Binding IsLockFbOptimized, Converter={StaticResource IsOptimizedToStringConverter} }"
+                                Width="80"
+                                HorizontalAlignment="Left"
+                                Margin="4"
+                                BorderThickness="0"
+                                IsEnabled="{Binding IsLockFbOptimized}"
+                                Name="btnOptimizeLockFbbtn" />
+                    </Grid>
+                    <Grid Margin="8" />
+                    <CheckBox Content="Automatically start Warcraft III if exist"
+                              Margin="8" />
+
+                    <CheckBox Content="Disable image on warkey page"
+                              Margin="8,0" />
+
                 </StackPanel>
-                <Button Grid.Column="1"
-                        Content="Optimize"
-                        Width="80"
-                        HorizontalAlignment="Left"
-                        Margin="4"
-                        BorderThickness="0"/>
             </Grid>
-
-            <Grid Margin="0,16,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <StackPanel>
-                    <TextBlock Text="lockfb status: "/>
-                    <TextBlock Text="{Binding LockFbStatus}"
-                               FontSize="16"/>
-                </StackPanel>
-                <Button Grid.Column="1"
-                        Content="Optimize"
-                        Width="80"
-                        HorizontalAlignment="Left" 
-                        Margin="4"
-                        BorderThickness="0"/>
-            </Grid>
-
-        </StackPanel>
-    </Grid>
 </Page>

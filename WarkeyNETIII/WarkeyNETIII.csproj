@@ -63,6 +63,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\HexToColorConverter.cs" />
     <Compile Include="Converters\HotkeyToStringConverter.cs" />
+    <Compile Include="Converters\IsOptimizedToStringConverter.cs" />
     <Compile Include="Converters\ResolutionToStringConverter.cs" />
     <Compile Include="Items\HotkeyItem.cs" />
     <Compile Include="Items\ScreenResolutionItem.cs" />
