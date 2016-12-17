@@ -70,13 +70,13 @@
             <Grid Margin="8" />
             <CheckBox Content="Start minimized"
                       Margin="8"
-                      IsChecked="{Binding IsAutoStartWar3}" />
+                      IsChecked="{Binding IsStartMinimized}" />
             <CheckBox Content="Automatically starts Warcraft III if exists"
                       Margin="8"
                       IsChecked="{Binding IsAutoStartWar3}" />
             <CheckBox Content="Automatically closes with Warcraft III"
                       Margin="8"
-                      IsChecked="{Binding IsAutoStartWar3}" />
+                      IsChecked="{Binding IsAutoCloseWar3}" />
 
         </StackPanel>
     </Grid>

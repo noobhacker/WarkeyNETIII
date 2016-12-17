@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,10 @@ namespace WarkeyNETIII
                 IsStartMinimized = obj.IsStartMinimized;
                 IsAutoStartWar3 = obj.IsAutoStartWar3;
                 IsAutoCloseWithWar3 = obj.IsAutoCloseWithWar3;
+
+                if (IsAutoStartWar3)
+                    if (File.Exists("war3.exe"))
+                        Process.Start("war3.exe");
             }
             else
             {

@@ -47,5 +47,6 @@ namespace WarkeyNETIII.Pages
             vm.LockFbStatus = "Optimized";
             vm.IsLockFbNeedsOptimize = false;
         }
+        
     }
 }

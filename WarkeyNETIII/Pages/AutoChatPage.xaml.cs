@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WarkeyNETIII.Items;
 using WarkeyNETIII.ViewModels;
 
 namespace WarkeyNETIII.Pages
@@ -28,6 +29,9 @@ namespace WarkeyNETIII.Pages
         {
             InitializeComponent();
             this.DataContext = vm;
+
+            // do it here so navigate from another page will keep collapsed
+            vm.ExtraCommandVisibility = Visibility.Collapsed;
         }
 
         private void startAnimationByName(string name)
@@ -42,6 +46,30 @@ namespace WarkeyNETIII.Pages
                 startAnimationByName("BarOpen");
             else if (commandBar.Height == 70)
                 startAnimationByName("BarClose");
+        }
+
+        private void addBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EditAutoChatPage());
+        }
+
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listbox = (ListBox)sender;
+            if (listbox.SelectedItems.Count != 0)
+                vm.ExtraCommandVisibility = Visibility.Visible;
+            else
+                vm.ExtraCommandVisibility = Visibility.Hidden;
+        }
+
+        private void editBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var index = listBox.SelectedIndex;
+            NavigationService.Navigate(new EditAutoChatPage(new AutoChatItem()
+            {
+                Key = vm.ListOfAutoChats[index].Key,
+                Message = vm.ListOfAutoChats[index].Message
+            }, index));
         }
     }
 }

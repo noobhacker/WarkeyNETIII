@@ -29,7 +29,9 @@
     <Grid>
         <ListBox ItemsSource="{Binding ListOfAutoChats}"
                  BorderThickness="0"
-                 Margin="0,50,0,0">
+                 Margin="0,50,0,0"
+                 Name="listBox"
+                 SelectionChanged="listBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -37,7 +39,7 @@
                             <ColumnDefinition Width="150" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Hotkey, Converter={StaticResource KeyToStringConverter}}"
+                        <TextBlock Text="{Binding Key, Converter={StaticResource KeyToStringConverter}}"
                                    Margin="16"
                                    FontSize="12" />
                         <TextBlock Grid.Column="1"
@@ -64,20 +66,29 @@
                         Content=""
                         Background="Transparent"
                         BorderThickness="0"
-                        FontSize="16" />
+                        FontSize="16" 
+                        Name="addBtn"
+                        Click="addBtn_Click"/>
 
                 <Button FontFamily="Segoe MDL2 Assets"
                         Width="60"
                         Content=""
                         Background="Transparent"
                         BorderThickness="0"
-                        FontSize="16" />
+                        FontSize="16"
+                        Visibility="{Binding ExtraCommandVisibility}"
+                        Name="editBtn"
+                        Click="editBtn_Click"/>
+                
                 <Button FontFamily="Segoe MDL2 Assets"
                         Width="60"
                         Content=""
                         Background="Transparent"
                         BorderThickness="0"
-                        FontSize="20" />
+                        FontSize="20"
+                        Visibility="{Binding ExtraCommandVisibility}"
+                        Name="deleteBtn" />
+                
                 <Button FontFamily="Segoe MDL2 Assets"
                         Width="60"
                         Content=""
@@ -87,6 +98,7 @@
                         Name="moreBtn"
                         Click="moreBtn_Click" />
             </StackPanel>
+            
             <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal"
                         Grid.Row="1">
@@ -95,10 +107,12 @@
                            TextAlignment="Center" />
                 <TextBlock Width="60"
                            Text="Edit"
-                           TextAlignment="Center" />
+                           TextAlignment="Center"
+                           Visibility="{Binding ExtraCommandVisibility}" />
                 <TextBlock Width="60"
                            Text="Delete"
-                           TextAlignment="Center" />
+                           TextAlignment="Center"
+                           Visibility="{Binding ExtraCommandVisibility}" />
                 <TextBlock Width="60"
                            Text="" />
             </StackPanel>

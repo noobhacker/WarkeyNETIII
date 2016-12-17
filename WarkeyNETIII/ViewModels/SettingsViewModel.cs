@@ -17,7 +17,9 @@ namespace WarkeyNETIII.ViewModels
         private bool disableImage;
         private bool isGameResolutionNeedsOptimize;
         private bool isLockFbNeedsOptimize;
+        private bool isStartMinimized;
         private bool isAutoStartWar3;
+        private bool isAutoCloseWar3;
 
         public ScreenResolutionItem CurrentResolution
         {
@@ -117,6 +119,22 @@ namespace WarkeyNETIII.ViewModels
             }
         }
 
+        public bool IsStartMinimized
+        {
+            get
+            {
+                return isStartMinimized;
+            }
+
+            set
+            {
+                isStartMinimized = value;
+                OnPropertyChanged();
+
+                Settings.IsStartMinimized = IsStartMinimized;
+            }
+        }
+
         public bool IsAutoStartWar3
         {
             get
@@ -128,8 +146,26 @@ namespace WarkeyNETIII.ViewModels
             {
                 isAutoStartWar3 = value;
                 OnPropertyChanged();
+
+                Settings.IsAutoStartWar3 = IsAutoStartWar3;
             }
         }
+
+        public bool IsAutoCloseWar3
+        {
+            get
+            {
+                return isAutoCloseWar3;
+            }
+
+            set
+            {
+                isAutoCloseWar3 = value;
+                OnPropertyChanged();
+                
+                Settings.IsAutoCloseWithWar3 = IsAutoCloseWar3;
+            }
+        }            
 
         public SettingsViewModel()
         {
@@ -147,7 +183,9 @@ namespace WarkeyNETIII.ViewModels
 
             IsLockFbNeedsOptimize = (Convert.ToBoolean(lockfbValue));
 
-            IsAutoStartWar3 = true;
+            IsStartMinimized = Settings.IsStartMinimized;
+            isAutoStartWar3 = Settings.IsAutoStartWar3;
+            isAutoCloseWar3 = Settings.IsAutoCloseWithWar3;
         }
 
 

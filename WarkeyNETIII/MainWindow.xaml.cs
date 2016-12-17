@@ -41,8 +41,12 @@ namespace WarkeyNETIII
             // this will load vm's
             await Settings.InitializeAsync();
 
+            if (Settings.IsStartMinimized)
+                this.WindowState = WindowState.Minimized;            
+
             MainService.InitializeServicesAsync();
-            navFrame.Navigate(new WarkeyPage());          
+            navFrame.Navigate(new WarkeyPage()); 
+                     
         }
 
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

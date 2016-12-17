@@ -72,6 +72,7 @@ namespace WarkeyNETIII.Services
             }
         }
 
+        static bool wentRunning = false;
         private static void updateWar3Hwnd()
         {
             var hwnd = MainWindowHandleService.GetWar3HWND();
@@ -79,11 +80,15 @@ namespace WarkeyNETIII.Services
             {
                 war3Hwnd = hwnd.Value;
                 MainWindow.vm.Title = "Running";
+                wentRunning = true;
 
                 isWar3Foreground = ForegroundWindowService.IsWar3Foreground(war3Hwnd);
             }
             else
             {
+                if (wentRunning && Settings.IsAutoCloseWithWar3)
+                    App.Current.MainWindow.Close();
+
                 MainWindow.vm.Title = "";
             }            
         }
