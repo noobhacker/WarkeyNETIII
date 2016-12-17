@@ -71,7 +71,7 @@
             <CheckBox Content="Start minimized"
                       Margin="8"
                       IsChecked="{Binding IsAutoStartWar3}" />
-            <CheckBox Content="Automatically start Warcraft III if exist"
+            <CheckBox Content="Automatically starts Warcraft III if exists"
                       Margin="8"
                       IsChecked="{Binding IsAutoStartWar3}" />
             <CheckBox Content="Automatically closes with Warcraft III"

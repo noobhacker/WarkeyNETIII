@@ -61,7 +61,7 @@ namespace WarkeyNETIII.Services
                         PostMessageService.PostItemMessageToWar3(war3Hwnd, i, e.Alt);
                 }
 
-                var autochats = MainWindow.autoChatVm.ListOfAutoChats;
+                var autochats = MainWindow.AutoChatVm.ListOfAutoChats;
                 foreach(var item in autochats)
                 {
                     if(item.Key == e.Key && !e.Alt)

@@ -39,6 +39,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -68,6 +72,7 @@
     <Compile Include="Items\AutoChatItem.cs" />
     <Compile Include="Items\HotkeyItem.cs" />
     <Compile Include="Items\ScreenResolutionItem.cs" />
+    <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
@@ -88,6 +93,7 @@
     <Compile Include="Services\PostMessageService.cs" />
     <Compile Include="Services\RegistryService.cs" />
     <Compile Include="Services\ScreenResolutionService.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="ViewModels\AutoChatViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -143,6 +149,7 @@
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

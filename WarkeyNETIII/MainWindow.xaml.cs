@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,8 +27,8 @@ namespace WarkeyNETIII
     {
         // public them so services can access
         public static MainViewModel vm = new MainViewModel();
-        public static WarkeyViewModel WarkeyVm = new WarkeyViewModel();
-        public static AutoChatViewModel autoChatVm = new AutoChatViewModel();
+        public static WarkeyViewModel WarkeyVm;
+        public static AutoChatViewModel AutoChatVm;
 
         public MainWindow()
         {
@@ -35,16 +36,20 @@ namespace WarkeyNETIII
             this.DataContext = vm;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // this will load vm's
+            await Settings.InitializeAsync();
+
             MainService.InitializeServicesAsync();
             navFrame.Navigate(new WarkeyPage());          
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             // prevent memory leakage by not unhooking from windows API
             KeyboardHookService.Dispose();
+            await Settings.SaveSettingsAsync();
         }
 
         private const double paneWidth = 200;

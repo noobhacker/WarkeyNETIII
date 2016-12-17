@@ -22,7 +22,7 @@ namespace WarkeyNETIII.Pages
     /// </summary>
     public partial class AutoChatPage : Page
     {
-        AutoChatViewModel vm = MainWindow.autoChatVm;
+        AutoChatViewModel vm = MainWindow.AutoChatVm;
 
         public AutoChatPage()
         {
