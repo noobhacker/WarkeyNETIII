@@ -61,9 +61,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converters\HexToColorConverter.cs" />
     <Compile Include="Converters\HotkeyToStringConverter.cs" />
     <Compile Include="Converters\IsOptimizedToStringConverter.cs" />
+    <Compile Include="Converters\KeyToStringConverter.cs" />
     <Compile Include="Converters\ResolutionToStringConverter.cs" />
     <Compile Include="Items\AutoChatItem.cs" />
     <Compile Include="Items\HotkeyItem.cs" />

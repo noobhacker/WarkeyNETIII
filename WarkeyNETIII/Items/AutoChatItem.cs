@@ -3,25 +3,26 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using WarkeyNETIII.ViewModels;
 
 namespace WarkeyNETIII.Items
 {
     public class AutoChatItem : BaseViewModel
     {
-        private HotkeyItem hotkey;
+        private Key key;
         private string message;
 
-        public HotkeyItem Hotkey
+        public Key Key
         {
             get
             {
-                return hotkey;
+                return key;
             }
 
             set
             {
-                hotkey = value;
+                key = value;
                 OnPropertyChanged();
             }
         }

@@ -24,7 +24,7 @@
                                       Value="50" />
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <converters:HotkeyToStringConverter x:Key="HotkeyToStringConverter" />
+        <converters:KeyToStringConverter x:Key="KeyToStringConverter" />
     </Page.Resources>
     <Grid>
         <ListBox ItemsSource="{Binding ListOfAutoChats}"
@@ -37,7 +37,7 @@
                             <ColumnDefinition Width="150" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Hotkey, Converter={StaticResource HotkeyToStringConverter}}"
+                        <TextBlock Text="{Binding Hotkey, Converter={StaticResource KeyToStringConverter}}"
                                    Margin="16"
                                    FontSize="12" />
                         <TextBlock Grid.Column="1"

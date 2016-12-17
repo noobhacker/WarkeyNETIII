@@ -64,9 +64,9 @@ namespace WarkeyNETIII.Services
                 var autochats = MainWindow.autoChatVm.ListOfAutoChats;
                 foreach(var item in autochats)
                 {
-                    if(item.Hotkey.Key == e.Key && item.Hotkey.Alt == e.Alt)
+                    if(item.Key == e.Key && !e.Alt)
                     {
-                        ChatboxService.SendMessageToChatbox(war3Hwnd, item.Message, e.Alt);
+                        ChatboxService.SendMessageToChatbox(war3Hwnd, item.Message);
                     }
                 }
             }
