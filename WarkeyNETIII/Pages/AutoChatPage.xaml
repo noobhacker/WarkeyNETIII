@@ -87,7 +87,8 @@
                         BorderThickness="0"
                         FontSize="20"
                         Visibility="{Binding ExtraCommandVisibility}"
-                        Name="deleteBtn" />
+                        Name="deleteBtn"
+                        Click="deleteBtn_Click" />
                 
                 <Button FontFamily="Segoe MDL2 Assets"
                         Width="60"

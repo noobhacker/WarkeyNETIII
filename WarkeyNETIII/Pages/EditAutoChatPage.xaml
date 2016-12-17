@@ -40,6 +40,7 @@
                      Margin="8,0"
                      BorderThickness="2"
                      FontSize="16" 
+                     AcceptsReturn="True"
                      Text="{Binding Message, Mode=TwoWay}"/>
             
             <Grid Margin="8"

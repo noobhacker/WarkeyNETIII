@@ -59,7 +59,7 @@ namespace WarkeyNETIII.Pages
             if (listbox.SelectedItems.Count != 0)
                 vm.ExtraCommandVisibility = Visibility.Visible;
             else
-                vm.ExtraCommandVisibility = Visibility.Hidden;
+                vm.ExtraCommandVisibility = Visibility.Collapsed;
         }
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
@@ -70,6 +70,17 @@ namespace WarkeyNETIII.Pages
                 Key = vm.ListOfAutoChats[index].Key,
                 Message = vm.ListOfAutoChats[index].Message
             }, index));
+        }
+
+        private async void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(MessageBox.Show("Are you sure?", "Warkey.NET III", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                var index = listBox.SelectedIndex;
+                vm.ListOfAutoChats.RemoveAt(index);
+
+                await Settings.SaveSettingsAsync();
+            }           
         }
     }
 }
