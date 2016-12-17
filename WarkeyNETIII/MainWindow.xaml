@@ -7,8 +7,8 @@
         xmlns:converters="clr-namespace:WarkeyNETIII.Converters"
         mc:Ignorable="d"
         Title="{Binding Title}"
-        Height="323"
-        Width="438"
+        Height="480"
+        Width="640"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
     <Window.Resources>

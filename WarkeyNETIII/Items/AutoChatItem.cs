@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -10,6 +9,35 @@ namespace WarkeyNETIII.Items
 {
     public class AutoChatItem : BaseViewModel
     {
-        public ObservableCollection<HotkeyItem> ListOfAutoChats { get; set; }
+        private HotkeyItem hotkey;
+        private string message;
+
+        public HotkeyItem Hotkey
+        {
+            get
+            {
+                return hotkey;
+            }
+
+            set
+            {
+                hotkey = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Message
+        {
+            get
+            {
+                return message;
+            }
+
+            set
+            {
+                message = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }

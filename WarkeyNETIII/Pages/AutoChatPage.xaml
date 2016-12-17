@@ -1,22 +1,44 @@
 ﻿<Page x:Class="WarkeyNETIII.Pages.AutoChatPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WarkeyNETIII.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="323" d:DesignWidth="388"
+      xmlns:converters="clr-namespace:WarkeyNETIII.Converters"
+      mc:Ignorable="d"
+      d:DesignHeight="323"
+      d:DesignWidth="388"
       Title="AutoChatPage">
-
+    <Page.Resources>
+        <Storyboard x:Key="BarOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                           Storyboard.TargetName="commandBar">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.16"
+                                      Value="70" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="BarClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                           Storyboard.TargetName="commandBar">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.16"
+                                      Value="50" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <converters:HotkeyToStringConverter x:Key="HotkeyToStringConverter" />
+    </Page.Resources>
     <Grid>
-        <ListView>
+        <ListView ItemsSource="{Binding ListOfAutoChats}"
+                  BorderThickness="0"
+                  Margin="0,50,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Hotkey"
                                     Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox />
+                                <TextBlock Text="{Binding Hotkey, Converter={StaticResource HotkeyToStringConverter}}"
+                                           Margin="0,4" 
+                                           FontSize="12" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -24,12 +46,68 @@
                                     Width="280">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox />
+                                <TextBlock Text="{Binding Message}"
+                                           Margin="0,4"
+                                           FontSize="12" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Grid   VerticalAlignment="Top"
+                Height="50"
+                Background="WhiteSmoke"
+                Name="commandBar">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <Button FontFamily="Segoe MDL2 Assets"
+                        Width="60"
+                        Content=""
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontSize="16" />
+
+                <Button FontFamily="Segoe MDL2 Assets"
+                        Width="60"
+                        Content=""
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontSize="16" />
+                <Button FontFamily="Segoe MDL2 Assets"
+                        Width="60"
+                        Content=""
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontSize="20" />
+                <Button FontFamily="Segoe MDL2 Assets"
+                        Width="60"
+                        Content=""
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontSize="16"
+                        Name="moreBtn"
+                        Click="moreBtn_Click" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal"
+                        Grid.Row="1">
+                <TextBlock Width="60"
+                           Text="Add"
+                           TextAlignment="Center" />
+                <TextBlock Width="60"
+                           Text="Edit"
+                           TextAlignment="Center" />
+                <TextBlock Width="60"
+                           Text="Delete"
+                           TextAlignment="Center" />
+                <TextBlock Width="60"
+                           Text="" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

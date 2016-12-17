@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -27,6 +28,20 @@ namespace WarkeyNETIII.Pages
         {
             InitializeComponent();
             this.DataContext = vm;
+        }
+
+        private void startAnimationByName(string name)
+        {
+            Storyboard sb = this.FindResource(name) as Storyboard;
+            sb.Begin();
+        }
+
+        private void moreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (commandBar.Height == 50)
+                startAnimationByName("BarOpen");
+            else if (commandBar.Height == 70)
+                startAnimationByName("BarClose");
         }
     }
 }
