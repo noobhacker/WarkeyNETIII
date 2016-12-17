@@ -19,13 +19,36 @@ namespace WarkeyNETIII.ViewModels
 
             ListOfAutoChats.Add(new AutoChatItem()
             {
-                Hotkey = new HotkeyItem(),
-                Message = "aaa"
+                Hotkey = new HotkeyItem()
+                {
+                    Alt = true,
+                    Key = Key.A
+                },
+                Message = "-refresh"
             });
             ListOfAutoChats.Add(new AutoChatItem()
             {
-                Hotkey = new HotkeyItem(),
-                Message = "aaa"
+                Hotkey = new HotkeyItem()
+                {
+                    Key = Key.Oem3
+                },
+                Message = "-spawncreeps"
+            });
+            ListOfAutoChats.Add(new AutoChatItem()
+            {
+                Hotkey = new HotkeyItem()
+                {
+                    Key = Key.NumPad9
+                },
+                Message = "-killall"
+            });
+            ListOfAutoChats.Add(new AutoChatItem()
+            {
+                Hotkey = new HotkeyItem()
+                {
+                    Key = Key.Oem5
+                },
+                Message = "-wtf"
             });
 
         }

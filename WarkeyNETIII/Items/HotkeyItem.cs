@@ -40,5 +40,10 @@ namespace WarkeyNETIII.Items
                 OnPropertyChanged();
             }
         }
+
+        public HotkeyItem()
+        {
+            Alt = false;
+        }
     }
 }

@@ -27,34 +27,28 @@
         <converters:HotkeyToStringConverter x:Key="HotkeyToStringConverter" />
     </Page.Resources>
     <Grid>
-        <ListView ItemsSource="{Binding ListOfAutoChats}"
-                  BorderThickness="0"
-                  Margin="0,50,0,0">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Hotkey"
-                                    Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Hotkey, Converter={StaticResource HotkeyToStringConverter}}"
-                                           Margin="0,4" 
-                                           FontSize="12" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Message"
-                                    Width="280">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Message}"
-                                           Margin="0,4"
-                                           FontSize="12" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <ListBox ItemsSource="{Binding ListOfAutoChats}"
+                 BorderThickness="0"
+                 Margin="0,50,0,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Hotkey, Converter={StaticResource HotkeyToStringConverter}}"
+                                   Margin="16"
+                                   FontSize="12" />
+                        <TextBlock Grid.Column="1"
+                                   Text="{Binding Message}"
+                                   Margin="16"
+                                   FontSize="12" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
         <Grid   VerticalAlignment="Top"
                 Height="50"
                 Background="WhiteSmoke"

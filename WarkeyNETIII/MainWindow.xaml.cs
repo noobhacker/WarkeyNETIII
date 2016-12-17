@@ -41,6 +41,12 @@ namespace WarkeyNETIII
             navFrame.Navigate(new WarkeyPage());          
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // prevent memory leakage by not unhooking from windows API
+            KeyboardHookService.Dispose();
+        }
+
         private const double paneWidth = 200;
 
         private void startAnimationByName(string name)

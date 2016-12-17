@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="Services\ChatboxService.cs" />
     <Compile Include="Services\ForegroundWindowService.cs" />
+    <Compile Include="Services\KeyboardHookService.cs" />
     <Compile Include="Services\MainService.cs" />
     <Compile Include="Services\MainWindowHandleService.cs" />
     <Compile Include="Services\PostMessageService.cs" />
