@@ -17,9 +17,9 @@ namespace WarkeyNETIII.Services
         const uint WM_KEYDOWN = 0x0100;
         const uint WM_KEYUP = 0x0101;
 
-        private const int LEFT_ALT = 164;
+        // LEFT ALT for wParam
+        private const int VK_MENU = 0x0012;
         private const int WM_SYSKEYDOWN = 0x0104;
-        private const int WM_SYSKEYUP = 0x0105;
 
         public static Keys[] VKeys =
         {
@@ -33,14 +33,14 @@ namespace WarkeyNETIII.Services
 
         public static void PostMessageToWar3(IntPtr hwnd, int slotNumber, bool isAlt)
         {
-            if(isAlt)
-                PostMessage(hwnd, WM_SYSKEYUP, LEFT_ALT, 0);
+            if (isAlt)
+                PostMessage(hwnd, WM_KEYUP, VK_MENU, 0);
 
             PostMessage(hwnd, WM_KEYDOWN, (int)VKeys[slotNumber], 0);
             PostMessage(hwnd, WM_KEYUP, (int)VKeys[slotNumber], 0);
 
             if (isAlt)
-                PostMessage(hwnd, WM_SYSKEYDOWN, LEFT_ALT, 0);
+                PostMessage(hwnd, WM_SYSKEYDOWN, VK_MENU, 0);
         }
     }
 }

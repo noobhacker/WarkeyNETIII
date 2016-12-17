@@ -56,12 +56,8 @@ namespace WarkeyNETIII.Services
                     // if key is not set
                     if (warkeys[i] == null)
                         continue;
-
-                    // if alt condition doesnt match
-                    if (e.Alt != warkeys[i].Alt)
-                        continue;
-
-                    if (warkeys[i].Key == e.Key)
+                    
+                    if (warkeys[i].Key == e.Key && e.Alt == warkeys[i].Alt)
                         PostMessageService.PostMessageToWar3(war3Hwnd, i, e.Alt);
                 }
 

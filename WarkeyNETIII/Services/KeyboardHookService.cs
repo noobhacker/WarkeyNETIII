@@ -27,7 +27,9 @@ namespace WarkeyNETIII.Services
         private static extern IntPtr GetModuleHandle(string lpModuleName);
 
         private const int WH_KEYBOARD_LL = 13;
-        private const int LEFT_ALT = 164;
+
+        //LEFT ALT for lParam
+        private const int VK_LMENU = 0x00A4;
 
         private const int WM_KEYDOWN = 0x0100;
         private const int WM_KEYUP = 0x0101;
@@ -74,7 +76,7 @@ namespace WarkeyNETIII.Services
                 }
                 else if (wParam == (IntPtr)WM_SYSKEYDOWN)
                 {
-                    if(vkCode != LEFT_ALT)
+                    if(vkCode != VK_LMENU)
                     {
                         GlobalKeyDown(null, new HotkeyItem()
                         {
