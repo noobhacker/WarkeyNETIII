@@ -31,16 +31,37 @@ namespace WarkeyNETIII.Services
             Keys.NumPad2
         };
 
-        public static void PostMessageToWar3(IntPtr hwnd, int slotNumber, bool isAlt)
+        private static void sendKeyToHwnd(IntPtr hwnd, int key)
+        {
+            PostMessage(hwnd, WM_KEYDOWN, key, 0);
+            PostMessage(hwnd, WM_KEYUP, key, 0);
+        }
+
+        public static void PostItemMessageToWar3(IntPtr hwnd, int slotNumber, bool isAlt)
         {
             if (isAlt)
-                PostMessage(hwnd, WM_KEYUP, VK_MENU, 0);
+                PostAltUpToWar3(hwnd);
 
-            PostMessage(hwnd, WM_KEYDOWN, (int)VKeys[slotNumber], 0);
-            PostMessage(hwnd, WM_KEYUP, (int)VKeys[slotNumber], 0);
+            sendKeyToHwnd(hwnd, (int)VKeys[slotNumber]);
 
             if (isAlt)
-                PostMessage(hwnd, WM_SYSKEYDOWN, VK_MENU, 0);
+                PostAltDownToWar3(hwnd);
         }
+
+        public static void PostKeyToWar3(IntPtr hwnd, Keys key)
+        {
+            sendKeyToHwnd(hwnd, (int)key);
+        }
+
+        public static void PostAltUpToWar3(IntPtr hwnd)
+        {
+            PostMessage(hwnd, WM_KEYUP, VK_MENU, 0);
+        }
+
+        public static void PostAltDownToWar3(IntPtr hwnd)
+        {
+            PostMessage(hwnd, WM_SYSKEYDOWN, VK_MENU, 0);
+        }
+
     }
 }

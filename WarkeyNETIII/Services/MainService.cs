@@ -57,11 +57,18 @@ namespace WarkeyNETIII.Services
                     if (warkeys[i] == null)
                         continue;
                     
-                    if (warkeys[i].Key == e.Key && e.Alt == warkeys[i].Alt)
-                        PostMessageService.PostMessageToWar3(war3Hwnd, i, e.Alt);
+                    if (warkeys[i].Key == e.Key && warkeys[i].Alt == e.Alt)
+                        PostMessageService.PostItemMessageToWar3(war3Hwnd, i, e.Alt);
                 }
 
                 var autochats = MainWindow.autoChatVm.ListOfAutoChats;
+                foreach(var item in autochats)
+                {
+                    if(item.Hotkey.Key == e.Key && item.Hotkey.Alt == e.Alt)
+                    {
+                        ChatboxService.SendMessageToChatbox(war3Hwnd, item.Message, e.Alt);
+                    }
+                }
             }
         }
 

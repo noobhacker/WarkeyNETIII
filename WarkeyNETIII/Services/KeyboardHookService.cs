@@ -83,14 +83,12 @@ namespace WarkeyNETIII.Services
                             Alt = true,
                             Key = KeyInterop.KeyFromVirtualKey(vkCode)
                         });
-                        Debug.WriteLine(vkCode);
                     }
                 }     
 
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
-        }
-        
+        }        
 
         public static event EventHandler<HotkeyItem> GlobalKeyDown;
 

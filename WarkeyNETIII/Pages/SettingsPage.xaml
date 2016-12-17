@@ -68,7 +68,13 @@
                         Click="OptimizeLockFbbtn_Click" />
             </Grid>
             <Grid Margin="8" />
+            <CheckBox Content="Start minimized"
+                      Margin="8"
+                      IsChecked="{Binding IsAutoStartWar3}" />
             <CheckBox Content="Automatically start Warcraft III if exist"
+                      Margin="8"
+                      IsChecked="{Binding IsAutoStartWar3}" />
+            <CheckBox Content="Automatically closes with Warcraft III"
                       Margin="8"
                       IsChecked="{Binding IsAutoStartWar3}" />
 

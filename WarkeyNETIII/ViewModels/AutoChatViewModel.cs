@@ -22,7 +22,7 @@ namespace WarkeyNETIII.ViewModels
                 Hotkey = new HotkeyItem()
                 {
                     Alt = true,
-                    Key = Key.A
+                    Key = Key.Y
                 },
                 Message = "-refresh"
             });
