@@ -19,7 +19,7 @@
 </p>
 
 # Key changes over Warkey.NET II
-
+- Automatically run as administrator
 - Totally recoded whole thing from scratch
 - Redesigned with UWP style and natively runs on Windows 10 (.NET 4.6.2)
 - Uses keyboard hook instead of spamming GetAsyncKeyState
