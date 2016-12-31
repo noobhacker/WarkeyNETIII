@@ -17,22 +17,19 @@ namespace WarkeyNETIII.Services
         static IntPtr war3Hwnd;
         public static bool IsWar3Foreground = false;
 
-        public static void InitializeServicesAsync()
+        public static void InitializeServices()
         {
-            // run services on background
-            // to make sure UI smoothness
-            Task.Run(() =>
-            {
-                updateWar3Hwnd();
-                var hwndListener = new DispatcherTimer();
-                hwndListener.Interval = TimeSpan.FromSeconds(HWND_UPDATE_INTERVAL);
-                hwndListener.Tick += (sender, e) => updateWar3Hwnd();
-                hwndListener.Start();
-            });
+            // cannot task.run on timer
+            // tried put breakpoint on timer event
+            updateWar3Hwnd();
+            var hwndListener = new DispatcherTimer();
+            hwndListener.Interval = TimeSpan.FromSeconds(HWND_UPDATE_INTERVAL);
+            hwndListener.Tick += (sender, e) => updateWar3Hwnd();
+            hwndListener.Start();
 
             // cannot run in another thread
-            // because windows API cannot return hook target with proc name
-            // task.run in another thread
+            // because windows API cannot return 
+            // to task.run in another thread
             KeyboardHookService.Initialize();
             KeyboardHookService.GlobalKeyDown += KeyboardHookService_GlobalKeyDown;
         }

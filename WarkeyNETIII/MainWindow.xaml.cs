@@ -44,7 +44,7 @@ namespace WarkeyNETIII
             if (Settings.IsStartMinimized)
                 this.WindowState = WindowState.Minimized;            
 
-            MainService.InitializeServicesAsync();
+            MainService.InitializeServices();
             navFrame.Navigate(new WarkeyPage()); 
                      
         }
