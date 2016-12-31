@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 using WarkeyNETIII.Items;
+using WarkeyNETIII.ViewModels;
 
 namespace WarkeyNETIII.Services
 {
@@ -13,62 +15,59 @@ namespace WarkeyNETIII.Services
         const int HWND_UPDATE_INTERVAL = 1;
 
         static IntPtr war3Hwnd;
-        static bool isWar3Foreground = false;
+        public static bool IsWar3Foreground = false;
 
         public static void InitializeServicesAsync()
-        {        
+        {
             // run services on background
             // to make sure UI smoothness
-            //Task.Run(() =>
-            //{
+            Task.Run(() =>
+            {
                 updateWar3Hwnd();
                 var hwndListener = new DispatcherTimer();
                 hwndListener.Interval = TimeSpan.FromSeconds(HWND_UPDATE_INTERVAL);
                 hwndListener.Tick += (sender, e) => updateWar3Hwnd();
                 hwndListener.Start();
-            //});
+            });
 
             // cannot run in another thread
             // because windows API cannot return hook target with proc name
             // task.run in another thread
             KeyboardHookService.Initialize();
             KeyboardHookService.GlobalKeyDown += KeyboardHookService_GlobalKeyDown;
-          
         }
+
+        static WarkeyViewModel warkeyVm = MainWindow.WarkeyVm;
+        static ObservableCollection<AutoChatItem> autochats = MainWindow.AutoChatVm.ListOfAutoChats;
+
+        static HotkeyItem[] warkeys =
+        {
+            warkeyVm.Slot1,
+            warkeyVm.Slot2,
+            warkeyVm.Slot3,
+            warkeyVm.Slot4,
+            warkeyVm.Slot5,
+            warkeyVm.Slot6,
+        };
 
         private static void KeyboardHookService_GlobalKeyDown(object sender, HotkeyItem e)
         {
-            if (isWar3Foreground)
+            // check iswar3foreground already in keyboard hook class
+
+            foreach (var i in Enumerable.Range(0, 5))
             {
-                var warkeyVm = MainWindow.WarkeyVm;
-                HotkeyItem[] warkeys =
-                {
-                    warkeyVm.Slot1,
-                    warkeyVm.Slot2,
-                    warkeyVm.Slot3,
-                    warkeyVm.Slot4,
-                    warkeyVm.Slot5,
-                    warkeyVm.Slot6,
-                };
+                // if key is not set
+                if (warkeys[i] == null)
+                    continue;
 
-                foreach (var i in Enumerable.Range(0, 5))
-                {
-                    // if key is not set
-                    if (warkeys[i] == null)
-                        continue;
-                    
-                    if (warkeys[i].Key == e.Key && warkeys[i].Alt == e.Alt)
-                        PostMessageService.PostItemMessageToWar3(war3Hwnd, i, e.Alt);
-                }
+                if (warkeys[i].Key == e.Key && warkeys[i].Alt == e.Alt)
+                    PostMessageService.PostItemMessageToWar3(war3Hwnd, i, e.Alt);
+            }
 
-                var autochats = MainWindow.AutoChatVm.ListOfAutoChats;
-                foreach(var item in autochats)
-                {
-                    if(item.Key == e.Key && !e.Alt)
-                    {
-                        ChatboxService.SendMessageToChatbox(war3Hwnd, item.Message);
-                    }
-                }
+            foreach (var item in autochats)
+            {
+                if (item.Key == e.Key && !e.Alt)
+                    ChatboxService.SendMessageToChatbox(war3Hwnd, item.Message);
             }
         }
 
@@ -82,7 +81,7 @@ namespace WarkeyNETIII.Services
                 MainWindow.vm.Title = "Running";
                 wentRunning = true;
 
-                isWar3Foreground = ForegroundWindowService.IsWar3Foreground(war3Hwnd);
+                IsWar3Foreground = ForegroundWindowService.IsWar3Foreground(war3Hwnd);
             }
             else
             {
@@ -90,7 +89,7 @@ namespace WarkeyNETIII.Services
                     App.Current.MainWindow.Close();
 
                 MainWindow.vm.Title = "";
-            }            
+            }
         }
 
     }

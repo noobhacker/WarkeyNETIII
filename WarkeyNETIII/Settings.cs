@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WarkeyNETIII.Items;
 using WarkeyNETIII.Models;
+using WarkeyNETIII.Services;
 using WarkeyNETIII.ViewModels;
 
 namespace WarkeyNETIII
@@ -41,7 +42,8 @@ namespace WarkeyNETIII
 
                 if (IsAutoStartWar3)
                     if (File.Exists("war3.exe"))
-                        Process.Start("war3.exe");
+                        if(MainWindowHandleService.GetWar3HWND() == null)
+                            Process.Start("war3.exe");
             }
             else
             {

@@ -15,14 +15,14 @@ namespace WarkeyNETIII.Services
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
-        
+
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool UnhookWindowsHookEx(IntPtr hhk);
-        
+
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
-        
+
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr GetModuleHandle(string lpModuleName);
 
@@ -62,7 +62,12 @@ namespace WarkeyNETIII.Services
 
         private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
-            if (nCode >= 0)
+            // iswar3foreground have to put here
+            // because if not in foreground no need to do anything
+            // else need to have pointer to mainservice iswar3foreground
+            // and pass in here when initialize
+            // which is not possible with C#
+            if (MainService.IsWar3Foreground && nCode >= 0)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
 
@@ -76,7 +81,7 @@ namespace WarkeyNETIII.Services
                 }
                 else if (wParam == (IntPtr)WM_SYSKEYDOWN)
                 {
-                    if(vkCode != VK_LMENU)
+                    if (vkCode != VK_LMENU)
                     {
                         GlobalKeyDown(null, new HotkeyItem()
                         {
@@ -84,11 +89,11 @@ namespace WarkeyNETIII.Services
                             Key = KeyInterop.KeyFromVirtualKey(vkCode)
                         });
                     }
-                }     
+                }
 
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
-        }        
+        }
 
         public static event EventHandler<HotkeyItem> GlobalKeyDown;
 
