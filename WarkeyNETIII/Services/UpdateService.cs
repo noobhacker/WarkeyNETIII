@@ -16,14 +16,8 @@ namespace WarkeyNETIII.Services
         const string server = "http://leesong.azurewebsites.net/";
         const string updateFile = "WarkeyNETIII.exe";
         const string versionFile = "version.txt";
-        const string updateScript = "/C timeout 2 & move WarkeyNETIII.exe_ WarkeyNETIII.exe";
-        //@"/K 
-        //  echo.Updating WarkeyNET III
-        //  & timeout 3
-        //  & taskkill /IM WarkeyNETIII.exe /F
-        //  & move WarkeyNETIII.exe_ WarkeyNETIII.exe /Y
-        //  & echo.WarkeyNET III updated sucessfully
-        //  & pause";
+        const string updateScript = "/C timeout 1 & taskkill /IM WarkeyNETIII.exe /F & move WarkeyNETIII.exe_ WarkeyNETIII.exe";
+        // wait for 1 second for app to end
 
         static bool gotUpdate = false;
 
@@ -64,6 +58,8 @@ namespace WarkeyNETIII.Services
 
             var p = new Process();
             p.StartInfo = info;
+
+            // this is the last line of the program
             p.Start();
         }
 
