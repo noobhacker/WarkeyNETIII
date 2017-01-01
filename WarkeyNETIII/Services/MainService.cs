@@ -32,6 +32,8 @@ namespace WarkeyNETIII.Services
             // to task.run in another thread
             KeyboardHookService.Initialize();
             KeyboardHookService.GlobalKeyDown += KeyboardHookService_GlobalKeyDown;
+
+            UpdateService.InitializeAsync();
         }
 
         static WarkeyViewModel warkeyVm = MainWindow.WarkeyVm;
@@ -50,7 +52,7 @@ namespace WarkeyNETIII.Services
         private static void KeyboardHookService_GlobalKeyDown(object sender, HotkeyItem e)
         {
             // check iswar3foreground already in keyboard hook class
-
+            
             foreach (var i in Enumerable.Range(0, 5))
             {
                 // if key is not set
@@ -87,6 +89,13 @@ namespace WarkeyNETIII.Services
 
                 MainWindow.vm.Title = "";
             }
+        }
+
+        public static void Dispose()
+        {
+            // prevent memory leakage by not unhooking from windows API
+            KeyboardHookService.Dispose();
+            UpdateService.Dispose();
         }
 
     }

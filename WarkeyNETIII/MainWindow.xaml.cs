@@ -51,9 +51,11 @@ namespace WarkeyNETIII
 
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            // prevent memory leakage by not unhooking from windows API
-            KeyboardHookService.Dispose();
             await Settings.SaveSettingsAsync();
+
+            // disposing mainservice is unhooking windows api
+            // should be last
+            MainService.Dispose();
         }
 
         private const double paneWidth = 200;
