@@ -53,7 +53,7 @@ namespace WarkeyNETIII.Services
         {
             // check iswar3foreground already in keyboard hook class
             
-            foreach (var i in Enumerable.Range(0, 5))
+            foreach (var i in Enumerable.Range(0, 6))
             {
                 // if key is not set
                 if (warkeys[i] == null)

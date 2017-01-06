@@ -12,7 +12,7 @@ namespace WarkeyNETIII.Services
 {
     public static class UpdateService
     {
-        public const int Version = 160101;
+        public const int Version = 170106;
         const string server = "http://leesong.azurewebsites.net/";
         const string updateFile = "WarkeyNETIII.exe";
         const string versionFile = "version.txt";
