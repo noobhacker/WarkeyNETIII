@@ -30,7 +30,17 @@ namespace WarkeyNETIII
                 var json = await sr.ReadToEndAsync();
                 sr.Dispose();
 
-                var obj = JsonConvert.DeserializeObject<SettingsModel>(json);
+                SettingsModel obj;
+                try
+                {
+                   obj = JsonConvert.DeserializeObject<SettingsModel>(json);
+                }
+                catch
+                {
+                    InitializeViewModels();
+                    return;
+                }
+
                 MainWindow.WarkeyVm = obj.WarkeyVm;
 
                 MainWindow.AutoChatVm = new AutoChatViewModel();
@@ -47,12 +57,7 @@ namespace WarkeyNETIII
             }
             else
             {
-                MainWindow.WarkeyVm = new WarkeyViewModel();
-                MainWindow.AutoChatVm = new AutoChatViewModel();
-
-                IsStartMinimized = false;
-                IsAutoStartWar3 = false;
-                IsAutoCloseWithWar3 = false;
+                InitializeViewModels();
             }
         }
 
@@ -72,6 +77,16 @@ namespace WarkeyNETIII
             });
             await sw.WriteAsync(obj);
             sw.Dispose();
+        }
+
+        private static void InitializeViewModels()
+        {
+            MainWindow.WarkeyVm = new WarkeyViewModel();
+            MainWindow.AutoChatVm = new AutoChatViewModel();
+
+            IsStartMinimized = false;
+            IsAutoStartWar3 = false;
+            IsAutoCloseWithWar3 = false;
         }
     }
 }
