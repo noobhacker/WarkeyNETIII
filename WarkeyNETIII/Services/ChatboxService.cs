@@ -9,11 +9,14 @@ namespace WarkeyNETIII.Services
 {
     public static class ChatboxService
     {
+        public static bool IsChatting = false;
         public static void SendMessageToChatbox(IntPtr hwnd, string message)
         {
+            IsChatting = true;
             SendKeys.SendWait("{ENTER}");
             SendKeys.SendWait(message);
             SendKeys.SendWait("{ENTER}");
+            IsChatting = false;
         }
     }
 }

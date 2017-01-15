@@ -67,7 +67,7 @@ namespace WarkeyNETIII.Services
             // else need to have pointer to mainservice iswar3foreground
             // and pass in here when initialize
             // which is not possible with C#
-            if (MainService.IsWar3Foreground && nCode >= 0)
+            if (MainService.IsWar3Foreground && !ChatboxService.IsChatting && nCode >= 0)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
 
