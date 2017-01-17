@@ -18,13 +18,24 @@ namespace WarkeyNETIII.Services
 
         public static ScreenResolutionItem ReadResolution()
         {
-            var width = (int)readKey("reswidth");
-            var height = (int)readKey("resheight");
-            return new ScreenResolutionItem()
+            try
             {
-                Width = width,
-                Height = height
-            };
+                var width = (int)readKey("reswidth");
+                var height = (int)readKey("resheight");
+                return new ScreenResolutionItem()
+                {
+                    Width = width,
+                    Height = height
+                };
+            }
+            catch
+            {
+                return new ScreenResolutionItem()
+                {
+                    Width = 0,
+                    Height = 0
+                };
+            }
         }
 
         public static int ReadLockFb()
