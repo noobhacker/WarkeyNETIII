@@ -31,8 +31,8 @@
 
 Some of the parts are hardcoded because applying style seems doesn't work in Windows 10
 
-Compiled version (Any CPU, 17 Dec 2016):<br />
-https://1drv.ms/u/s!AqmYs16_UkecgcVLYsOfzi-hDBKMpw
+Compiled version (Any CPU):<br />
+leesong.azurewebsites.net/WarkeyNETIII.exe
 
 Older version:
 Warkey.NET II for Windows 7<br />
