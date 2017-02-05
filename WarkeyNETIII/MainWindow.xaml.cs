@@ -45,7 +45,10 @@ namespace WarkeyNETIII
                 this.WindowState = WindowState.Minimized;            
 
             MainService.InitializeServices();
-            navFrame.Navigate(new WarkeyPage()); 
+            navFrame.Navigate(new WarkeyPage());
+
+            if (SaveFileService.IsLoadFunctionAvailable())
+                loadBtn.Visibility = Visibility.Collapsed;
                      
         }
 
@@ -113,6 +116,9 @@ namespace WarkeyNETIII
                 case "AutoChat":
                     navFrame.Navigate(new AutoChatPage());
                     break;
+                case "LoadGame":
+                    navFrame.Navigate(new LoadGamePage());
+                    break;
                 case "Settings":
                     navFrame.Navigate(new SettingsPage());
                     break;
@@ -124,6 +130,5 @@ namespace WarkeyNETIII
             if (hamMenu.Width == paneWidth)
                 startAnimationByName("SideClose");
         }
-
     }
 }

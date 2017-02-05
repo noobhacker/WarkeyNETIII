@@ -127,6 +127,7 @@
     <Compile Include="Converters\ResolutionToStringConverter.cs" />
     <Compile Include="Items\AutoChatItem.cs" />
     <Compile Include="Items\HotkeyItem.cs" />
+    <Compile Include="Items\Saves\TkokSaveItem.cs" />
     <Compile Include="Items\ScreenResolutionItem.cs" />
     <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
@@ -137,6 +138,9 @@
     </Compile>
     <Compile Include="Pages\EditAutoChatPage.xaml.cs">
       <DependentUpon>EditAutoChatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoadGamePage.xaml.cs">
+      <DependentUpon>LoadGamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -151,6 +155,7 @@
     <Compile Include="Services\MainWindowHandleService.cs" />
     <Compile Include="Services\PostMessageService.cs" />
     <Compile Include="Services\RegistryService.cs" />
+    <Compile Include="Services\SaveFileService.cs" />
     <Compile Include="Services\ScreenResolutionService.cs" />
     <Compile Include="Services\UpdateService.cs" />
     <Compile Include="Settings.cs" />
@@ -181,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EditAutoChatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LoadGamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
