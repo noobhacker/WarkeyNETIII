@@ -16,9 +16,12 @@ namespace WarkeyNETIII.Services
 
         public static async void InitializeAsync()
         {
-            var result = await LoadTkokSaveFilesAsync(5);
-            foreach (var item in result)
-                MainWindow.LoadGameViewModel.Saves.Add(item);
+            if (IsLoadFunctionAvailable())
+            {
+                var result = await LoadTkokSaveFilesAsync(5);
+                foreach (var item in result)
+                    MainWindow.LoadGameViewModel.Saves.Add(item);
+            }
         }
 
         public static async Task<List<TkokSaveItem>> LoadTkokSaveFilesAsync(int saveCount)
