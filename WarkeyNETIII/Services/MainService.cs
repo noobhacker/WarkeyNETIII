@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 using WarkeyNETIII.Items;
+using WarkeyNETIII.Items.Saves;
 using WarkeyNETIII.ViewModels;
 
 namespace WarkeyNETIII.Services
@@ -34,10 +35,15 @@ namespace WarkeyNETIII.Services
             KeyboardHookService.GlobalKeyDown += KeyboardHookService_GlobalKeyDown;
 
             UpdateService.InitializeAsync();
+            SaveFileService.InitializeAsync();
+
+            autochats = MainWindow.AutoChatVm.ListOfAutoChats;
+            saves = MainWindow.LoadGameViewModel.Saves;
         }
 
         static WarkeyViewModel warkeyVm = MainWindow.WarkeyVm;
-        static ObservableCollection<AutoChatItem> autochats = MainWindow.AutoChatVm.ListOfAutoChats;
+        static ObservableCollection<AutoChatItem> autochats;
+        static ObservableCollection<TkokSaveItem> saves;
 
         static HotkeyItem[] warkeys =
         {
@@ -51,8 +57,7 @@ namespace WarkeyNETIII.Services
 
         private static void KeyboardHookService_GlobalKeyDown(object sender, HotkeyItem e)
         {
-            // check iswar3foreground already in keyboard hook class
-            
+            // check iswar3foreground already in keyboard hook class            
             foreach (var i in Enumerable.Range(0, 6))
             {
                 // if key is not set
@@ -67,6 +72,12 @@ namespace WarkeyNETIII.Services
             {
                 if (item.Key == e.Key && !e.Alt)
                     ChatboxService.SendMessageToChatbox(war3Hwnd, item.Message);
+            }
+
+            if (saves.Count != 0)
+            {
+                if (e.Key == System.Windows.Input.Key.F8)
+                    ChatboxService.SendMessageToChatbox(war3Hwnd, "-load{enter}{enter}" + saves[0].Password);
             }
         }
 

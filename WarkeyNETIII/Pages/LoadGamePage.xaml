@@ -6,9 +6,155 @@
       xmlns:local="clr-namespace:WarkeyNETIII.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="LoadGamePage">
-
+      Title="LoadGamePage"
+      Loaded="Page_Loaded">
+    <Page.Resources>
+        <Storyboard x:Key="BarOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                           Storyboard.TargetName="commandBar">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.16"
+                                      Value="70" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="BarClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                           Storyboard.TargetName="commandBar">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.16"
+                                      Value="50" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
     <Grid>
-        
+        <ListBox ItemsSource="{Binding Saves}" BorderThickness="0" Margin="0,50,0,0"
+                 SelectionChanged="listBox_SelectionChanged"
+                 Name="listBox">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackPanel>
+                            <TextBlock>
+                        <Run Text="Time: " />
+                        <Run Text="{Binding DateTime}" />
+                            </TextBlock>
+                            <TextBlock>
+                        <Run Text="Name: " />
+                        <Run Text="{Binding Name}" />
+                            </TextBlock>
+                            <TextBlock>
+                        <Run Text="Level: " />
+                        <Run Text="{Binding Level}" />
+                            </TextBlock>
+                            <TextBlock Text="Password:"
+                                       Margin="0,8,0,0" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock>
+                        <Run Text="Version: " />
+                        <Run Text="{Binding Version}" />
+                            </TextBlock>
+                            <TextBlock>
+                        <Run Text="Gold: " />
+                        <Run Text="{Binding Gold}" />
+                            </TextBlock>
+                            <TextBlock>
+                        <Run Text="Class:" />
+                        <Run Text="{Binding Class}" />
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Grid.ColumnSpan="2"
+                              Grid.Row="1">
+                            <TextBlock Text="{Binding Password}" TextTrimming="WordEllipsis" Width="500"/>
+                        </StackPanel>
+                      
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Grid   VerticalAlignment="Top"
+                Height="50"
+                Background="WhiteSmoke"
+                Name="commandBar">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+            
+                <Button FontFamily="Segoe MDL2 Assets"
+                        Width="60"
+                        Content=""
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontSize="16"
+                        Name="refreshBtn"
+                        Click="refreshBtn_Click" />
+                <Button FontFamily="Segoe MDL2 Assets"
+                        Width="60"
+                        Content=""
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontSize="16"
+                        Name="allBtn"
+                        Click="allBtn_Click" />
+                <Button FontFamily="Segoe MDL2 Assets"
+                        Width="60"
+                        Content=""
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontSize="16"
+                        Visibility="{Binding ExtraCommandVisibility}"
+                        Name="copyBtn"
+                        Click="copyBtn_Click" />
+
+                <TextBlock FontFamily="Segoe MDL2 Assets"
+                        Width="60"
+                        Text=""
+                        Background="Transparent"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           TextAlignment="Center"
+                        FontSize="16" />
+
+                <Button FontFamily="Segoe MDL2 Assets"
+                        Width="60"
+                        Content=""
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontSize="16"
+                        Name="moreBtn"
+                        Click="moreBtn_Click" />
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal"
+                        Grid.Row="1">
+                <TextBlock Width="60"
+                           Text="Refresh"
+                           TextAlignment="Center" />
+                <TextBlock Width="60"
+                           Text="Show All"
+                           TextAlignment="Center" />
+                <TextBlock Width="60"
+                           Text="Copy"
+                           TextAlignment="Center"
+                           Visibility="{Binding ExtraCommandVisibility}" />
+                <TextBlock Width="60"
+                           Text="F8 to load"
+                           TextAlignment="Center"/>
+                <TextBlock Width="60"
+                           Text="" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

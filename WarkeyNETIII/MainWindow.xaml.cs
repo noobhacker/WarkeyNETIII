@@ -29,6 +29,7 @@ namespace WarkeyNETIII
         public static MainViewModel vm = new MainViewModel();
         public static WarkeyViewModel WarkeyVm;
         public static AutoChatViewModel AutoChatVm;
+        public static LoadGameViewModel LoadGameViewModel = new LoadGameViewModel();
 
         public MainWindow()
         {
@@ -47,9 +48,8 @@ namespace WarkeyNETIII
             MainService.InitializeServices();
             navFrame.Navigate(new WarkeyPage());
 
-            if (SaveFileService.IsLoadFunctionAvailable())
-                loadBtn.Visibility = Visibility.Collapsed;
-                     
+            if (!SaveFileService.IsLoadFunctionAvailable())
+                loadBtn.Visibility = Visibility.Collapsed;                     
         }
 
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
