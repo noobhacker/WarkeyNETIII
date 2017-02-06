@@ -126,6 +126,7 @@
     <Compile Include="Converters\KeyToStringConverter.cs" />
     <Compile Include="Converters\ResolutionToStringConverter.cs" />
     <Compile Include="Items\AutoChatItem.cs" />
+    <Compile Include="Items\FileItem.cs" />
     <Compile Include="Items\HotkeyItem.cs" />
     <Compile Include="Items\Saves\TkokSaveItem.cs" />
     <Compile Include="Items\ScreenResolutionItem.cs" />

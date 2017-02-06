@@ -38,7 +38,7 @@ namespace WarkeyNETIII.Pages
         public async void LoadSaveFilesAsync(int count)
         {
             vm.Saves.Clear();
-            var saves = await SaveFileService.LoadTkokSaveFilesAsync(5);
+            var saves = await SaveFileService.LoadTkokSaveFilesAsync(count);
 
             foreach (var item in saves)
                 vm.Saves.Add(item);

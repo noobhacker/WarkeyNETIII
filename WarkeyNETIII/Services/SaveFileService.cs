@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarkeyNETIII.Items;
 using WarkeyNETIII.Items.Saves;
 using WarkeyNETIII.ViewModels;
 
@@ -31,23 +32,36 @@ namespace WarkeyNETIII.Services
             var result = new List<TkokSaveItem>();
 
             int count = 0;
+
+            // folders but not search file .txt is for game version, sort by latest version
             foreach (var folder in directoryList.OrderByDescending(x => x))
             {
+                // create file list with last modified then orderby last modified
                 var fileList = Directory.GetFiles(folder);
+                var fileObject = new List<FileItem>();
                 foreach (var file in fileList)
+                {
+                    var lastModified = File.GetLastWriteTime(file);
+                    fileObject.Add(new FileItem()
+                    {
+                        Path = file,
+                        LastModified=lastModified
+                    });
+                }
+
+                foreach (var file in fileObject.OrderByDescending(x=>x.LastModified))
                 {
                     if (count == saveCount)
                         break;
 
-                    var dateTime = File.GetLastWriteTime(file);
-                    var sr = new StreamReader(file);
+                    var sr = new StreamReader(file.Path);
 
                     var text = await sr.ReadToEndAsync();
                     var newLine = new string[] { "\r\n\n" };
                     var lines = text.Split(newLine, StringSplitOptions.None);
                     var saveItem = new TkokSaveItem()
                     {
-                        DateTime = dateTime,
+                        LastModified = file.LastModified,
                         Version = new DirectoryInfo(folder).Name,
                     };
 
@@ -65,6 +79,8 @@ namespace WarkeyNETIII.Services
                             saveItem.Level = int.Parse(item.Substring(7));
                         else if (item.StartsWith("Password"))
                             saveItem.Password = item.Substring(11);
+                        else if(item.StartsWith("Exp"))
+                            saveItem.Exp = int.Parse(item.Substring(5));
                     }
 
                     sr.Dispose();
@@ -74,7 +90,7 @@ namespace WarkeyNETIII.Services
 
             }
 
-            result = result.OrderByDescending(x => x.DateTime)
+            result = result.OrderByDescending(x => x.LastModified)
                 .ToList();
 
             return result;
