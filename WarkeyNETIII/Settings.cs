@@ -33,26 +33,26 @@ namespace WarkeyNETIII
                 SettingsModel obj;
                 try
                 {
-                   obj = JsonConvert.DeserializeObject<SettingsModel>(json);
+                    // whole block to prevent broken json setting file
+                    obj = JsonConvert.DeserializeObject<SettingsModel>(json);
+                    MainWindow.WarkeyVm = obj.WarkeyVm;
+
+                    MainWindow.AutoChatVm = new AutoChatViewModel();
+                    MainWindow.AutoChatVm.ListOfAutoChats = obj.Autochats;
+
+                    IsStartMinimized = obj.IsStartMinimized;
+                    IsAutoStartWar3 = obj.IsAutoStartWar3;
+                    IsAutoCloseWithWar3 = obj.IsAutoCloseWithWar3;
                 }
                 catch
                 {
                     InitializeViewModels();
                     return;
-                }
-
-                MainWindow.WarkeyVm = obj.WarkeyVm;
-
-                MainWindow.AutoChatVm = new AutoChatViewModel();
-                MainWindow.AutoChatVm.ListOfAutoChats = obj.Autochats;
-
-                IsStartMinimized = obj.IsStartMinimized;
-                IsAutoStartWar3 = obj.IsAutoStartWar3;
-                IsAutoCloseWithWar3 = obj.IsAutoCloseWithWar3;
+                }                
 
                 if (IsAutoStartWar3)
                     if (File.Exists("war3.exe"))
-                        if(MainWindowHandleService.GetWar3HWND() == null)
+                        if (MainWindowHandleService.GetWar3HWND() == null)
                             Process.Start("war3.exe");
             }
             else
