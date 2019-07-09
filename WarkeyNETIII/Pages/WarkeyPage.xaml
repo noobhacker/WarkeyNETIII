@@ -15,7 +15,21 @@
     <Grid>
         <Image Source="/Images/War3Inventory.png"
                Stretch="Fill"/>
-
+        <Grid HorizontalAlignment="Right" 
+              VerticalAlignment="Top" 
+              Background="White" 
+              Height="230" Width="230"
+              Opacity="0.27" 
+              RenderTransformOrigin="1,1" Margin="0,-134,-3,0">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="29.011"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+        </Grid>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.5*" />

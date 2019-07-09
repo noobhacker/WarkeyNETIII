@@ -1,62 +1,38 @@
-﻿<Window x:Class="WarkeyNETIII.MainWindow"
+﻿<fw:AcrylicWindow x:Class="WarkeyNETIII.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WarkeyNETIII"
         xmlns:converters="clr-namespace:WarkeyNETIII.Converters"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
         Title="{Binding Title}"
         Height="480"
-        Width="640"
+        Width="720"
+                  TintOpacity="0.85"
+                  ExtendViewIntoTitleBar="True"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
         Closing="Window_Closing">
-    <Window.Resources>
-        <Storyboard x:Key="SideOpen">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
-                                           Storyboard.TargetName="hamMenu">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.16"
-                                      Value="200" />
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="SideClose">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
-                                           Storyboard.TargetName="hamMenu">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.16"
-                                      Value="50" />
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-    </Window.Resources>
     <Grid>
-        <Grid Margin="50,0,0,0">
-            <Frame Name="navFrame"
-                   NavigationUIVisibility="Hidden" />
-        </Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <Grid Name="hamMenu"
-              Width="50"
-              HorizontalAlignment="Left"
-              Background="WhiteSmoke">
+              HorizontalAlignment="Left">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <StackPanel>
-                <Button Height="50"
-                        Width="50"
-                        FontSize="16"
-                        FontFamily="Segoe MDL2 Assets"
-                        Content=""
-                        Background="#FF0063B1"
-                        Foreground="White"
-                        BorderThickness="0"
-                        HorizontalAlignment="Left"
-                        Name="hamButton"
-                        Click="hamButton_Click" />
                 <StackPanel Width="200"
-                            Name="menuList">
+                            Name="menuList"
+                            fw:PointerTracker.Enabled="True">
+                    <TextBlock Margin="8" Text="Warkey.NET III" />
                     <Button Background="#FFBEE6FD"
-                            BorderThickness="0"
+                            Style="{StaticResource ButtonRevealStyle}"
                             HorizontalContentAlignment="Left"
                             Click="menuItems_Click"
                             Tag="Warkey">
@@ -74,7 +50,7 @@
                         </StackPanel>
                     </Button>
                     <Button Background="Transparent"
-                            BorderThickness="0"
+                            Style="{StaticResource ButtonRevealStyle}"
                             HorizontalContentAlignment="Left"
                             Click="menuItems_Click"
                             Tag="AutoChat">
@@ -92,7 +68,7 @@
                         </StackPanel>
                     </Button>
                     <Button Background="Transparent"
-                            BorderThickness="0"
+                            Style="{StaticResource ButtonRevealStyle}"
                             HorizontalContentAlignment="Left"
                             Click="menuItems_Click"
                             Tag="LoadGame"
@@ -111,7 +87,7 @@
                         </StackPanel>
                     </Button>
                     <Button Background="Transparent"
-                            BorderThickness="0"
+                            Style="{StaticResource ButtonRevealStyle}"
                             HorizontalContentAlignment="Left"
                             Click="menuItems_Click"
                             Tag="Settings">
@@ -131,7 +107,7 @@
                 </StackPanel>
             </StackPanel>
             <Button Background="Transparent"
-                    BorderThickness="0"
+                    Style="{StaticResource ButtonRevealStyle}"
                     HorizontalContentAlignment="Left"
                     Grid.Row="1"
                     Click="menuItems_Click"
@@ -150,5 +126,9 @@
                 </StackPanel>
             </Button>
         </Grid>
+        <Grid Grid.Column="1">
+            <Frame Name="navFrame"
+                   NavigationUIVisibility="Hidden" />
+        </Grid>
     </Grid>
-</Window>
+</fw:AcrylicWindow>

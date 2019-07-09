@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WarkeyNETIII.Pages"
       xmlns:converters="clr-namespace:WarkeyNETIII.Converters"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       mc:Ignorable="d"
       d:DesignHeight="323"
       d:DesignWidth="388"
@@ -13,8 +14,8 @@
         <converters:ResolutionToStringConverter x:Key="ResolutionToStringConverter" />
         <converters:IsOptimizedToStringConverter x:Key="IsOptimizedToStringConverter" />
     </Page.Resources>
-    <Grid Background="White">
-        <StackPanel Margin="8">
+    <Grid>
+        <StackPanel Margin="8" fw:PointerTracker.Enabled="True">
             <TextBlock Text="Warcraft III"
                        FontSize="28"
                        FontWeight="Light"
@@ -38,17 +39,17 @@
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Content="Force 1080p"
+                        Style="{StaticResource ButtonRevealStyle}"
                         Width="80"
                         HorizontalAlignment="Left"
                         Margin="4"
-                        BorderThickness="0"
                         Name="FullHDGameResolutionbtn"
                         Click="FullHDGameResolutionbtn_Click" />
                     <Button Content="{Binding IsGameResolutionNeedsOptimize, Converter={StaticResource IsOptimizedToStringConverter}}"
+                        Style="{StaticResource ButtonRevealStyle}"
                         Width="80"
                         HorizontalAlignment="Left"
                         Margin="4"
-                        BorderThickness="0"
                         IsEnabled="{Binding IsGameResolutionNeedsOptimize}"
                         Name="OptimizeGameResolutionbtn"
                         Click="OptimizeGameResolutionbtn_Click" />
@@ -66,11 +67,11 @@
                                FontSize="16" />
                 </StackPanel>
                 <Button Grid.Column="1"
+                        Style="{StaticResource ButtonRevealStyle}"
                         Content="{Binding IsLockFbNeedsOptimize, Converter={StaticResource IsOptimizedToStringConverter} }"
                         Width="80"
                         HorizontalAlignment="Right"
                         Margin="4"
-                        BorderThickness="0"
                         IsEnabled="{Binding IsLockFbNeedsOptimize}"
                         Name="OptimizeLockFbbtn"
                         Click="OptimizeLockFbbtn_Click" />

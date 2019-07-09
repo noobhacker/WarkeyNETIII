@@ -27,41 +27,42 @@
         <converters:KeyToStringConverter x:Key="KeyToStringConverter" />
     </Page.Resources>
     <Grid>
-        <ListBox ItemsSource="{Binding ListOfAutoChats}"
+        <Grid Margin="0,32,0,0">
+            <ListBox ItemsSource="{Binding ListOfAutoChats}"
                  BorderThickness="0"
                  Margin="0,50,0,0"
                  Name="listBox"
                  SelectionChanged="listBox_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Key, Converter={StaticResource KeyToStringConverter}}"
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Key, Converter={StaticResource KeyToStringConverter}}"
                                    Margin="16"
                                    FontSize="12" />
-                        <TextBlock Grid.Column="1"
+                            <TextBlock Grid.Column="1"
                                    Text="{Binding Message}"
                                    Margin="16"
                                    FontSize="12" />
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
-        <Grid   VerticalAlignment="Top"
+            <Grid   VerticalAlignment="Top"
                 Height="50"
                 Background="WhiteSmoke"
                 Name="commandBar">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-                <RowDefinition Height="20" />
-            </Grid.RowDefinitions>
-            <StackPanel HorizontalAlignment="Right"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+                <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal">
-                <Button FontFamily="Segoe MDL2 Assets"
+                    <Button FontFamily="Segoe MDL2 Assets"
                         Width="60"
                         Content=""
                         Background="Transparent"
@@ -70,7 +71,7 @@
                         Name="addBtn"
                         Click="addBtn_Click"/>
 
-                <Button FontFamily="Segoe MDL2 Assets"
+                    <Button FontFamily="Segoe MDL2 Assets"
                         Width="60"
                         Content=""
                         Background="Transparent"
@@ -79,8 +80,8 @@
                         Visibility="{Binding ExtraCommandVisibility}"
                         Name="editBtn"
                         Click="editBtn_Click"/>
-                
-                <Button FontFamily="Segoe MDL2 Assets"
+
+                    <Button FontFamily="Segoe MDL2 Assets"
                         Width="60"
                         Content=""
                         Background="Transparent"
@@ -89,8 +90,8 @@
                         Visibility="{Binding ExtraCommandVisibility}"
                         Name="deleteBtn"
                         Click="deleteBtn_Click" />
-                
-                <Button FontFamily="Segoe MDL2 Assets"
+
+                    <Button FontFamily="Segoe MDL2 Assets"
                         Width="60"
                         Content=""
                         Background="Transparent"
@@ -98,25 +99,26 @@
                         FontSize="16"
                         Name="moreBtn"
                         Click="moreBtn_Click" />
-            </StackPanel>
-            
-            <StackPanel HorizontalAlignment="Right"
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal"
                         Grid.Row="1">
-                <TextBlock Width="60"
+                    <TextBlock Width="60"
                            Text="Add"
                            TextAlignment="Center" />
-                <TextBlock Width="60"
+                    <TextBlock Width="60"
                            Text="Edit"
                            TextAlignment="Center"
                            Visibility="{Binding ExtraCommandVisibility}" />
-                <TextBlock Width="60"
+                    <TextBlock Width="60"
                            Text="Delete"
                            TextAlignment="Center"
                            Visibility="{Binding ExtraCommandVisibility}" />
-                <TextBlock Width="60"
+                    <TextBlock Width="60"
                            Text="" />
-            </StackPanel>
+                </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

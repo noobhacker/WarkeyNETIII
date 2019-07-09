@@ -23,7 +23,7 @@ namespace WarkeyNETIII
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         // public them so services can access
         public static MainViewModel vm = new MainViewModel();
@@ -59,22 +59,6 @@ namespace WarkeyNETIII
             // disposing mainservice is unhooking windows api
             // should be last
             MainService.Dispose();
-        }
-
-        private const double paneWidth = 200;
-
-        private void startAnimationByName(string name)
-        {
-            Storyboard sb = this.FindResource(name) as Storyboard;
-            sb.Begin();
-        }
-
-        private void hamButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (hamMenu.Width == 50)
-                startAnimationByName("SideOpen");
-            else if (hamMenu.Width == paneWidth)
-                startAnimationByName("SideClose");
         }
 
         private void removeUIElementsHighlights(UIElementCollection items)
@@ -127,8 +111,6 @@ namespace WarkeyNETIII
                     break;
             }
 
-            if (hamMenu.Width == paneWidth)
-                startAnimationByName("SideClose");
         }
     }
 }
