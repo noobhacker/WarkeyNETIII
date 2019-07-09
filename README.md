@@ -1,5 +1,5 @@
 # Warkey.NET III - Designed for Windows 10
-Warkey.NET III is an open source Warkey designed for Windows 10. It is designed to work andi integrate with Windows 10. Of course, it's open source, no ads and user friendly.
+Warkey.NET III is an open source Warkey designed for Windows 10. It is designed to work and integrate with Windows 10. Of course, it's open source, no ads and user friendly.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-1.1-1.png" width="400"/>
@@ -10,7 +10,6 @@ Warkey.NET III is an open source Warkey designed for Windows 10. It is designed 
 <p align="center">
   <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-1.1-3.png" width="400"/>
   <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-1.1-4.png" width="400"/>
-  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-1.1-5.png" width="400"/>  
 </p>
 
 - Doesn't conflict with chat
@@ -22,13 +21,11 @@ Warkey.NET III is an open source Warkey designed for Windows 10. It is designed 
 # Key changes over Warkey.NET II
 - Automatically run as administrator
 - Totally recoded whole thing from scratch
-- Redesigned with UWP style and natively runs on Windows 10 (.NET 4.6.2)
+- Redesigned with UWP style and natively runs on Windows 10 
 - Uses keyboard hook instead of spamming GetAsyncKeyState
 - Uses Json Serializer and asynchronous methods
-- Added auto start and closes with Warcraft III
 - Fixed not supporting 4K resolution
 - Multi-line autochat support
-- More HD inventory image
 
 Compiled version (Any CPU):<br />
 https://github.com/noobhacker/WarkeyNETIII/releases/download/1.1/WarkeyNETIII.exe
@@ -37,6 +34,6 @@ Older version:
 Warkey.NET 3GS or Warkey.NET II for Windows 7<br />
 https://github.com/noobhacker/WarkeyNETIII/releases/tag/0.2
 
-Special thanks to FluentWPF:
-https://github.com/sourcechord/FluentWPF
+Special thanks to FluentWPF: <br />
+https://github.com/sourcechord/FluentWPF <br />
 Newtonsoft.Json and Costura.Fody
