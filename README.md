@@ -2,8 +2,8 @@
 
 Newer versions with fluent design is coming
 <p align="center">
-  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-fluent-1.png" width="250"/>
-  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-fluent-2.png" width="250"/>
+  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-fluent-1.png" width="400"/>
+  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-fluent-2.png" width="400"/>
 </p>
 
 - Doesn't conflict with chat
