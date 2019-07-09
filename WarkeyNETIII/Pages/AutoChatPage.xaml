@@ -54,7 +54,6 @@
 
             <Grid   VerticalAlignment="Top"
                 Height="50"
-                Background="WhiteSmoke"
                 Name="commandBar">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />

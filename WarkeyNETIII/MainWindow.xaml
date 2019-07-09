@@ -15,6 +15,20 @@
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
         Closing="Window_Closing">
+    <fw:AcrylicWindow.Resources>
+        <Storyboard x:Key="FadeAway">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="navFrame">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.12" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="FadeIn">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="navFrame">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.12" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </fw:AcrylicWindow.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -30,7 +44,7 @@
                 <StackPanel Width="200"
                             Name="menuList"
                             fw:PointerTracker.Enabled="True">
-                    <TextBlock Margin="8" Text="Warkey.NET III" />
+                    <TextBlock Margin="8" Text="{Binding Title}" FontFamily="Times New Roman" Foreground="DarkGoldenrod" />
                     <Button Background="#FFBEE6FD"
                             Style="{StaticResource ButtonRevealStyle}"
                             HorizontalContentAlignment="Left"

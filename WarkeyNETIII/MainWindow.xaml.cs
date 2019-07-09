@@ -82,35 +82,51 @@ namespace WarkeyNETIII
             removeUIElementsHighlights(menuList.Children);
         }
 
+        private void startAnimationByName(string name)
+        {
+            Storyboard sb = this.FindResource(name) as Storyboard;
+            sb.Begin();
+        }
+
         private SolidColorBrush menuHighlightedColor = 
             new SolidColorBrush(Color.FromArgb(255, 190, 230, 253));
 
         private void menuItems_Click(object sender, RoutedEventArgs e)
-        {
+        {            
             removeMenuItemHighlights();
 
             var button = (Button)sender;
             button.Background = menuHighlightedColor;
 
-            switch (button.Tag.ToString())
-            {
-                case "Warkey":
-                    navFrame.Navigate(new WarkeyPage());
-                    break;
-                case "AutoChat":
-                    navFrame.Navigate(new AutoChatPage());
-                    break;
-                case "LoadGame":
-                    navFrame.Navigate(new LoadGamePage());
-                    break;
-                case "Settings":
-                    navFrame.Navigate(new SettingsPage());
-                    break;
-                case "About":
-                    navFrame.Navigate(new AboutPage());
-                    break;
-            }
+            // this must be done manually, because the animation might be completed
+            // before the registration of the Completed event
+            var fadeAwayAnimation = this.FindResource("FadeAway") as Storyboard;
 
+            fadeAwayAnimation.Completed += (s, _e) =>
+            {
+                switch (button.Tag.ToString())
+                {
+                    case "Warkey":
+                        navFrame.Navigate(new WarkeyPage());
+                        break;
+                    case "AutoChat":
+                        navFrame.Navigate(new AutoChatPage());
+                        break;
+                    case "LoadGame":
+                        navFrame.Navigate(new LoadGamePage());
+                        break;
+                    case "Settings":
+                        navFrame.Navigate(new SettingsPage());
+                        break;
+                    case "About":
+                        navFrame.Navigate(new AboutPage());
+                        break;
+                }
+
+                startAnimationByName("FadeIn");
+            };
+
+            fadeAwayAnimation.Begin();
         }
     }
 }
