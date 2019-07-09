@@ -140,6 +140,7 @@
                 </StackPanel>
             </Button>
         </Grid>
+        <Grid Grid.Column="1" Background="White" Opacity="0.2"/>
         <Grid Grid.Column="1">
             <Frame Name="navFrame"
                    NavigationUIVisibility="Hidden" />
