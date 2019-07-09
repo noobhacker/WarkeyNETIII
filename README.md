@@ -32,7 +32,7 @@
 Some of the parts are hardcoded because applying style seems doesn't work in Windows 10
 
 Compiled version (Any CPU):<br />
-leesong.azurewebsites.net/WarkeyNETIII.exe
+https://github.com/noobhacker/WarkeyNETIII/releases/download/1.0/WarkeyNETIII.exe
 
 Older version:
 Warkey.NET II for Windows 7<br />
