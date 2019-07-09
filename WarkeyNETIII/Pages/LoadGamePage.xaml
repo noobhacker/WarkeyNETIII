@@ -82,7 +82,7 @@
                                     Grid.Row="1">
                                 <TextBlock Text="{Binding Password}"
                                        TextTrimming="WordEllipsis"
-                                       Width="500" />
+                                       Width="450" />
                             </StackPanel>
 
                         </Grid>
