@@ -106,7 +106,6 @@ namespace WarkeyNETIII.Services
         {
             // prevent memory leakage by not unhooking from windows API
             KeyboardHookService.Dispose();
-            UpdateService.Dispose();
         }
 
     }

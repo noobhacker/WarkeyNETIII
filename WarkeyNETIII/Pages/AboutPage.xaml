@@ -34,7 +34,7 @@
                        HorizontalAlignment="Center"
                        Margin="0,24,0,0" />
         </StackPanel>
-        <TextBlock Text="build 170101"
+        <TextBlock Text="2019 Fluent Release"
                    FontWeight="Thin"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Bottom"

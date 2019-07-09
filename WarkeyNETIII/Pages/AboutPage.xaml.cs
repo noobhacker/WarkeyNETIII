@@ -25,7 +25,6 @@ namespace WarkeyNETIII.Pages
         public AboutPage()
         {
             InitializeComponent();
-            buildTB.Text = "build " + UpdateService.Version.ToString();
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)

@@ -46,10 +46,11 @@ namespace WarkeyNETIII
                 this.WindowState = WindowState.Minimized;            
 
             MainService.InitializeServices();
-            navFrame.Navigate(new WarkeyPage());
 
             if (!SaveFileService.IsLoadFunctionAvailable())
-                loadBtn.Visibility = Visibility.Collapsed;                     
+                loadBtn.Visibility = Visibility.Collapsed;
+
+            navFrame.Navigate(new WarkeyPage());                  
         }
 
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
