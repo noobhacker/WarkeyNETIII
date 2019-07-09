@@ -49,3 +49,4 @@ http://www.mediafire.com/file/fxcr0tiz90lzlxy/Warkey.NET.3GS.zip
 
 Special thanks to FluentWPF:
 https://github.com/sourcechord/FluentWPF
+Newtonsoft.Json and Costura.Fody
