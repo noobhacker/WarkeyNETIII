@@ -3,7 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:WarkeyNETIII.Pages"
+      xmlns:local="clr-namespace:WarkeyNETIII.Pages"      
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       xmlns:converters="clr-namespace:WarkeyNETIII.Converters"
       mc:Ignorable="d"
       d:DesignHeight="300"
@@ -13,7 +14,7 @@
         <converters:KeyToStringConverter x:Key="KeyToStringConverter" />
     </Page.Resources>    
     <Grid>
-        <Grid Margin="4">
+        <Grid Margin="4" fw:PointerTracker.Enabled="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -23,9 +24,9 @@
                 <TextBlock Text="Hotkey (Alt is disabled in auto chat)"
                            Margin="8,4"
                            FontSize="16" />
-                <TextBox IsReadOnly="True"
+                <TextBox  Style="{StaticResource TextBoxRevealStyle}"
+                    IsReadOnly="True"
                          Margin="8,4"
-                         BorderThickness="2"
                          FontSize="16"
                          Text="{Binding Key, Converter={StaticResource KeyToStringConverter}}"
                          Name="hotkeyTb"
@@ -34,11 +35,11 @@
                            Margin="8,4"
                            FontSize="16" />
             </StackPanel>
-            
-            <TextBox TextWrapping="Wrap"
+
+            <TextBox  Style="{StaticResource TextBoxRevealStyle}"
+                TextWrapping="Wrap"
                      Grid.Row="1"
                      Margin="8,0"
-                     BorderThickness="2"
                      FontSize="16" 
                      AcceptsReturn="True"
                      Text="{Binding Message, Mode=TwoWay}"/>
@@ -46,16 +47,16 @@
             <Grid Margin="8"
                   Grid.Row="2">
                 <StackPanel HorizontalAlignment="Right"
-                            Orientation="Horizontal">                    
-                    <Button BorderThickness="0"
+                            Orientation="Horizontal">
+                    <Button Style="{StaticResource ButtonRevealStyle}"
                             Content="Save"
                             Width="80"
                             Margin="4"
                             Height="28"
                             Name="saveBtn"
                             Click="saveBtn_Click"/>
-                    
-                    <Button BorderThickness="0"
+
+                    <Button Style="{StaticResource ButtonRevealStyle}"
                             Content="Cancel"
                             Width="80"
                             Margin="4"

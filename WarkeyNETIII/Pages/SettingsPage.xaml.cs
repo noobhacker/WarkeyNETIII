@@ -32,13 +32,7 @@ namespace WarkeyNETIII.Pages
 
         private void OptimizeGameResolutionbtn_Click(object sender, RoutedEventArgs e)
         {
-            RegistryService.WriteResolution(vm.CurrentResolution.Width, vm.CurrentResolution.Height);
-            vm.GameResolution.Width = vm.CurrentResolution.Width;
-            vm.GameResolution.Height = vm.CurrentResolution.Height;
-            // trigger onpropertychanged
-            vm.GameResolution = vm.CurrentResolution;
-
-            vm.IsGameResolutionNeedsOptimize = false;
+            setResolution(vm.CurrentResolution.Width, vm.CurrentResolution.Height);
         }
 
         private void OptimizeLockFbbtn_Click(object sender, RoutedEventArgs e)
@@ -50,13 +44,25 @@ namespace WarkeyNETIII.Pages
 
         private void FullHDGameResolutionbtn_Click(object sender, RoutedEventArgs e)
         {
-            RegistryService.WriteResolution(1920, 1080);
-            vm.GameResolution.Width = 1920;
-            vm.GameResolution.Height = 1080;
-            // trigger onpropertychanged
-            vm.GameResolution = vm.CurrentResolution;
+            setResolution(1920, 1080);
+        }
 
-            vm.IsGameResolutionNeedsOptimize = false;
+        private void setResolution(int width, int height)
+        {
+            if (MainWindowHandleService.GetWar3HWND() == null)
+            {
+                RegistryService.WriteResolution(width, height);
+                vm.GameResolution.Width = width;
+                vm.GameResolution.Height = height;
+                // trigger onpropertychanged
+                vm.GameResolution = vm.CurrentResolution;
+
+                vm.IsGameResolutionNeedsOptimize = false;
+            }
+            else
+            {
+                MessageBox.Show("Warcraft III is running, please close it before changing resolution.");
+            }
         }
     }
 }

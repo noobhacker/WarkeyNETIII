@@ -44,7 +44,7 @@
                 <StackPanel Width="200"
                             Name="menuList"
                             fw:PointerTracker.Enabled="True">
-                    <TextBlock Margin="8" Text="{Binding Title}" FontFamily="Times New Roman" Foreground="DarkGoldenrod" />
+                    <TextBlock Margin="8" Text="{Binding Title}" />
                     <Button Background="#FFBEE6FD"
                             Style="{StaticResource ButtonRevealStyle}"
                             HorizontalContentAlignment="Left"
