@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WarkeyNETIII.Pages"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       mc:Ignorable="d"
       d:DesignHeight="300"
       d:DesignWidth="300"
@@ -91,7 +92,8 @@
 
             <Grid   VerticalAlignment="Top"
                 Height="50"
-                Name="commandBar">
+                Name="commandBar"
+                fw:PointerTracker.Enabled="True">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
                     <RowDefinition Height="20" />
@@ -100,26 +102,26 @@
                         Orientation="Horizontal">
 
                     <Button FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
                         Background="Transparent"
-                        BorderThickness="0"
                         FontSize="16"
                         Name="refreshBtn"
                         Click="refreshBtn_Click" />
                     <Button FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
                         Background="Transparent"
-                        BorderThickness="0"
                         FontSize="16"
                         Name="allBtn"
                         Click="allBtn_Click" />
                     <Button FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
                         Background="Transparent"
-                        BorderThickness="0"
                         FontSize="16"
                         Visibility="{Binding ExtraCommandVisibility}"
                         Name="copyBtn"
@@ -135,10 +137,10 @@
                            FontSize="16" />
 
                     <Button FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
                         Background="Transparent"
-                        BorderThickness="0"
                         FontSize="16"
                         Name="moreBtn"
                         Click="moreBtn_Click" />

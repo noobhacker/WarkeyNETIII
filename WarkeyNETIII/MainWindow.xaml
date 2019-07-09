@@ -35,15 +35,15 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid Name="hamMenu"
-              HorizontalAlignment="Left">
+              HorizontalAlignment="Left"
+              fw:PointerTracker.Enabled="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <StackPanel>
                 <StackPanel Width="200"
-                            Name="menuList"
-                            fw:PointerTracker.Enabled="True">
+                            Name="menuList">
                     <TextBlock Margin="8" Text="{Binding Title}" />
                     <Button Background="#FFBEE6FD"
                             Style="{StaticResource ButtonRevealStyle}"

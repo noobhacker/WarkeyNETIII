@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WarkeyNETIII.Items;
 
 namespace WarkeyNETIII.Services
@@ -30,6 +31,7 @@ namespace WarkeyNETIII.Services
             }
             catch
             {
+                MessageBox.Show("Please start Warcraft III once for optimal game resolution.");
                 return new ScreenResolutionItem()
                 {
                     Width = 0,

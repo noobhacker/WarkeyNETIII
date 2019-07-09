@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WarkeyNETIII.Pages"
       xmlns:converters="clr-namespace:WarkeyNETIII.Converters"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       mc:Ignorable="d"
       d:DesignHeight="323"
       d:DesignWidth="388"
@@ -52,7 +53,8 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <Grid   VerticalAlignment="Top"
+            <Grid VerticalAlignment="Top"
+                fw:PointerTracker.Enabled="True"
                 Height="50"
                 Name="commandBar">
                 <Grid.RowDefinitions>
@@ -62,39 +64,39 @@
                 <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal">
                     <Button FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
                         Background="Transparent"
-                        BorderThickness="0"
                         FontSize="16" 
                         Name="addBtn"
                         Click="addBtn_Click"/>
 
                     <Button FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
                         Background="Transparent"
-                        BorderThickness="0"
                         FontSize="16"
                         Visibility="{Binding ExtraCommandVisibility}"
                         Name="editBtn"
                         Click="editBtn_Click"/>
 
                     <Button FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
                         Background="Transparent"
-                        BorderThickness="0"
                         FontSize="20"
                         Visibility="{Binding ExtraCommandVisibility}"
                         Name="deleteBtn"
                         Click="deleteBtn_Click" />
 
                     <Button FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
                         Background="Transparent"
-                        BorderThickness="0"
                         FontSize="16"
                         Name="moreBtn"
                         Click="moreBtn_Click" />
