@@ -1,28 +1,23 @@
 # Warkey.NET III - Designed for Windows 10
+Warkey.NET III is an open source Warkey designed for Windows 10. It is designed to work andi integrate with Windows 10. Of course, it's open source, no ads and user friendly.
 
-Newer versions with fluent design is coming
 <p align="center">
-  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-fluent-1.png" width="400"/>
-  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-fluent-2.png" width="400"/>
+  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-1.1-1.png" width="400"/>
+  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-1.1-2.png" width="400"/>
+</p>
+
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-1.1-3.png" width="400"/>
+  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-1.1-4.png" width="400"/>
+  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-1.1-5.png" width="400"/>  
 </p>
 
 - Doesn't conflict with chat
-- Native Windows 10 support (Windows 10 Anniversary Edition, build 14393)
-- Modern UI Design by porting UWP controls into WPF
+- Native Windows 10 support (Windows 10 1903) with Fluent Design
 - High performance code, literally 0% CPU when minimized
 - No ads
 - Open source!
-
-<p align="center">
-  <img src="https://github.com/noobhacker/WarkeyNETIII/blob/screenshots/1.PNG" width="250"/>
-  <img src="https://github.com/noobhacker/WarkeyNETIII/blob/screenshots/2.PNG" width="250"/>
-  <img src="https://github.com/noobhacker/WarkeyNETIII/blob/screenshots/3.PNG" width="250"/>
-</p>
-<p align="center">
-  <img src="https://github.com/noobhacker/WarkeyNETIII/blob/screenshots/5.PNG" width="250"/>
-  <img src="https://github.com/noobhacker/WarkeyNETIII/blob/screenshots/6.PNG" width="250"/>
-  <img src="https://github.com/noobhacker/WarkeyNETIII/blob/screenshots/7.PNG" width="250"/>
-</p>
 
 # Key changes over Warkey.NET II
 - Automatically run as administrator
@@ -35,17 +30,12 @@ Newer versions with fluent design is coming
 - Multi-line autochat support
 - More HD inventory image
 
-Some of the parts are hardcoded because applying style seems doesn't work in Windows 10
-
 Compiled version (Any CPU):<br />
-https://github.com/noobhacker/WarkeyNETIII/releases/download/1.0/WarkeyNETIII.exe
+https://github.com/noobhacker/WarkeyNETIII/releases/download/1.1/WarkeyNETIII.exe
 
 Older version:
-Warkey.NET II for Windows 7<br />
-http://www.mediafire.com/file/enm93bnf3fmshoy/Warkey.NET+II.exe
-
-Warkey.NET 3GS (Legacy)<br />
-http://www.mediafire.com/file/fxcr0tiz90lzlxy/Warkey.NET.3GS.zip
+Warkey.NET 3GS or Warkey.NET II for Windows 7<br />
+https://github.com/noobhacker/WarkeyNETIII/releases/tag/0.2
 
 Special thanks to FluentWPF:
 https://github.com/sourcechord/FluentWPF
