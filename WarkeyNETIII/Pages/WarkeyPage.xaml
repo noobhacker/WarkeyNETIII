@@ -20,12 +20,12 @@
               Background="White" 
               Height="230" Width="230"
               Opacity="0.27" 
-              RenderTransformOrigin="1,1" Margin="0,-134,-3,0">
+              RenderTransformOrigin="1,1" Margin="0,-78,-7,0">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="29.011"/>
+                    <RotateTransform Angle="43"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
