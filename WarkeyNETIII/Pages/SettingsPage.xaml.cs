@@ -47,6 +47,16 @@ namespace WarkeyNETIII.Pages
             vm.LockFbStatus = "Optimized";
             vm.IsLockFbNeedsOptimize = false;
         }
-        
+
+        private void FullHDGameResolutionbtn_Click(object sender, RoutedEventArgs e)
+        {
+            RegistryService.WriteResolution(1920, 1080);
+            vm.GameResolution.Width = 1920;
+            vm.GameResolution.Height = 1080;
+            // trigger onpropertychanged
+            vm.GameResolution = vm.CurrentResolution;
+
+            vm.IsGameResolutionNeedsOptimize = false;
+        }
     }
 }

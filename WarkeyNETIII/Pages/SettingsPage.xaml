@@ -28,7 +28,7 @@
 
             <Grid Margin="8">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel>
@@ -36,8 +36,15 @@
                     <TextBlock Text="{Binding GameResolution, Converter={StaticResource ResolutionToStringConverter}}"
                                FontSize="16" />
                 </StackPanel>
-                <Button Grid.Column="1"
-                        Content="{Binding IsGameResolutionNeedsOptimize, Converter={StaticResource IsOptimizedToStringConverter}}"
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Force 1080p"
+                        Width="80"
+                        HorizontalAlignment="Left"
+                        Margin="4"
+                        BorderThickness="0"
+                        Name="FullHDGameResolutionbtn"
+                        Click="FullHDGameResolutionbtn_Click" />
+                    <Button Content="{Binding IsGameResolutionNeedsOptimize, Converter={StaticResource IsOptimizedToStringConverter}}"
                         Width="80"
                         HorizontalAlignment="Left"
                         Margin="4"
@@ -45,11 +52,12 @@
                         IsEnabled="{Binding IsGameResolutionNeedsOptimize}"
                         Name="OptimizeGameResolutionbtn"
                         Click="OptimizeGameResolutionbtn_Click" />
+                </StackPanel>
             </Grid>
 
             <Grid Margin="8">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel>
@@ -60,7 +68,7 @@
                 <Button Grid.Column="1"
                         Content="{Binding IsLockFbNeedsOptimize, Converter={StaticResource IsOptimizedToStringConverter} }"
                         Width="80"
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Right"
                         Margin="4"
                         BorderThickness="0"
                         IsEnabled="{Binding IsLockFbNeedsOptimize}"
