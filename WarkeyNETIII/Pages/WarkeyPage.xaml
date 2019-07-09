@@ -18,9 +18,9 @@
         <Grid HorizontalAlignment="Right" 
               VerticalAlignment="Top" 
               Background="White" 
-              Height="230" Width="230"
-              Opacity="0.27" 
-              RenderTransformOrigin="1,1" Margin="0,-78,-7,0">
+              Height="126" Width="300"
+              Opacity="0.33" 
+              RenderTransformOrigin="1,1" Margin="0,56,-20,0">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

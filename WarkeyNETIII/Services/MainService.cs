@@ -34,7 +34,7 @@ namespace WarkeyNETIII.Services
             KeyboardHookService.Initialize();
             KeyboardHookService.GlobalKeyDown += KeyboardHookService_GlobalKeyDown;
 
-            UpdateService.InitializeAsync();
+            //UpdateService.InitializeAsync();
             SaveFileService.InitializeAsync();
 
             autochats = MainWindow.AutoChatVm.ListOfAutoChats;
