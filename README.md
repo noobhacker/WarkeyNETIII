@@ -1,5 +1,5 @@
 # Warkey.NET III - Designed for Windows 10
-Warkey.NET III is an open source Warkey designed for Windows 10. It is designed to work and integrate with Windows 10. Of course, it's open source, no ads and user friendly.
+Warkey.NET III is an open source Warkey. It is designed to work and integrate with Windows 10 flawlessly. Of course, it's open source, no ads and user friendly.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/0000000009.png" width="400"/>
