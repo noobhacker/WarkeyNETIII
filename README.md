@@ -1,5 +1,11 @@
 # Warkey.NET III - Designed for Windows 10
 
+Newer versions with fluent design is coming
+<p align="center">
+  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-fluent-1.png" width="400"/>
+  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/warkey-fluent-2.png" width="400"/>
+</p>
+
 - Doesn't conflict with chat
 - Native Windows 10 support (Windows 10 Anniversary Edition, build 14393)
 - Modern UI Design by porting UWP controls into WPF
@@ -40,3 +46,7 @@ http://www.mediafire.com/file/enm93bnf3fmshoy/Warkey.NET+II.exe
 
 Warkey.NET 3GS (Legacy)<br />
 http://www.mediafire.com/file/fxcr0tiz90lzlxy/Warkey.NET.3GS.zip
+
+Special thanks to FluentWPF:
+https://github.com/sourcechord/FluentWPF
+Newtonsoft.Json and Costura.Fody
