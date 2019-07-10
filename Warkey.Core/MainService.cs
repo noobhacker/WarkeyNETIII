@@ -9,16 +9,16 @@ using Warkey.Core.Items;
 using Warkey.Core.Items.Saves;
 using Warkey.Core.ViewModels;
 
-namespace Warkey.Core.Services
+namespace Warkey.Core
 {
-    public static class MainService
+    public class Services
     {
         const int HWND_UPDATE_INTERVAL = 1;
 
         static IntPtr war3Hwnd;
-        public static bool IsWar3Foreground = false;
+        public bool IsWar3Foreground = false;
 
-        public static void InitializeServices()
+        public void InitializeServices()
         {
             // cannot task.run on timer
             // tried put breakpoint on timer event
@@ -55,7 +55,7 @@ namespace Warkey.Core.Services
             warkeyVm.Slot6,
         };
 
-        private static void KeyboardHookService_GlobalKeyDown(object sender, HotkeyItem e)
+        private void KeyboardHookService_GlobalKeyDown(object sender, HotkeyItem e)
         {
             // check iswar3foreground already in keyboard hook class            
             foreach (var i in Enumerable.Range(0, 6))
@@ -82,7 +82,7 @@ namespace Warkey.Core.Services
         }
 
         static bool wentRunning = false;
-        private static void updateWar3Hwnd()
+        private void updateWar3Hwnd()
         {
             var hwnd = MainWindowHandleService.GetWar3HWND();
             if (hwnd != null)
@@ -102,7 +102,7 @@ namespace Warkey.Core.Services
             }
         }
 
-        public static void Dispose()
+        public void Dispose()
         {
             // prevent memory leakage by not unhooking from windows API
             KeyboardHookService.Dispose();

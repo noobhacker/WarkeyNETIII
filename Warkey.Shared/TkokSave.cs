@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Warkey.Core.Items.Saves
+namespace Warkey.Shared
 {
-    public class TkokSaveItem
+    public class TkokSave
     {
         public string Version { get; set; }
         public DateTime LastModified { get; set; }

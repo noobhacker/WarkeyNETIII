@@ -1,35 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Warkey.Core.Items;
-using Warkey.Core.Items.Saves;
-using Warkey.Core.ViewModels;
+using Warkey.Shared;
 
-namespace Warkey.Core.Services
+namespace Warkey.Infrastructure.External
 {
-    public static class GameSaveService
+    public class TKoKSaveFiles
     {
-        public const string TkokFolderName = "TKoK_Save_Files";
-
-        public static async void InitializeAsync()
+        private const string _tkokFolderName = "TKoK_Save_Files";
+        public async Task<List<TkokSave>> GetAsync(int saveCount)
         {
             if (IsLoadFunctionAvailable())
             {
                 var result = await LoadTkokSaveFilesAsync(5);
-                foreach (var item in result)
-                    MainWindow.LoadGameViewModel.Saves.Add(item);
+                return result;
             }
+
+            return null;
         }
 
-        public static async Task<List<TkokSaveItem>> LoadTkokSaveFilesAsync(int saveCount)
+        private async Task<List<TkokSave>> LoadTkokSaveFilesAsync(int saveCount)
         {
-            var path = Directory.GetCurrentDirectory() + @"\" + TkokFolderName;
+            var path = Directory.GetCurrentDirectory() + @"\" + _tkokFolderName;
             var directoryList = Directory.GetDirectories(path);
-            var result = new List<TkokSaveItem>();
+            var result = new List<TkokSave>();
 
             int count = 0;
 
@@ -45,11 +42,11 @@ namespace Warkey.Core.Services
                     fileObject.Add(new FileItem()
                     {
                         Path = file,
-                        LastModified=lastModified
+                        LastModified = lastModified
                     });
                 }
 
-                foreach (var file in fileObject.OrderByDescending(x=>x.LastModified))
+                foreach (var file in fileObject.OrderByDescending(x => x.LastModified))
                 {
                     if (count == saveCount)
                         break;
@@ -59,13 +56,13 @@ namespace Warkey.Core.Services
                     var text = await sr.ReadToEndAsync();
                     var newLine = new string[] { "\r\n\n" };
                     var lines = text.Split(newLine, StringSplitOptions.None);
-                    var saveItem = new TkokSaveItem()
+                    var saveItem = new TkokSave()
                     {
                         LastModified = file.LastModified,
                         Version = new DirectoryInfo(folder).Name,
                     };
 
-                    foreach(var item in lines)
+                    foreach (var item in lines)
                     {
                         // character length + " :" (length of 2)
                         // password ":\r\n" (length of 3) 
@@ -79,7 +76,7 @@ namespace Warkey.Core.Services
                             saveItem.Level = int.Parse(item.Substring(7));
                         else if (item.StartsWith("Password"))
                             saveItem.Password = item.Substring(11);
-                        else if(item.StartsWith("Exp"))
+                        else if (item.StartsWith("Exp"))
                             saveItem.Exp = int.Parse(item.Substring(5));
                     }
 
@@ -96,10 +93,15 @@ namespace Warkey.Core.Services
             return result;
         }
 
-        public static bool IsLoadFunctionAvailable()
+        public bool IsLoadFunctionAvailable()
         {
-            return Directory.Exists(TkokFolderName);
+            return Directory.Exists(_tkokFolderName);
         }
-        
+
+        public class FileItem
+        {
+            public string Path { get; set; }
+            public DateTime LastModified { get; set; }
+        }
     }
 }

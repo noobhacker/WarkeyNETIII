@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Input;
 
-namespace Warkey.Core.Services
+namespace Warkey.Infrastructure.Keyboard
 {
-    public static class PostMessageService
+    class Sender
     {
         [DllImport("user32.dll", EntryPoint = "SendMessageA")]
         static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
@@ -21,7 +18,7 @@ namespace Warkey.Core.Services
         private const int VK_MENU = 0x0012;
         private const int WM_SYSKEYDOWN = 0x0104;
 
-        public static Keys[] VKeys =
+        public Keys[] VKeys =
         {
             Keys.NumPad7,
             Keys.NumPad8,
@@ -31,7 +28,7 @@ namespace Warkey.Core.Services
             Keys.NumPad2
         };
 
-        public static void PostItemMessageToWar3(IntPtr hwnd, int slotNumber, bool isAlt)
+        public void PostItemMessageToWar3(IntPtr hwnd, int slotNumber, bool isAlt)
         {
             if (isAlt)
                 PostMessage(hwnd, WM_KEYUP, VK_MENU, 0);
@@ -43,5 +40,14 @@ namespace Warkey.Core.Services
                 PostMessage(hwnd, WM_SYSKEYDOWN, VK_MENU, 0);
         }
 
+        public bool IsChatting = false;
+        public void SendMessageToChatbox(IntPtr hwnd, string message)
+        {
+            IsChatting = true;
+            SendKeys.SendWait("{ENTER}");
+            SendKeys.SendWait(message);
+            SendKeys.SendWait("{ENTER}");
+            IsChatting = false;
+        }
     }
 }

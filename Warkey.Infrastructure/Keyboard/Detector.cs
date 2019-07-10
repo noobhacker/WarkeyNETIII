@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Input;
-using Warkey.Core.Items;
 
-namespace Warkey.Core.Services
+namespace Warkey.Infrastructure.Keyboard
 {
-    public static class KeyboardHookService
+    public class Detector
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
@@ -35,20 +30,20 @@ namespace Warkey.Core.Services
         private const int WM_KEYUP = 0x0101;
         private const int WM_SYSKEYDOWN = 0x0104;
 
-        private static LowLevelKeyboardProc _proc = HookCallback;
-        private static IntPtr _hookID = IntPtr.Zero;
+        private LowLevelKeyboardProc _proc = HookCallback;
+        private IntPtr _hookID = IntPtr.Zero;
 
-        public static void Initialize()
+        public void Initialize()
         {
             _hookID = SetHook(_proc);
         }
 
-        public static void Dispose()
+        public void Dispose()
         {
             UnhookWindowsHookEx(_hookID);
         }
 
-        private static IntPtr SetHook(LowLevelKeyboardProc proc)
+        private IntPtr SetHook(LowLevelKeyboardProc proc)
         {
             using (Process curProcess = Process.GetCurrentProcess())
             using (ProcessModule curModule = curProcess.MainModule)
@@ -60,7 +55,7 @@ namespace Warkey.Core.Services
 
         private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
 
-        private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        private IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
             // iswar3foreground have to put here
             // because if not in foreground no need to do anything
@@ -95,7 +90,6 @@ namespace Warkey.Core.Services
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
         }
 
-        public static event EventHandler<HotkeyItem> GlobalKeyDown;
-
+        public event EventHandler<HotkeyItem> GlobalKeyDown;
     }
 }
