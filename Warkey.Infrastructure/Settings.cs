@@ -8,10 +8,10 @@ using Newtonsoft.Json;
 
 namespace Warkey.Infrastructure
 {
-    public class ClientSettings
+    public class Settings
     {
         private readonly string _filename;
-        public ClientSettings(string filename)
+        public Settings(string filename)
         {
             _filename = filename;
         }

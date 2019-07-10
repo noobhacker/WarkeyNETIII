@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Warkey.Shared;
 
-namespace Warkey.Infrastructure.External
+namespace Warkey.Infrastructure.Game
 {
-    public class TKoKSaveFiles
+    public class Saves
     {
         private const string _tkokFolderName = "TKoK_Save_Files";
-        public async Task<List<TkokSave>> GetAsync(int saveCount)
+        public async Task<List<TkokSave>> GetTkokSaveFilesAsync(int saveCount)
         {
             if (IsLoadFunctionAvailable())
             {
