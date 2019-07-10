@@ -47,22 +47,17 @@ namespace Warkey.Core
 
         }
 
-        public static async Task Savesync()
+        public async Task Savesync()
         {
-            if (File.Exists(FILENAME))
-                File.Delete(FILENAME);
-
-            var sw = new StreamWriter(FILENAME);
-            var obj = JsonConvert.SerializeObject(new SettingsModel()
+            var obj = new SettingsModel
             {
                 WarkeyVm = MainWindow.WarkeyVm,
                 Autochats = MainWindow.AutoChatVm.ListOfAutoChats,
                 IsStartMinimized = IsStartMinimized,
                 IsAutoStartWar3 = IsAutoStartWar3,
                 IsAutoCloseWithWar3 = IsAutoCloseWithWar3
-            });
-            await sw.WriteAsync(obj);
-            sw.Dispose();
+            };
+            await _manager.SaveAsync(obj);
         }
 
         //private static void InitializeViewModels()
