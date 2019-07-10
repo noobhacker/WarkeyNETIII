@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Warkey.Shared;
 
 namespace Warkey.Infrastructure
 {
@@ -12,12 +11,18 @@ namespace Warkey.Infrastructure
     {
         public ScreenResolution GetCurrentResolution()
         {
-            var resolution = System.Windows.Forms.Screen.PrimaryScreen.Bounds;
+            var resolution = Screen.PrimaryScreen.Bounds;
             return new ScreenResolution()
             {
                 Width = resolution.Width,
                 Height = resolution.Height
             };
+        }
+
+        public class ScreenResolution
+        {
+            public int Width { get; set; }
+            public int Height { get; set; }
         }
     }
 }

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="Presenter\ViewModels\AutoChatsViewModel.cs" />
     <Compile Include="Presenter\ViewModels\AutoChatViewModel.cs" />
     <Compile Include="Presenter\ViewModels\BaseViewModel.cs" />

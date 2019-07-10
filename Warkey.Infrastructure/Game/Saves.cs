@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Warkey.Shared;
 
 namespace Warkey.Infrastructure.Game
 {
@@ -102,6 +101,18 @@ namespace Warkey.Infrastructure.Game
         {
             public string Path { get; set; }
             public DateTime LastModified { get; set; }
+        }
+
+        public class TkokSave
+        {
+            public string Version { get; set; }
+            public DateTime LastModified { get; set; }
+            public string Name { get; set; }
+            public int Level { get; set; }
+            public string Class { get; set; }
+            public int Gold { get; set; }
+            public string Password { get; set; }
+            public int Exp { get; set; }
         }
     }
 }

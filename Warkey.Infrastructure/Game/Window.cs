@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Warkey.Infrastructure.Game
 {
-    class Window
+    public class Window
     {
         [DllImport("user32.dll")]
         private static extern IntPtr GetForegroundWindow();
