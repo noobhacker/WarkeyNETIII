@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +34,11 @@ namespace Warkey.Core
         public async void InitializeAsync()
         {
             // read settings first or initialize data
-
+            await Settings.LoadAsync();
+            if (Settings.IsAutoStartWar3 && File.Exists("war3.exe") && _gameWindow.GetWar3HWND() == null)
+            {
+                Process.Start("war3.exe");
+            }
 
             // cannot task.run on timer
             // tried put breakpoint on timer event
@@ -45,6 +51,7 @@ namespace Warkey.Core
             // cannot run in another thread
             // because windows API cannot return 
             // to task.run in another thread
+            // !!! BECAREFUL! refactoring this to dynamic, not sure if system hook still works !!! 
             _keyboardDetector.GlobalKeyDown += KeyboardHookService_GlobalKeyDown;
 
             //UpdateService.InitializeAsync();
