@@ -11,7 +11,7 @@ using Warkey.Core.ViewModels;
 
 namespace Warkey.Core.Services
 {
-    public static class SaveFileService
+    public static class GameSaveService
     {
         public const string TkokFolderName = "TKoK_Save_Files";
 
@@ -97,10 +97,9 @@ namespace Warkey.Core.Services
         }
 
         public static bool IsLoadFunctionAvailable()
-            => isTkokFolderExist(); // && conditions here for more games
-
-        private static bool isTkokFolderExist()
-            => Directory.Exists(TkokFolderName);
-
+        {
+            return Directory.Exists(TkokFolderName);
+        }
+        
     }
 }

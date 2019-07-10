@@ -169,9 +169,9 @@ namespace Warkey.Core.ViewModels
 
         public SettingsViewModel()
         {
-            GameResolution = RegistryService.ReadResolution();
+            GameResolution = GameVideoSettingsService.ReadResolution();
             CurrentResolution = ScreenResolutionService.GetCurrentResolution();
-            var lockfbValue = RegistryService.ReadLockFb();
+            var lockfbValue = GameVideoSettingsService.ReadLockFb();
             if (lockfbValue == 0)
                 LockFbStatus = "Optimized";
             else 

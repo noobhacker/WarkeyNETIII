@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Warkey.Core.Items;
+using Warkey.Shared;
 
-namespace Warkey.Core.Services
+namespace Warkey.Infrastructure
 {
-    public static class ScreenResolutionService
+    public class Screen
     {
-        public static ScreenResolutionItem GetCurrentResolution()
+        public ScreenResolution GetCurrentResolution()
         {
-            var resolution = Screen.PrimaryScreen.Bounds;
-            return new ScreenResolutionItem()
+            var resolution = System.Windows.Forms.Screen.PrimaryScreen.Bounds;
+            return new ScreenResolution()
             {
                 Width = resolution.Width,
                 Height = resolution.Height

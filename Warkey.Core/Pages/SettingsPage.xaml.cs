@@ -37,7 +37,7 @@ namespace Warkey.Core.Pages
 
         private void OptimizeLockFbbtn_Click(object sender, RoutedEventArgs e)
         {
-            RegistryService.WriteLockFb();
+            GameVideoSettingsService.WriteLockFb();
             vm.LockFbStatus = "Optimized";
             vm.IsLockFbNeedsOptimize = false;
         }
@@ -51,7 +51,7 @@ namespace Warkey.Core.Pages
         {
             if (MainWindowHandleService.GetWar3HWND() == null)
             {
-                RegistryService.WriteResolution(width, height);
+                GameVideoSettingsService.WriteResolution(width, height);
                 vm.GameResolution.Width = width;
                 vm.GameResolution.Height = height;
                 // trigger onpropertychanged

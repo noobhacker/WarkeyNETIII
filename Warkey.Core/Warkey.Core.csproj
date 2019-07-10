@@ -138,7 +138,6 @@
     <Compile Include="Items\FileItem.cs" />
     <Compile Include="Items\HotkeyItem.cs" />
     <Compile Include="Items\Saves\TkokSaveItem.cs" />
-    <Compile Include="Items\ScreenResolutionItem.cs" />
     <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -164,9 +163,8 @@
     <Compile Include="Services\MainService.cs" />
     <Compile Include="Services\MainWindowHandleService.cs" />
     <Compile Include="Services\PostMessageService.cs" />
-    <Compile Include="Services\RegistryService.cs" />
-    <Compile Include="Services\SaveFileService.cs" />
-    <Compile Include="Services\ScreenResolutionService.cs" />
+    <Compile Include="Services\GameVideoSettingsService.cs" />
+    <Compile Include="Services\GameSaveService.cs" />
     <Compile Include="Services\UpdateService.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="ViewModels\AutoChatViewModel.cs" />
@@ -261,6 +259,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.5.1.1\build\Fody.targets" Condition="Exists('..\packages\Fody.5.1.1\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
