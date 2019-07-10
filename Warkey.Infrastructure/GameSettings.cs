@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WarkeyNETIII.Infrastructure
 {
-    public class GameRegistry
+    public class GameSettings
     {
         private readonly RegistryKey _baseKey = Registry.CurrentUser;
         private const string _videoKeyPath = @"SOFTWARE\Blizzard Entertainment\Warcraft III\Video";

@@ -20,7 +20,7 @@ namespace Warkey.Core
         public static bool IsAutoStartWar3 { get; set; }
         public static bool IsAutoCloseWithWar3 { get; set; }
 
-        private const string FILENAME = "Warkey.Core.json";
+        private const string FILENAME = "WarkeyNETIII.json";
 
         public static async Task InitializeAsync()
         {

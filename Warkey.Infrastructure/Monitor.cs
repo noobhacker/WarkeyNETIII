@@ -8,7 +8,7 @@ using Warkey.Shared;
 
 namespace Warkey.Infrastructure
 {
-    public class Screen
+    public class Monitor
     {
         public ScreenResolution GetCurrentResolution()
         {
