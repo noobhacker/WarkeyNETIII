@@ -12,9 +12,7 @@ namespace Warkey.Core.ViewModels
     {
         public ScreenResolutionItem CurrentResolution { get; set; }
         public ScreenResolutionItem GameResolution { get; set; }
-        public string LockFbStatus { get; set; }
         public bool AutoStartWar3 { get; set; }
-        public bool DisableImage { get; set; }
         public bool IsGameResolutionNeedsOptimize { get; set; }
         public bool IsLockFbNeedsOptimize { get; set; }
         public bool IsStartMinimized { get; set; }
@@ -26,11 +24,7 @@ namespace Warkey.Core.ViewModels
             GameResolution = GameVideoSettingsService.ReadResolution();
             CurrentResolution = ScreenResolutionService.GetCurrentResolution();
             var lockfbValue = GameVideoSettingsService.ReadLockFb();
-            if (lockfbValue == 0)
-                LockFbStatus = "Optimized";
-            else 
-                LockFbStatus = "Not optimized";
-
+           
             IsGameResolutionNeedsOptimize = !(
                 GameResolution.Width == CurrentResolution.Width && 
                 GameResolution.Height == CurrentResolution.Height);

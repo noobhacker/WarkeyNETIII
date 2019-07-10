@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -7,61 +6,48 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Warkey.Core.Items;
-using Warkey.Core.Models;
 using Warkey.Core.Services;
 using Warkey.Core.ViewModels;
+using Warkey.Infrastructure;
 
 namespace Warkey.Core
 {
-    public static class Settings
+    public class Settings
     {
         public static bool IsStartMinimized { get; set; }
         public static bool IsAutoStartWar3 { get; set; }
         public static bool IsAutoCloseWithWar3 { get; set; }
 
         private const string FILENAME = "WarkeyNETIII.json";
+        private readonly SettingsManager _manager = new SettingsManager(FILENAME);
 
-        public static async Task InitializeAsync()
+        public async Task LoadAsync()
         {
-            if (File.Exists(FILENAME))
+            try
             {
-                var sr = new StreamReader(FILENAME);
-                var json = await sr.ReadToEndAsync();
-                sr.Dispose();
+                // whole block to prevent broken json setting file
+                var result = await _manager.GetAsync<SettingsModel>();
+                MainWindow.WarkeyVm = result.WarkeyVm;
+                MainWindow.AutoChatVm = new AutoChatViewModel();
+                MainWindow.AutoChatVm.ListOfAutoChats = result.Autochats;
 
-                SettingsModel obj;
-                try
-                {
-                    // whole block to prevent broken json setting file
-                    obj = JsonConvert.DeserializeObject<SettingsModel>(json);
-                    MainWindow.WarkeyVm = obj.WarkeyVm;
-
-                    MainWindow.AutoChatVm = new AutoChatViewModel();
-                    MainWindow.AutoChatVm.ListOfAutoChats = obj.Autochats;
-
-                    IsStartMinimized = obj.IsStartMinimized;
-                    IsAutoStartWar3 = obj.IsAutoStartWar3;
-                    IsAutoCloseWithWar3 = obj.IsAutoCloseWithWar3;
-                }
-                catch
-                {
-                    InitializeViewModels();
-                    return;
-                }                
-
-                if (IsAutoStartWar3)
-                    if (File.Exists("war3.exe"))
-                        if (MainWindowHandleService.GetWar3HWND() == null)
-                            Process.Start("war3.exe");
+                IsStartMinimized = result.IsStartMinimized;
+                IsAutoStartWar3 = result.IsAutoStartWar3;
+                IsAutoCloseWithWar3 = result.IsAutoCloseWithWar3;
             }
-            else
+            catch
             {
-                InitializeViewModels();
+                return;
             }
+
+            if (IsAutoStartWar3)
+                if (File.Exists("war3.exe"))
+                    if (MainWindowHandleService.GetWar3HWND() == null)
+                        Process.Start("war3.exe");
+
         }
 
-        public static async Task SaveSettingsAsync()
+        public static async Task Savesync()
         {
             if (File.Exists(FILENAME))
                 File.Delete(FILENAME);
@@ -79,14 +65,23 @@ namespace Warkey.Core
             sw.Dispose();
         }
 
-        private static void InitializeViewModels()
-        {
-            MainWindow.WarkeyVm = new WarkeyViewModel();
-            MainWindow.AutoChatVm = new AutoChatViewModel();
+        //private static void InitializeViewModels()
+        //{
+        //    MainWindow.WarkeyVm = new WarkeyViewModel();
+        //    MainWindow.AutoChatVm = new AutoChatViewModel();
 
-            IsStartMinimized = false;
-            IsAutoStartWar3 = false;
-            IsAutoCloseWithWar3 = false;
+        //    IsStartMinimized = false;
+        //    IsAutoStartWar3 = false;
+        //    IsAutoCloseWithWar3 = false;
+        //}
+
+        public class SettingsModel
+        {
+            public WarkeyViewModel WarkeyVm { get; set; }
+            public ObservableCollection<AutoChatItem> Autochats { get; set; }
+            public bool IsStartMinimized { get; set; }
+            public bool IsAutoStartWar3 { get; set; }
+            public bool IsAutoCloseWithWar3 { get; set; }
         }
     }
 }

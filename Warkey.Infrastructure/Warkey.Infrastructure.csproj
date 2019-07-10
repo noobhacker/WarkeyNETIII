@@ -47,7 +47,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Settings.cs" />
+    <Compile Include="SettingsManager.cs" />
     <Compile Include="Game\Settings.cs" />
     <Compile Include="Game\Window.cs" />
     <Compile Include="Keyboard\Detector.cs" />

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Warkey.Infrastructure.Keyboard
 {
-    class Sender
+    public class Sender
     {
         [DllImport("user32.dll", EntryPoint = "SendMessageA")]
         static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
@@ -30,7 +30,7 @@ namespace Warkey.Infrastructure.Keyboard
             Keys.NumPad2
         };
 
-        public void SendItemMessage(IntPtr hwnd, int slotNumber, bool isAlt)
+        public void SendItemMessageToHwnd(IntPtr hwnd, int slotNumber, bool isAlt)
         {
             if (isAlt)
                 PostMessage(hwnd, WM_KEYUP, VK_MENU, 0);
