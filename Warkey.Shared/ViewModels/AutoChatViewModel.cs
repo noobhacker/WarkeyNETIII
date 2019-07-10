@@ -14,21 +14,7 @@ namespace Warkey.Core.ViewModels
     {
         public ObservableCollection<AutoChatItem> ListOfAutoChats { get; set; }
 
-        public Visibility ExtraCommandVisibility
-        {
-            get
-            {
-                return extraCommandVisibility;
-            }
-
-            set
-            {
-                extraCommandVisibility = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private Visibility extraCommandVisibility;
+        public Visibility ExtraCommandVisibility { get; set; }
 
         public AutoChatViewModel()
         {

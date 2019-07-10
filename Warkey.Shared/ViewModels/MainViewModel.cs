@@ -11,24 +11,6 @@ namespace Warkey.Core.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private string title;
-
-        public string Title
-        {
-            get
-            {
-                if (title == "")
-                    return "Warkey.NET III";
-                else
-                    return $"Warkey.NET III - {title}";
-            }
-
-            set
-            {
-                title = value;
-                OnPropertyChanged();
-            }
-        }
-
+        public string Title { get; set; }
     }
 }

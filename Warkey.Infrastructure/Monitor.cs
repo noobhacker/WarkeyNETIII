@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Warkey.Shared;
 
-namespace Warkey.Infrastructure.Devices
+namespace Warkey.Infrastructure
 {
     public class Monitor
     {

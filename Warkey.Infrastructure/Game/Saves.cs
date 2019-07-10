@@ -35,11 +35,11 @@ namespace Warkey.Infrastructure.Game
             {
                 // create file list with last modified then orderby last modified
                 var fileList = Directory.GetFiles(folder);
-                var fileObject = new List<FileItem>();
+                var fileObject = new List<FileModel>();
                 foreach (var file in fileList)
                 {
                     var lastModified = File.GetLastWriteTime(file);
-                    fileObject.Add(new FileItem()
+                    fileObject.Add(new FileModel()
                     {
                         Path = file,
                         LastModified = lastModified
@@ -98,7 +98,7 @@ namespace Warkey.Infrastructure.Game
             return Directory.Exists(_tkokFolderName);
         }
 
-        public class FileItem
+        public class FileModel
         {
             public string Path { get; set; }
             public DateTime LastModified { get; set; }
