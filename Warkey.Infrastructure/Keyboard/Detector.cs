@@ -33,14 +33,13 @@ namespace Warkey.Infrastructure.Keyboard
         private const int WM_KEYUP = 0x0101;
         private const int WM_SYSKEYDOWN = 0x0104;
 
-        private static LowLevelKeyboardProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
 
         public static Func<bool> Precondition { get; set; }
 
         public Detector(Func<bool> precondition)
         {
-            _hookID = SetHook(_proc);
+            _hookID = SetHook(HookCallback);
             Precondition = precondition;
         }
 
@@ -62,7 +61,7 @@ namespace Warkey.Infrastructure.Keyboard
         private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
 
         //preprocess: check iswar3forground and ischatting
-        private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        private IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
             // iswar3foreground have to put here
             // because if not in foreground no need to do anything
@@ -97,7 +96,7 @@ namespace Warkey.Infrastructure.Keyboard
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
         }
 
-        public static event EventHandler<HotkeyModel> GlobalKeyDown;
+        public event EventHandler<HotkeyModel> GlobalKeyDown;
 
         public class HotkeyModel
         {

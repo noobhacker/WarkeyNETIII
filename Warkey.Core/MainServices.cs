@@ -55,7 +55,18 @@ namespace Warkey.Core
         {
             return IsWar3Foreground && !_keyboardSender.IsChatting;
         }
-   
+
+        // think of a way to map this to viewmodel that is not array
+        HotkeyModel[] warkeys =
+        {
+            Warkeys.Slot1,
+            Warkeys.Slot2,
+            Warkeys.Slot3,
+            Warkeys.Slot4,
+            Warkeys.Slot5,
+            Warkeys.Slot6,
+        };
+
         private void KeyboardHookService_GlobalKeyDown(object sender, HotkeyModel e)
         {
             // check iswar3foreground already in keyboard hook class            
@@ -89,7 +100,7 @@ namespace Warkey.Core
             if (hwnd != null)
             {
                 war3Hwnd = hwnd.Value;
-                MainWindow.vm.Title = "Running";
+                WarcraftStatusChanged?.Invoke(this, true);
                 wentRunning = true;
 
                 IsWar3Foreground = _gameWindow.IsWar3Foreground(war3Hwnd);
@@ -97,11 +108,16 @@ namespace Warkey.Core
             else
             {
                 if (wentRunning && Settings.IsAutoCloseWithWar3)
-                    App.Current.MainWindow.Close();
+                {
+                    ApplicationExitCommand?.Invoke(this, null);
+                }
 
-                MainWindow.vm.Title = "";
+                WarcraftStatusChanged?.Invoke(this, false);
             }
         }
+
+        public event EventHandler<bool> WarcraftStatusChanged;
+        public event EventHandler ApplicationExitCommand;
 
         public void Dispose()
         {
