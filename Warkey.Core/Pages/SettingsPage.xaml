@@ -1,0 +1,92 @@
+﻿<Page x:Class="Warkey.Core.Pages.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Warkey.Core.Pages"
+      xmlns:converters="clr-namespace:Warkey.Core.Converters"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      mc:Ignorable="d"
+      d:DesignHeight="323"
+      d:DesignWidth="388"
+      Title="SettingsPage">
+    <Page.Resources>
+        <converters:ResolutionToStringConverter x:Key="ResolutionToStringConverter" />
+        <converters:IsOptimizedToStringConverter x:Key="IsOptimizedToStringConverter" />
+    </Page.Resources>
+    <Grid>
+        <StackPanel Margin="8" fw:PointerTracker.Enabled="True">
+            <TextBlock Text="Warcraft III"
+                       FontSize="28"
+                       FontWeight="Light"
+                       Margin="8,0" />
+
+            <StackPanel Margin="8">
+                <TextBlock Text="Screen Resolution: " />
+                <TextBlock Text="{Binding CurrentResolution, Converter={StaticResource ResolutionToStringConverter}}"
+                           FontSize="16" />
+            </StackPanel>
+
+            <Grid Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="Game Resolution: " />
+                    <TextBlock Text="{Binding GameResolution, Converter={StaticResource ResolutionToStringConverter}}"
+                               FontSize="16" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Force 1080p"
+                        Style="{StaticResource ButtonRevealStyle}"
+                        Width="80"
+                        HorizontalAlignment="Left"
+                        Margin="4"
+                        Name="FullHDGameResolutionbtn"
+                        Click="FullHDGameResolutionbtn_Click" />
+                    <Button Content="{Binding IsGameResolutionNeedsOptimize, Converter={StaticResource IsOptimizedToStringConverter}}"
+                        Style="{StaticResource ButtonRevealStyle}"
+                        Width="80"
+                        HorizontalAlignment="Left"
+                        Margin="4"
+                        IsEnabled="{Binding IsGameResolutionNeedsOptimize}"
+                        Name="OptimizeGameResolutionbtn"
+                        Click="OptimizeGameResolutionbtn_Click" />
+                </StackPanel>
+            </Grid>
+
+            <Grid Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="lockfb status: " />
+                    <TextBlock Text="{Binding LockFbStatus}"
+                               FontSize="16" />
+                </StackPanel>
+                <Button Grid.Column="1"
+                        Style="{StaticResource ButtonRevealStyle}"
+                        Content="{Binding IsLockFbNeedsOptimize, Converter={StaticResource IsOptimizedToStringConverter} }"
+                        Width="80"
+                        HorizontalAlignment="Right"
+                        Margin="4"
+                        IsEnabled="{Binding IsLockFbNeedsOptimize}"
+                        Name="OptimizeLockFbbtn"
+                        Click="OptimizeLockFbbtn_Click" />
+            </Grid>
+            <Grid Margin="8" />
+            <CheckBox Content="Start minimized"
+                      Margin="8"
+                      IsChecked="{Binding IsStartMinimized}" />
+            <CheckBox Content="Automatically starts Warcraft III if exists"
+                      Margin="8"
+                      IsChecked="{Binding IsAutoStartWar3}" />
+            <CheckBox Content="Automatically closes with Warcraft III"
+                      Margin="8"
+                      IsChecked="{Binding IsAutoCloseWar3}" />
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,150 @@
+﻿<fw:AcrylicWindow x:Class="Warkey.Core.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Warkey.Core"
+        xmlns:converters="clr-namespace:Warkey.Core.Converters"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        mc:Ignorable="d"
+        Title="{Binding Title}"
+        Height="480"
+        Width="720"
+                  TintOpacity="0.65"
+                  NoiseOpacity="0"
+                  ExtendViewIntoTitleBar="True"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing">
+    <fw:AcrylicWindow.Resources>
+        <Storyboard x:Key="FadeAway">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="navFrame">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.12" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="FadeIn">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="navFrame">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.12" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </fw:AcrylicWindow.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Name="hamMenu"
+              HorizontalAlignment="Left"
+              fw:PointerTracker.Enabled="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <StackPanel Width="200"
+                            Name="menuList">
+                    <TextBlock Margin="8" Text="{Binding Title}" />
+                    <Button Background="#FFBEE6FD"
+                            Style="{StaticResource ButtonRevealStyle}"
+                            HorizontalContentAlignment="Left"
+                            Click="menuItems_Click"
+                            Tag="Warkey">
+                        <StackPanel Orientation="Horizontal"
+                                    Height="50"
+                                    Margin="4,0">
+                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                                       Text=""
+                                       FontSize="16"
+                                       VerticalAlignment="Center"
+                                       Margin="12" />
+                            <TextBlock Text="Warkey"
+                                       VerticalAlignment="Center"
+                                       Margin="8" />
+                        </StackPanel>
+                    </Button>
+                    <Button Background="Transparent"
+                            Style="{StaticResource ButtonRevealStyle}"
+                            HorizontalContentAlignment="Left"
+                            Click="menuItems_Click"
+                            Tag="AutoChat">
+                        <StackPanel Orientation="Horizontal"
+                                    Height="50"
+                                    Margin="4,0">
+                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                                       Text=""
+                                       FontSize="16"
+                                       VerticalAlignment="Center"
+                                       Margin="12" />
+                            <TextBlock Text="Auto-chat"
+                                       VerticalAlignment="Center"
+                                       Margin="8" />
+                        </StackPanel>
+                    </Button>
+                    <Button Background="Transparent"
+                            Style="{StaticResource ButtonRevealStyle}"
+                            HorizontalContentAlignment="Left"
+                            Click="menuItems_Click"
+                            Tag="LoadGame"
+                            Name="loadBtn">
+                        <StackPanel Orientation="Horizontal"
+                                    Height="50"
+                                    Margin="4,0">
+                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                                       Text=""
+                                       FontSize="16"
+                                       VerticalAlignment="Center"
+                                       Margin="12" />
+                            <TextBlock Text="Load game"
+                                       VerticalAlignment="Center"
+                                       Margin="8" />
+                        </StackPanel>
+                    </Button>
+                    <Button Background="Transparent"
+                            Style="{StaticResource ButtonRevealStyle}"
+                            HorizontalContentAlignment="Left"
+                            Click="menuItems_Click"
+                            Tag="Settings">
+                        <StackPanel Orientation="Horizontal"
+                                    Height="50"
+                                    Margin="4,0">
+                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                                       Text=""
+                                       FontSize="16"
+                                       VerticalAlignment="Center"
+                                       Margin="12" />
+                            <TextBlock Text="Optimize"
+                                       VerticalAlignment="Center"
+                                       Margin="8" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <Button Background="Transparent"
+                    Style="{StaticResource ButtonRevealStyle}"
+                    HorizontalContentAlignment="Left"
+                    Grid.Row="1"
+                    Click="menuItems_Click"
+                    Tag="About">
+                <StackPanel Orientation="Horizontal"
+                            Height="50"
+                            Margin="4,0">
+                    <TextBlock FontFamily="Segoe MDL2 Assets"
+                               Text=""
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               Margin="12" />
+                    <TextBlock Text="About"
+                               VerticalAlignment="Center"
+                               Margin="8" />
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Grid Grid.Column="1" Background="White" Opacity="0.2"/>
+        <Grid Grid.Column="1">
+            <Frame Name="navFrame"
+                   NavigationUIVisibility="Hidden" />
+        </Grid>
+    </Grid>
+</fw:AcrylicWindow>

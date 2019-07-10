@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29006.145
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarkeyNETIII", "WarkeyNETIII\WarkeyNETIII.csproj", "{1488DA79-160C-432C-955E-AE32CF4780A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warkey.Core", "Warkey.Core\Warkey.Core.csproj", "{1488DA79-160C-432C-955E-AE32CF4780A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warkey.Tests", "Warkey.Tests\Warkey.Tests.csproj", "{F0885279-63FC-4A63-A545-AFA777F1FE3F}"
 EndProject
