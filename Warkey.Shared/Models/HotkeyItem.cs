@@ -10,36 +10,8 @@ namespace Warkey.Core.Items
 {
     public class HotkeyItem : BaseViewModel
     {
-        private bool alt;
-        private Key key;
-
-        public bool Alt
-        {
-            get
-            {
-                return alt;
-            }
-
-            set
-            {
-                alt = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public Key Key
-        {
-            get
-            {
-                return key;
-            }
-
-            set
-            {
-                key = value;
-                OnPropertyChanged();
-            }
-        }
+        public bool Alt { get; set; }
+        public Key Key { get; set; }
 
         public HotkeyItem()
         {

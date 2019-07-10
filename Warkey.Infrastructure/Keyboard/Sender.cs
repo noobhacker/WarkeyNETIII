@@ -28,7 +28,7 @@ namespace Warkey.Infrastructure.Keyboard
             Keys.NumPad2
         };
 
-        public void PostItemMessageToWar3(IntPtr hwnd, int slotNumber, bool isAlt)
+        public void SendItemMessage(IntPtr hwnd, int slotNumber, bool isAlt)
         {
             if (isAlt)
                 PostMessage(hwnd, WM_KEYUP, VK_MENU, 0);
@@ -41,7 +41,7 @@ namespace Warkey.Infrastructure.Keyboard
         }
 
         public bool IsChatting = false;
-        public void SendMessageToChatbox(IntPtr hwnd, string message)
+        public void SendMessageToChatbox(string message)
         {
             IsChatting = true;
             SendKeys.SendWait("{ENTER}");

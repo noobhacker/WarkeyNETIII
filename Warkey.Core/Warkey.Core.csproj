@@ -51,8 +51,8 @@
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Queries\" />
+    <Folder Include="Presenter\Commands\" />
+    <Folder Include="Presenter\Queries\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
