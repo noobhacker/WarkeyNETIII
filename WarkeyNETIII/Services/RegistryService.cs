@@ -46,6 +46,8 @@ namespace WarkeyNETIII.Services
         public static void WriteLockFb()
             => writeKey("lockfb", 0);
 
+        // below here can move to warcraft III registry infrastructure
+
         static RegistryKey baseKey = Registry.CurrentUser;
         static string KeyPath = @"SOFTWARE\Blizzard Entertainment\Warcraft III\Video";
         private static void writeKey(string keyName, object value)
