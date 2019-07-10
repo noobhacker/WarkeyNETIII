@@ -9,7 +9,7 @@ namespace Warkey.Tests
         [TestMethod]
         public void TestReadingResolution()
         {
-            var resolution = WarkeyNETIII.Services.RegistryService.ReadResolution();
+            var resolution = Warkey.Core.Services.RegistryService.ReadResolution();
             Assert.IsNotNull(resolution);
         }
     }

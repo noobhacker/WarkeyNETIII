@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Warkey.Core\Warkey.Core.csproj">
+    <ProjectReference Include="..\Warkey.View\Warkey.View.csproj">
       <Project>{1488da79-160c-432c-955e-ae32cf4780a7}</Project>
-      <Name>Warkey.Core</Name>
+      <Name>Warkey.View</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

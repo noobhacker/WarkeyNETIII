@@ -20,9 +20,9 @@ namespace Warkey.Infrastructure
         {
             if (File.Exists(_filename))
             {
-                var sr = new StreamReader(_filename);
-                var json = await sr.ReadToEndAsync();
-                sr.Dispose();
+                var streamReader = new StreamReader(_filename);
+                var json = await streamReader.ReadToEndAsync();
+                streamReader.Dispose();
 
                 var result = JsonConvert.DeserializeObject<T>(json);
                 return result;
