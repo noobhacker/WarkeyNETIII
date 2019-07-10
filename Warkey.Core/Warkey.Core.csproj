@@ -44,6 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presenter\ViewModels\AutoChatsViewModel.cs" />
+    <Compile Include="Presenter\ViewModels\AutoChatViewModel.cs" />
+    <Compile Include="Presenter\ViewModels\BaseViewModel.cs" />
+    <Compile Include="Presenter\ViewModels\LoadGameViewModel.cs" />
+    <Compile Include="Presenter\ViewModels\MainViewModel.cs" />
+    <Compile Include="Presenter\ViewModels\SettingsViewModel.cs" />
+    <Compile Include="Presenter\ViewModels\WarkeyViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GameVideoSettingsService.cs" />
     <Compile Include="MainService.cs" />
