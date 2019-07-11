@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +29,8 @@ namespace Warkey.Core
         public static WarkeyViewModel WarkeyVm;
         public static AutoChatViewModel AutoChatVm;
         public static LoadGameViewModel LoadGameViewModel = new LoadGameViewModel();
+
+        public static Services _services = new Services();
 
         public MainWindow()
         {

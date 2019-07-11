@@ -8,9 +8,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Warkey.Core.Services
+namespace Warkey.Core
 {
-    public static class UpdateService
+    public static class Updater
     {
         public const int Version = 170207;
         const string server = "http://leesong.azurewebsites.net/";
@@ -33,10 +33,10 @@ namespace Warkey.Core.Services
                     var wc = new WebClient();
                     var fileUri = new Uri(server + updateFile);
 
-                    if (File.Exists("Warkey.Core.exe_"))
-                        File.Delete("Warkey.Core.exe_");
+                    if (File.Exists("WarkeyNETIII.exe_"))
+                        File.Delete("WarkeyNETIII.exe_");
 
-                    wc.DownloadFileAsync(fileUri, "Warkey.Core.exe_");
+                    wc.DownloadFileAsync(fileUri, "WarkeyNETIII.exe_");
                     wc.DownloadFileCompleted += (sender, e) => gotUpdate = true;
                 }
             }

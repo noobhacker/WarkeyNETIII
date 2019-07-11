@@ -14,7 +14,7 @@ using static Warkey.Infrastructure.KeyboardDetector;
 
 namespace Warkey.Core
 {
-    public class MainServices : IDisposable
+    public class Services : IDisposable
     {
         private const int HWND_UPDATE_INTERVAL = 1;
         private IntPtr war3Hwnd;
@@ -30,9 +30,9 @@ namespace Warkey.Core
         public ObservableCollection<TkokSave> Saves { get; set; }
         public Settings Settings { get; set; }
 
-        public MainServices()
+        public Services()
         {
-            _keyboardDetector = new KeyboardDetector(CheckKeyboardDetectorPrecondition);
+            _keyboardDetector = new KeyboardDetector(KeyboardDetectorPrecondition);
             _keyboardSender = new KeyboardSender();
             _gameWindow = new GameWindow();
             _gameSaves = new GameSaves();
@@ -66,7 +66,7 @@ namespace Warkey.Core
             _keyboardDetector.GlobalKeyDown += KeyboardHookService_GlobalKeyDown;
         }
 
-        private bool CheckKeyboardDetectorPrecondition()
+        private bool KeyboardDetectorPrecondition()
         {
             return IsWar3Foreground && !_keyboardSender.IsChatting;
         }

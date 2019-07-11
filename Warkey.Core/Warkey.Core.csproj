@@ -58,8 +58,8 @@
     <Compile Include="Presenter\SettingsViewModel.cs" />
     <Compile Include="Presenter\WarkeyViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MainServices.cs" />
-    <Compile Include="Services\UpdateService.cs" />
+    <Compile Include="Services.cs" />
+    <Compile Include="Updater.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup />
