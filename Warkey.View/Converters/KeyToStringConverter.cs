@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
 
-namespace Warkey.Core.Converters
+namespace Warkey.View.Converters
 {
     public class KeyToStringConverter : IValueConverter
     {

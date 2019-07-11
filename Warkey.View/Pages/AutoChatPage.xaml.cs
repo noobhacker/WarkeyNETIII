@@ -13,10 +13,10 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Warkey.Core.Items;
-using Warkey.Core.ViewModels;
+using Warkey.View.Items;
+using Warkey.View.ViewModels;
 
-namespace Warkey.Core.Pages
+namespace Warkey.View.Pages
 {
     /// <summary>
     /// Interaction logic for AutoChatPage.xaml

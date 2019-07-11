@@ -9,7 +9,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Warkey.Core
+namespace Warkey.View
 {
     /// <summary>
     /// Interaction logic for App.xaml

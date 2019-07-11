@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using Warkey.Core.Items;
+using Warkey.View.Items;
 
-namespace Warkey.Core.Converters
+namespace Warkey.View.Converters
 {
     public class ResolutionToStringConverter : IValueConverter
     {

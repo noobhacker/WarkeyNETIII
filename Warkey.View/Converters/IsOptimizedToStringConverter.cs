@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace Warkey.Core.Converters
+namespace Warkey.View.Converters
 {
     public class IsOptimizedToStringConverter : IValueConverter
     {

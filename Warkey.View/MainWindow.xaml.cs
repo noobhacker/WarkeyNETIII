@@ -13,11 +13,11 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Warkey.Core.Pages;
-using Warkey.Core.Services;
-using Warkey.Core.ViewModels;
+using Warkey.Core;
+using Warkey.Core.Presenter;
+using Warkey.View.Pages;
 
-namespace Warkey.Core
+namespace Warkey.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -30,7 +30,7 @@ namespace Warkey.Core
         public static AutoChatViewModel AutoChatVm;
         public static LoadGameViewModel LoadGameViewModel = new LoadGameViewModel();
 
-        public static Services _services = new Services();
+        public Services _services = new Services();
 
         public MainWindow()
         {
@@ -41,15 +41,17 @@ namespace Warkey.Core
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // this will load vm's
-            await Settings.InitializeAsync();
+            await _services.InitializeAsync();
 
             if (Settings.IsStartMinimized)
-                this.WindowState = WindowState.Minimized;            
-
-            MainService.InitializeServices();
+            {
+                WindowState = WindowState.Minimized;
+            }
 
             if (!SaveFileService.IsLoadFunctionAvailable())
+            {
                 loadBtn.Visibility = Visibility.Collapsed;
+            }
 
             navFrame.Navigate(new WarkeyPage());                  
         }

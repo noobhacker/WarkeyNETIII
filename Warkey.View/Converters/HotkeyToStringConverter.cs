@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
-using Warkey.Core.Items;
+using Warkey.View.Items;
 
-namespace Warkey.Core.Converters
+namespace Warkey.View.Converters
 {
     public class HotkeyToStringConverter : IValueConverter
     {

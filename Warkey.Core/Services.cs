@@ -38,7 +38,7 @@ namespace Warkey.Core
             _gameSaves = new GameSaves();
         }
 
-        public async void InitializeAsync()
+        public async Task InitializeAsync()
         {
             // read settings first or initialize data
             var settings = await Settings.LoadAsync();

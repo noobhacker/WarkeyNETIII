@@ -13,9 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Warkey.Core.Services;
+using Warkey.View.Services;
 
-namespace Warkey.Core.Pages
+namespace Warkey.View.Pages
 {
     /// <summary>
     /// Interaction logic for AboutPage.xaml
