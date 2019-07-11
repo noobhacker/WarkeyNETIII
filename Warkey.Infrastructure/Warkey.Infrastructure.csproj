@@ -57,12 +57,6 @@
     <Compile Include="GameSaves.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Warkey.Shared\Warkey.Shared.csproj">
-      <Project>{aea3c31f-19d1-47c1-b821-4e7fa80b1ba7}</Project>
-      <Name>Warkey.Shared</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
