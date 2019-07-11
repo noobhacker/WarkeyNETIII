@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Warkey.Infrastructure.Keyboard
+namespace Warkey.Infrastructure
 {
-    public class Detector
+    public class KeyboardDetector
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
@@ -37,7 +37,7 @@ namespace Warkey.Infrastructure.Keyboard
 
         public static Func<bool> Precondition { get; set; }
 
-        public Detector(Func<bool> precondition)
+        public KeyboardDetector(Func<bool> precondition)
         {
             _hookID = SetHook(HookCallback);
             Precondition = precondition;

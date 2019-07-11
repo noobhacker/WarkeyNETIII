@@ -9,27 +9,32 @@ using System.Threading.Tasks;
 using System.Windows.Threading;
 using Warkey.Core.ViewModels;
 using Warkey.Infrastructure;
-using Warkey.Infrastructure.Game;
-using Warkey.Infrastructure.Keyboard;
-using static Warkey.Infrastructure.Game.Saves;
-using static Warkey.Infrastructure.Keyboard.Detector;
+using static Warkey.Infrastructure.GameSaves;
+using static Warkey.Infrastructure.KeyboardDetector;
 
 namespace Warkey.Core
 {
     public class MainServices
     {
         private const int HWND_UPDATE_INTERVAL = 1;
-        private static IntPtr war3Hwnd;
-        private static bool IsWar3Foreground;      
+        private IntPtr war3Hwnd;
+        private bool IsWar3Foreground;
 
-        private static readonly Detector _keyboardDetector = new Detector(CheckKeyboardDetectorPrecondition);
-        private static readonly Sender _keyboardSender = new Sender();
-        private static readonly Window _gameWindow = new Window();
+        private readonly KeyboardDetector _keyboardDetector;
+        private readonly KeyboardSender _keyboardSender;
+        private readonly GameWindow _gameWindow;
 
         public WarkeyViewModel Warkeys;
         public ObservableCollection<AutoChatItem> Autochats;
         public ObservableCollection<TkokSave> Saves;
         public Settings Settings;
+
+        public MainServices()
+        {
+            _keyboardDetector = new KeyboardDetector(CheckKeyboardDetectorPrecondition);
+            _keyboardSender = new KeyboardSender();
+            _gameWindow = new GameWindow();
+        }
 
         public async void InitializeAsync()
         {
@@ -58,7 +63,7 @@ namespace Warkey.Core
 
         }
 
-        private static bool CheckKeyboardDetectorPrecondition()
+        private bool CheckKeyboardDetectorPrecondition()
         {
             return IsWar3Foreground && !_keyboardSender.IsChatting;
         }

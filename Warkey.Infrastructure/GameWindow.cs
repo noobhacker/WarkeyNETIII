@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Warkey.Infrastructure.Game
+namespace Warkey.Infrastructure
 {
-    public class Window
+    public class GameWindow
     {
         [DllImport("user32.dll")]
         private static extern IntPtr GetForegroundWindow();

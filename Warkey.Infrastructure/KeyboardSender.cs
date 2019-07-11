@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Warkey.Infrastructure.Keyboard
+namespace Warkey.Infrastructure
 {
-    public class Sender
+    public class KeyboardSender
     {
         [DllImport("user32.dll", EntryPoint = "SendMessageA")]
         static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);

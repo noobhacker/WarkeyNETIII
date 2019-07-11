@@ -48,13 +48,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SettingsManager.cs" />
-    <Compile Include="Game\Settings.cs" />
-    <Compile Include="Game\Window.cs" />
-    <Compile Include="Keyboard\Detector.cs" />
-    <Compile Include="Keyboard\Sender.cs" />
+    <Compile Include="GameSettings.cs" />
+    <Compile Include="GameWindow.cs" />
+    <Compile Include="KeyboardDetector.cs" />
+    <Compile Include="KeyboardSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Monitor.cs" />
-    <Compile Include="Game\Saves.cs" />
+    <Compile Include="GameSaves.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Warkey.Shared\Warkey.Shared.csproj">

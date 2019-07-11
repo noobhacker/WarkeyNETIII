@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Warkey.Infrastructure.Game
+namespace Warkey.Infrastructure
 {
-    public class Saves
+    public class GameSaves
     {
         private const string _tkokFolderName = "TKoK_Save_Files";
         public async Task<List<TkokSave>> GetTkokSaveFilesAsync(int saveCount)

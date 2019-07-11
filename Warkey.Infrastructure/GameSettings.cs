@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Warkey.Infrastructure.Game
+namespace Warkey.Infrastructure
 {
     public class GameSettings
     {
