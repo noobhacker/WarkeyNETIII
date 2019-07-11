@@ -32,7 +32,8 @@
                  BorderThickness="0"
                  Margin="0,50,0,0"
                  SelectionChanged="listBox_SelectionChanged"
-                 Name="listBox">
+                 Name="listBox"
+                 ScrollViewer.CanContentScroll="False">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="8">

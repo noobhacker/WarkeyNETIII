@@ -13,7 +13,7 @@ namespace Warkey.Core.Presenter
     {
         public ObservableCollection<AutoChatViewModel> ListOfAutoChats { get; set; }
         
-        public AutoChat()
+        public AutoChatsViewModel()
         {
             ListOfAutoChats = new ObservableCollection<AutoChatViewModel>();
         }
