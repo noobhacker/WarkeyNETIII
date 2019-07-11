@@ -13,8 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Warkey.View.Services;
-
 namespace Warkey.View.Pages
 {
     /// <summary>

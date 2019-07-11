@@ -104,15 +104,15 @@ namespace Warkey.View
             sb.Begin();
         }
 
-        private SolidColorBrush menuHighlightedColor = 
+        private readonly SolidColorBrush _menuHighlightedColor = 
             new SolidColorBrush(Color.FromArgb(255, 190, 230, 253));
 
-        private void menuItems_Click(object sender, RoutedEventArgs e)
+        private void MenuItems_Click(object sender, RoutedEventArgs e)
         {            
             RemoveMenuItemHighlights();
 
             var button = (Button)sender;
-            button.Background = menuHighlightedColor;
+            button.Background = _menuHighlightedColor;
 
             // this must be done manually, because the animation might be completed
             // before the registration of the Completed event
@@ -123,16 +123,16 @@ namespace Warkey.View
                 switch (button.Tag.ToString())
                 {
                     case "Warkey":
-                        navFrame.Navigate(new WarkeyPage());
+                        navFrame.Navigate(new WarkeyPage(_services));
                         break;
                     case "AutoChat":
-                        navFrame.Navigate(new AutoChatPage());
+                        navFrame.Navigate(new AutoChatPage(_services));
                         break;
                     case "LoadGame":
-                        navFrame.Navigate(new LoadGamePage());
+                        navFrame.Navigate(new LoadGamePage(_services));
                         break;
                     case "Settings":
-                        navFrame.Navigate(new SettingsPage());
+                        navFrame.Navigate(new SettingsPage(_services));
                         break;
                     case "About":
                         navFrame.Navigate(new AboutPage());

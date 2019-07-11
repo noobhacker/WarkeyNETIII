@@ -49,7 +49,7 @@
                     <Button Background="#FFBEE6FD"
                             Style="{StaticResource ButtonRevealStyle}"
                             HorizontalContentAlignment="Left"
-                            Click="menuItems_Click"
+                            Click="MenuItems_Click"
                             Tag="Warkey">
                         <StackPanel Orientation="Horizontal"
                                     Height="50"
@@ -67,7 +67,7 @@
                     <Button Background="Transparent"
                             Style="{StaticResource ButtonRevealStyle}"
                             HorizontalContentAlignment="Left"
-                            Click="menuItems_Click"
+                            Click="MenuItems_Click"
                             Tag="AutoChat">
                         <StackPanel Orientation="Horizontal"
                                     Height="50"
@@ -85,7 +85,7 @@
                     <Button Background="Transparent"
                             Style="{StaticResource ButtonRevealStyle}"
                             HorizontalContentAlignment="Left"
-                            Click="menuItems_Click"
+                            Click="MenuItems_Click"
                             Tag="LoadGame"
                             Name="loadBtn">
                         <StackPanel Orientation="Horizontal"
@@ -104,7 +104,7 @@
                     <Button Background="Transparent"
                             Style="{StaticResource ButtonRevealStyle}"
                             HorizontalContentAlignment="Left"
-                            Click="menuItems_Click"
+                            Click="MenuItems_Click"
                             Tag="Settings">
                         <StackPanel Orientation="Horizontal"
                                     Height="50"
@@ -125,7 +125,7 @@
                     Style="{StaticResource ButtonRevealStyle}"
                     HorizontalContentAlignment="Left"
                     Grid.Row="1"
-                    Click="menuItems_Click"
+                    Click="MenuItems_Click"
                     Tag="About">
                 <StackPanel Orientation="Horizontal"
                             Height="50"

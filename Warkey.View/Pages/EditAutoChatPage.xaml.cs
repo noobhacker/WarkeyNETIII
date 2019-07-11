@@ -12,8 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Warkey.View.Items;
-using Warkey.View.ViewModels;
 
 namespace Warkey.View.Pages
 {

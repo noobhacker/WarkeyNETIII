@@ -13,8 +13,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Warkey.View.Items;
-using Warkey.View.ViewModels;
+using Warkey.Core;
+using Warkey.Core.Presenter;
 
 namespace Warkey.View.Pages
 {
@@ -23,15 +23,19 @@ namespace Warkey.View.Pages
     /// </summary>
     public partial class AutoChatPage : Page
     {
-        AutoChatViewModel vm = MainWindow.AutoChatVm;
+        private AutoChatsViewModel _viewModel = new AutoChatsViewModel();
+        private readonly Services _services;
 
-        public AutoChatPage()
+        public AutoChatPage(Services services)
         {
             InitializeComponent();
-            this.DataContext = vm;
+            _services = services;
+            _viewModel.ListOfAutoChats = _services.Autochats;
+            DataContext = _viewModel;
 
             // do it here so navigate from another page will keep collapsed
-            vm.ExtraCommandVisibility = Visibility.Collapsed;
+            _viewModel.ExtraCommandVisibility = Visibility.Collapsed;
+        
         }
 
         private void startAnimationByName(string name)
@@ -57,9 +61,9 @@ namespace Warkey.View.Pages
         {
             var listbox = (ListBox)sender;
             if (listbox.SelectedItems.Count != 0)
-                vm.ExtraCommandVisibility = Visibility.Visible;
+                _viewModel.ExtraCommandVisibility = Visibility.Visible;
             else
-                vm.ExtraCommandVisibility = Visibility.Collapsed;
+                _viewModel.ExtraCommandVisibility = Visibility.Collapsed;
         }
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
@@ -67,8 +71,8 @@ namespace Warkey.View.Pages
             var index = listBox.SelectedIndex;
             NavigationService.Navigate(new EditAutoChatPage(new AutoChatItem()
             {
-                Key = vm.ListOfAutoChats[index].Key,
-                Message = vm.ListOfAutoChats[index].Message
+                Key = _viewModel.ListOfAutoChats[index].Key,
+                Message = _viewModel.ListOfAutoChats[index].Message
             }, index));
         }
 
@@ -77,7 +81,7 @@ namespace Warkey.View.Pages
             if(MessageBox.Show("Are you sure?", "Warkey.NET III", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
             {
                 var index = listBox.SelectedIndex;
-                vm.ListOfAutoChats.RemoveAt(index);
+                _viewModel.ListOfAutoChats.RemoveAt(index);
 
                 await Settings.SaveSettingsAsync();
             }           

@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Warkey.Core.Presenter
 {
-    public class AutoChat : BaseViewModel
+    public class AutoChatsViewModel : BaseViewModel
     {
         public ObservableCollection<AutoChatViewModel> ListOfAutoChats { get; set; }
         
