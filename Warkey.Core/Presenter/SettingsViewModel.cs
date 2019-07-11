@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Warkey.Core.Services;
 using static Warkey.Infrastructure.Monitor;
 
-namespace Warkey.Core.ViewModels
+namespace Warkey.Core.Presenter
 {
     public class SettingsViewModel : BaseViewModel
     {
@@ -20,15 +20,16 @@ namespace Warkey.Core.ViewModels
 
         public SettingsViewModel()
         {
-            GameResolution = GameVideoSettingsService.ReadResolution();
-            CurrentResolution = ScreenResolutionService.GetCurrentResolution();
-            var lockfbValue = GameVideoSettingsService.ReadLockFb();
+            // move to frontend
+            //GameResolution = GameVideoSettingsService.ReadResolution();
+            //CurrentResolution = ScreenResolutionService.GetCurrentResolution();
+            //var lockfbValue = GameVideoSettingsService.ReadLockFb();
            
-            IsGameResolutionNeedsOptimize = !(
-                GameResolution.Width == CurrentResolution.Width && 
-                GameResolution.Height == CurrentResolution.Height);
+            //IsGameResolutionNeedsOptimize = !(
+            //    GameResolution.Width == CurrentResolution.Width && 
+            //    GameResolution.Height == CurrentResolution.Height);
 
-            IsLockFbNeedsOptimize = Convert.ToBoolean(lockfbValue);
+            //IsLockFbNeedsOptimize = Convert.ToBoolean(lockfbValue);
 
             IsStartMinimized = Settings.IsStartMinimized;
             IsAutoStartWar3 = Settings.IsAutoStartWar3;

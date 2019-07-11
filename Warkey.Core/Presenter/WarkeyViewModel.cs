@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Warkey.Infrastructure.KeyboardDetector;
 
-namespace Warkey.Core.ViewModels
+namespace Warkey.Core.Presenter
 {
     public class WarkeyViewModel : BaseViewModel
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Warkey.Core.ViewModels
+namespace Warkey.Core.Presenter
 {
     public class AutoChat : BaseViewModel
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
-using Warkey.Core.ViewModels;
+using Warkey.Core.Presenter;
 using Warkey.Infrastructure;
 using static Warkey.Infrastructure.GameSaves;
 using static Warkey.Infrastructure.KeyboardDetector;

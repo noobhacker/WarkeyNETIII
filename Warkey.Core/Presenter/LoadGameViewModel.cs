@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using static Warkey.Infrastructure.GameSaves;
 
-namespace Warkey.Core.ViewModels
+namespace Warkey.Core.Presenter
 {
     public class LoadGameViewModel : BaseViewModel
     {

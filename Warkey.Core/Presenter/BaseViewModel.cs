@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Warkey.Core.ViewModels
+namespace Warkey.Core.Presenter
 {
     public class BaseViewModel : INotifyPropertyChanged 
     {
