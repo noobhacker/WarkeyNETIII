@@ -38,7 +38,7 @@ namespace Warkey.Core
                 return new SettingsModel
                 {
                     Autochats = new ObservableCollection<AutoChatViewModel>(),
-                    WarkeyVm = new WarkeyViewModel()
+                    Warkeys = new WarkeyViewModel()
                 };
             }
             
@@ -46,12 +46,16 @@ namespace Warkey.Core
 
         public async Task SaveAsync(SettingsModel model)
         {
+            model.IsStartMinimized = IsStartMinimized;
+            model.IsAutoStartWar3 = IsAutoStartWar3;
+            model.IsAutoCloseWithWar3 = IsAutoCloseWithWar3;
+
             await _manager.SaveAsync(model);
         }
         
         public class SettingsModel
         {
-            public WarkeyViewModel WarkeyVm { get; set; }
+            public WarkeyViewModel Warkeys { get; set; }
             public ObservableCollection<AutoChatViewModel> Autochats { get; set; }
             public bool IsStartMinimized { get; set; }
             public bool IsAutoStartWar3 { get; set; }

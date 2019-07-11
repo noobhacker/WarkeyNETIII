@@ -127,10 +127,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converters\HotkeyToStringConverter.cs" />
     <Compile Include="Converters\IsOptimizedToStringConverter.cs" />
     <Compile Include="Converters\KeyToStringConverter.cs" />
-    <Compile Include="Converters\ResolutionToStringConverter.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>

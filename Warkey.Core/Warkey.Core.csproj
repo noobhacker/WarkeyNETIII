@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\GameSettingsCommand.cs" />
+    <Compile Include="Queries\GameSavesQuery.cs" />
     <Compile Include="Queries\GameSettingsQuery.cs" />
     <Compile Include="Presenter\AutoChatsViewModel.cs" />
     <Compile Include="Presenter\AutoChatViewModel.cs" />

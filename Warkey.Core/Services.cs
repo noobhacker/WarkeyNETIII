@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Threading;
 using Warkey.Core.Presenter;
 using Warkey.Infrastructure;
+using static Warkey.Core.Settings;
 using static Warkey.Infrastructure.GameSaves;
 using static Warkey.Infrastructure.KeyboardDetector;
 
@@ -42,10 +43,10 @@ namespace Warkey.Core
         {
             // read settings first or initialize data
             var settings = await Settings.LoadAsync();
-            Warkeys = settings.WarkeyVm;
+            Warkeys = settings.Warkeys;
             Autochats = settings.Autochats;
 
-            var saves = await _gameSaves.GetTkokSaveFilesAsync(5);
+            var saves = await _gameSaves.GetTkokSaveFilesAsync();
             Saves = new ObservableCollection<TkokSave>(saves);
 
             if (Settings.IsAutoStartWar3 && File.Exists("war3.exe") && _gameWindow.GetWar3HWND() == null)
@@ -64,6 +65,17 @@ namespace Warkey.Core
             // because windows API cannot return to task.run in another thread
             // !!! BECAREFUL! refactoring this to dynamic, not sure if system hook still works !!! 
             _keyboardDetector.GlobalKeyDown += KeyboardHookService_GlobalKeyDown;
+        }
+
+        public async Task SaveSettingsAsync()
+        {
+            var model = new SettingsModel
+            {
+                 Warkeys = Warkeys,
+                 Autochats = Autochats
+            };
+
+            await Settings.SaveAsync(model);
         }
 
         private bool KeyboardDetectorPrecondition()

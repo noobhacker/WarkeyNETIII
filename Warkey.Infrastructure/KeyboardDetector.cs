@@ -103,6 +103,14 @@ namespace Warkey.Infrastructure
             public bool Alt { get; set; }
             public Key Key { get; set; }
 
+            public override string ToString()
+            {
+                var keyConverter = new KeyConverter();
+                var key = keyConverter.ConvertToString(Key);
+                var alt = Alt ? "ALT+" : "";
+
+                return $"{alt}{key}";
+            }
         }
     }
 }

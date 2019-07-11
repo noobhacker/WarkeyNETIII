@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Warkey.Core;
 using Warkey.Core.Presenter;
+using Warkey.Core.Queries;
 using Warkey.View.Pages;
 
 namespace Warkey.View
@@ -24,31 +25,33 @@ namespace Warkey.View
     /// </summary>
     public partial class MainWindow
     {
-        // public them so services can access
-        public static MainViewModel vm = new MainViewModel();
-        public static WarkeyViewModel WarkeyVm;
-        public static AutoChatViewModel AutoChatVm;
-        public static LoadGameViewModel LoadGameViewModel = new LoadGameViewModel();
-
+        public MainViewModel _viewModel;
         public Services _services = new Services();
+        public GameSavesQuery _gameSavesQuery = new GameSavesQuery();
 
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = vm;
+
+            _services = new Services();
+            _gameSavesQuery = new GameSavesQuery();
+            _viewModel = new MainViewModel();
+            DataContext = _viewModel;
+
+            _services.WarcraftStatusChanged += Services_WarcraftStatusChanged;
+            _services.ApplicationExitCommand += Services_ApplicationExitCommand;
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // this will load vm's
-            await _services.InitializeAsync();
+            await _services.InitializeAsync();          
 
             if (Settings.IsStartMinimized)
             {
                 WindowState = WindowState.Minimized;
             }
 
-            if (!SaveFileService.IsLoadFunctionAvailable())
+            if (!_gameSavesQuery.IsLoadFunctionAvailable())
             {
                 loadBtn.Visibility = Visibility.Collapsed;
             }
@@ -56,16 +59,25 @@ namespace Warkey.View
             navFrame.Navigate(new WarkeyPage());                  
         }
 
-        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Services_ApplicationExitCommand(object sender, EventArgs e)
         {
-            await Settings.SaveSettingsAsync();
-
-            // disposing mainservice is unhooking windows api
-            // should be last
-            MainService.Dispose();
+            Application.Current.Shutdown();
         }
 
-        private void removeUIElementsHighlights(UIElementCollection items)
+        private void Services_WarcraftStatusChanged(object sender, bool e)
+        {
+            _viewModel.Title = e ? "WarkeyNETIII - Running" : "WarkeyNETIII";
+        }
+
+        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            await _services.SaveSettingsAsync();
+
+            // disposing will unhook windows api
+            _services.Dispose();
+        }
+
+        private void RemoveUIElementsHighlights(UIElementCollection items)
         {
             foreach (var item in items)
             {
@@ -80,13 +92,13 @@ namespace Warkey.View
             }
         }
 
-        private void removeMenuItemHighlights()
+        private void RemoveMenuItemHighlights()
         {
-            removeUIElementsHighlights(hamMenu.Children);
-            removeUIElementsHighlights(menuList.Children);
+            RemoveUIElementsHighlights(hamMenu.Children);
+            RemoveUIElementsHighlights(menuList.Children);
         }
 
-        private void startAnimationByName(string name)
+        private void StartAnimationByName(string name)
         {
             Storyboard sb = this.FindResource(name) as Storyboard;
             sb.Begin();
@@ -97,7 +109,7 @@ namespace Warkey.View
 
         private void menuItems_Click(object sender, RoutedEventArgs e)
         {            
-            removeMenuItemHighlights();
+            RemoveMenuItemHighlights();
 
             var button = (Button)sender;
             button.Background = menuHighlightedColor;
@@ -127,7 +139,7 @@ namespace Warkey.View
                         break;
                 }
 
-                startAnimationByName("FadeIn");
+                StartAnimationByName("FadeIn");
             };
 
             fadeAwayAnimation.Begin();
