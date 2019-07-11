@@ -6,17 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using Warkey.Core.Items;
 
 namespace Warkey.Core.ViewModels
 {
     public class AutoChat : BaseViewModel
     {
-        public ObservableCollection<AutoChatItem> ListOfAutoChats { get; set; }
+        public ObservableCollection<AutoChatViewModel> ListOfAutoChats { get; set; }
         
         public AutoChat()
         {
-            ListOfAutoChats = new ObservableCollection<AutoChatItem>();
+            ListOfAutoChats = new ObservableCollection<AutoChatViewModel>();
         }
 
     }

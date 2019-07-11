@@ -8,7 +8,7 @@ using Warkey.Core.ViewModels;
 
 namespace Warkey.Core.ViewModels
 {
-    public class AutoChatItem : BaseViewModel
+    public class AutoChatViewModel : BaseViewModel
     {
         public Key Key { get; set; }
         public string Message { get; set; }

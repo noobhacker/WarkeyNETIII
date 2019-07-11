@@ -14,7 +14,7 @@ using static Warkey.Infrastructure.KeyboardDetector;
 
 namespace Warkey.Core
 {
-    public class MainServices
+    public class MainServices : IDisposable
     {
         private const int HWND_UPDATE_INTERVAL = 1;
         private IntPtr war3Hwnd;
@@ -23,44 +23,47 @@ namespace Warkey.Core
         private readonly KeyboardDetector _keyboardDetector;
         private readonly KeyboardSender _keyboardSender;
         private readonly GameWindow _gameWindow;
+        private readonly GameSaves _gameSaves;
 
-        public WarkeyViewModel Warkeys;
-        public ObservableCollection<AutoChatItem> Autochats;
-        public ObservableCollection<TkokSave> Saves;
-        public Settings Settings;
+        public WarkeyViewModel Warkeys { get; set; }
+        public ObservableCollection<AutoChatViewModel> Autochats { get; set; }
+        public ObservableCollection<TkokSave> Saves { get; set; }
+        public Settings Settings { get; set; }
 
         public MainServices()
         {
             _keyboardDetector = new KeyboardDetector(CheckKeyboardDetectorPrecondition);
             _keyboardSender = new KeyboardSender();
             _gameWindow = new GameWindow();
+            _gameSaves = new GameSaves();
         }
 
         public async void InitializeAsync()
         {
             // read settings first or initialize data
-            await Settings.LoadAsync();
+            var settings = await Settings.LoadAsync();
+            Warkeys = settings.WarkeyVm;
+            Autochats = settings.Autochats;
+
+            var saves = await _gameSaves.GetTkokSaveFilesAsync(5);
+            Saves = new ObservableCollection<TkokSave>(saves);
+
             if (Settings.IsAutoStartWar3 && File.Exists("war3.exe") && _gameWindow.GetWar3HWND() == null)
             {
                 Process.Start("war3.exe");
             }
 
-            // cannot task.run on timer
-            // tried put breakpoint on timer event
-            updateWar3Hwnd();
+            // cannot task.run on timer, won't hit breakpoint on timer event
+            UpdateWar3Hwnd();
             var hwndListener = new DispatcherTimer();
             hwndListener.Interval = TimeSpan.FromSeconds(HWND_UPDATE_INTERVAL);
-            hwndListener.Tick += (sender, e) => updateWar3Hwnd();
+            hwndListener.Tick += (sender, e) => UpdateWar3Hwnd();
             hwndListener.Start();
 
             // cannot run in another thread
-            // because windows API cannot return 
-            // to task.run in another thread
+            // because windows API cannot return to task.run in another thread
             // !!! BECAREFUL! refactoring this to dynamic, not sure if system hook still works !!! 
             _keyboardDetector.GlobalKeyDown += KeyboardHookService_GlobalKeyDown;
-
-            //UpdateService.InitializeAsync();
-
         }
 
         private bool CheckKeyboardDetectorPrecondition()
@@ -68,45 +71,35 @@ namespace Warkey.Core
             return IsWar3Foreground && !_keyboardSender.IsChatting;
         }
 
-        // think of a way to map this to viewmodel that is not array
-        HotkeyModel[] warkeys =
-        {
-            Warkeys.Slot1,
-            Warkeys.Slot2,
-            Warkeys.Slot3,
-            Warkeys.Slot4,
-            Warkeys.Slot5,
-            Warkeys.Slot6,
-        };
-
         private void KeyboardHookService_GlobalKeyDown(object sender, HotkeyModel e)
         {
+            var slots = Warkeys.Slots;
+
             // check iswar3foreground already in keyboard hook class            
             foreach (var i in Enumerable.Range(0, 6))
             {
-                // if key is not set
-                if (warkeys[i] == null)
-                    continue;
-
-                if (warkeys[i].Key == e.Key && warkeys[i].Alt == e.Alt)
+                if (slots[i] != null && slots[i].Key == e.Key && slots[i].Alt == e.Alt)
+                {
                     _keyboardSender.SendItemMessageToHwnd(war3Hwnd, i, e.Alt);
+                }
             }
 
             foreach (var item in Autochats)
             {
                 if (item.Key == e.Key && !e.Alt)
+                {
                     _keyboardSender.SendMessageToChatbox(item.Message);
+                }
             }
 
-            if (Saves.Count != 0)
+            if (Saves.Count != 0 && e.Key == System.Windows.Input.Key.F8)
             {
-                if (e.Key == System.Windows.Input.Key.F8)
-                    _keyboardSender.SendMessageToChatbox("-load{enter}{enter}" + Saves[0].Password);
+                _keyboardSender.SendMessageToChatbox("-load{enter}{enter}" + Saves[0].Password);
             }
         }
 
-        static bool wentRunning = false;
-        private void updateWar3Hwnd()
+        private bool wentRunning = false;
+        private void UpdateWar3Hwnd()
         {
             var hwnd = _gameWindow.GetWar3HWND();
             if (hwnd != null)

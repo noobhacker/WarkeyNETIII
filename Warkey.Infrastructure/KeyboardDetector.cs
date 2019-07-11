@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Warkey.Infrastructure
 {
-    public class KeyboardDetector
+    public class KeyboardDetector : IDisposable
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);

@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Warkey.Core.Items;
 using Warkey.Core.Services;
+using static Warkey.Infrastructure.Monitor;
 
 namespace Warkey.Core.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
-        public ScreenResolutionItem CurrentResolution { get; set; }
-        public ScreenResolutionItem GameResolution { get; set; }
-        public bool AutoStartWar3 { get; set; }
+        public ScreenResolution CurrentResolution { get; set; }
+        public ScreenResolution GameResolution { get; set; }
         public bool IsGameResolutionNeedsOptimize { get; set; }
         public bool IsLockFbNeedsOptimize { get; set; }
         public bool IsStartMinimized { get; set; }
@@ -29,11 +28,11 @@ namespace Warkey.Core.ViewModels
                 GameResolution.Width == CurrentResolution.Width && 
                 GameResolution.Height == CurrentResolution.Height);
 
-            IsLockFbNeedsOptimize = (Convert.ToBoolean(lockfbValue));
+            IsLockFbNeedsOptimize = Convert.ToBoolean(lockfbValue);
 
             IsStartMinimized = Settings.IsStartMinimized;
-            isAutoStartWar3 = Settings.IsAutoStartWar3;
-            isAutoCloseWar3 = Settings.IsAutoCloseWithWar3;
+            IsAutoStartWar3 = Settings.IsAutoStartWar3;
+            IsAutoCloseWar3 = Settings.IsAutoCloseWithWar3;
         }
 
 

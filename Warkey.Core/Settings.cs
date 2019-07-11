@@ -21,59 +21,39 @@ namespace Warkey.Core
         private const string FILENAME = "WarkeyNETIII.json";
         private readonly SettingsManager _manager = new SettingsManager(FILENAME);
 
-        public async Task LoadAsync()
+        public async Task<SettingsModel> LoadAsync()
         {
             try
             {
-                // whole block to prevent broken json setting file
+                // try catch whole block to prevent broken json setting file
                 var result = await _manager.GetAsync<SettingsModel>();
-                MainWindow.WarkeyVm = result.WarkeyVm;
-                MainWindow.AutoChatVm = new AutoChatViewModel();
-                MainWindow.AutoChatVm.ListOfAutoChats = result.Autochats;
 
                 IsStartMinimized = result.IsStartMinimized;
                 IsAutoStartWar3 = result.IsAutoStartWar3;
                 IsAutoCloseWithWar3 = result.IsAutoCloseWithWar3;
+
+                return result;
             }
             catch
             {
-                return;
+                return new SettingsModel
+                {
+                    Autochats = new ObservableCollection<AutoChatViewModel>(),
+                    WarkeyVm = new WarkeyViewModel()
+                };
             }
-
-            if (IsAutoStartWar3)
-                if (File.Exists("war3.exe"))
-                    if (MainWindowHandleService.GetWar3HWND() == null)
-                        Process.Start("war3.exe");
-
+            
         }
 
-        public async Task Savesync()
+        public async Task SaveAsync(SettingsModel model)
         {
-            var obj = new SettingsModel
-            {
-                WarkeyVm = MainWindow.WarkeyVm,
-                Autochats = MainWindow.AutoChatVm.ListOfAutoChats,
-                IsStartMinimized = IsStartMinimized,
-                IsAutoStartWar3 = IsAutoStartWar3,
-                IsAutoCloseWithWar3 = IsAutoCloseWithWar3
-            };
-            await _manager.SaveAsync(obj);
+            await _manager.SaveAsync(model);
         }
-
-        //private static void InitializeViewModels()
-        //{
-        //    MainWindow.WarkeyVm = new WarkeyViewModel();
-        //    MainWindow.AutoChatVm = new AutoChatViewModel();
-
-        //    IsStartMinimized = false;
-        //    IsAutoStartWar3 = false;
-        //    IsAutoCloseWithWar3 = false;
-        //}
-
+        
         public class SettingsModel
         {
             public WarkeyViewModel WarkeyVm { get; set; }
-            public ObservableCollection<AutoChatItem> Autochats { get; set; }
+            public ObservableCollection<AutoChatViewModel> Autochats { get; set; }
             public bool IsStartMinimized { get; set; }
             public bool IsAutoStartWar3 { get; set; }
             public bool IsAutoCloseWithWar3 { get; set; }
