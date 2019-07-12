@@ -65,7 +65,7 @@ namespace Warkey.Core
             // cannot run in another thread
             // because windows API cannot return to task.run in another thread
             // !!! BECAREFUL! refactoring this to dynamic, not sure if system hook still works !!! 
-            _keyboardDetector.GlobalKeyDown += KeyboardHookService_GlobalKeyDown;
+            KeyboardDetector.GlobalKeyDown += KeyboardHookService_GlobalKeyDown;
         }
 
         public async Task SaveSettingsAsync()
