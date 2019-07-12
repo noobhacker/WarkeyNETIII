@@ -22,26 +22,15 @@ namespace Warkey.Core
 
         public async Task<SettingsModel> LoadAsync()
         {
-            try
-            {
-                // try catch whole block to prevent broken json setting file
-                var result = await _manager.GetAsync<SettingsModel>();
 
-                IsStartMinimized = result.IsStartMinimized;
-                IsAutoStartWar3 = result.IsAutoStartWar3;
-                IsAutoCloseWithWar3 = result.IsAutoCloseWithWar3;
+            // try catch whole block to prevent broken json setting file
+            var result = await _manager.GetAsync<SettingsModel>();
 
-                return result;
-            }
-            catch
-            {
-                return new SettingsModel
-                {
-                    Autochats = new ObservableCollection<AutoChatViewModel>(),
-                    Warkeys = new WarkeyViewModel()
-                };
-            }
-            
+            IsStartMinimized = result.IsStartMinimized;
+            IsAutoStartWar3 = result.IsAutoStartWar3;
+            IsAutoCloseWithWar3 = result.IsAutoCloseWithWar3;
+
+            return result;
         }
 
         public async Task SaveAsync(SettingsModel model)
@@ -52,7 +41,7 @@ namespace Warkey.Core
 
             await _manager.SaveAsync(model);
         }
-        
+
         public class SettingsModel
         {
             public WarkeyViewModel Warkeys { get; set; }
@@ -60,6 +49,12 @@ namespace Warkey.Core
             public bool IsStartMinimized { get; set; }
             public bool IsAutoStartWar3 { get; set; }
             public bool IsAutoCloseWithWar3 { get; set; }
+
+            public SettingsModel()
+            {
+                Warkeys = new WarkeyViewModel();
+                Autochats = new ObservableCollection<AutoChatViewModel>();
+            }
         }
     }
 }

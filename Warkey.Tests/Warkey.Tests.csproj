@@ -50,7 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\ServicesTest.cs" />
-    <Compile Include="Presenter\ViewInitializationTest.cs" />
+    <Compile Include="Core\SettingsTest.cs" />
+    <Compile Include="Infrastructure\SettingsManagerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +61,10 @@
     <ProjectReference Include="..\Warkey.Core\Warkey.Core.csproj">
       <Project>{0ADB199C-B790-4AA6-BEFD-8D2AA0614A7A}</Project>
       <Name>Warkey.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Warkey.Infrastructure\Warkey.Infrastructure.csproj">
+      <Project>{2F88D9F7-A683-43D6-A9AA-23DDBB474404}</Project>
+      <Name>Warkey.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Warkey.View\Warkey.View.csproj">
       <Project>{1488da79-160c-432c-955e-ae32cf4780a7}</Project>

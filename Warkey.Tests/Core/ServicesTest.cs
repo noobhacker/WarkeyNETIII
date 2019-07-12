@@ -11,9 +11,10 @@ namespace Warkey.Tests.Core
         [TestMethod]
         public async Task TestInitialization()
         {
-            var services = new Services();
-            await services.InitializeAsync();
-            services.Dispose();            
+            using (var services = new Services())
+            {
+                await services.InitializeAsync();
+            }
         }
     }
 }

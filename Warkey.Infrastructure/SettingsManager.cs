@@ -17,6 +17,7 @@ namespace Warkey.Infrastructure
         }
 
         public async Task<T> GetAsync<T>()
+            where T : new()
         {
             if (File.Exists(_filename))
             {
@@ -24,11 +25,18 @@ namespace Warkey.Infrastructure
                 var json = await streamReader.ReadToEndAsync();
                 streamReader.Dispose();
 
-                var result = JsonConvert.DeserializeObject<T>(json);
-                return result;
+                try
+                {
+                    var result = JsonConvert.DeserializeObject<T>(json);
+                    return result;
+                }
+                catch
+                {
+                    return new T();
+                }
             }
 
-            return default;
+            return new T();
         }
 
         public async Task SaveAsync<T>(T saveModel)
