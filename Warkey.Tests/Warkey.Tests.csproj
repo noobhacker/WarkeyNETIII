@@ -49,13 +49,18 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RegistryTest.cs" />
+    <Compile Include="Core\ServicesTest.cs" />
+    <Compile Include="Presenter\ViewInitializationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Warkey.Core\Warkey.Core.csproj">
+      <Project>{0ADB199C-B790-4AA6-BEFD-8D2AA0614A7A}</Project>
+      <Name>Warkey.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Warkey.View\Warkey.View.csproj">
       <Project>{1488da79-160c-432c-955e-ae32cf4780a7}</Project>
       <Name>Warkey.View</Name>

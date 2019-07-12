@@ -11,7 +11,7 @@
       Title="WarkeyPage">
     <Grid>
         <Image Source="/Images/War3Inventory.png"
-               Stretch="Fill"/>
+               Stretch="Fill" />
         <Grid HorizontalAlignment="Right" 
               VerticalAlignment="Top" 
               Background="White" 

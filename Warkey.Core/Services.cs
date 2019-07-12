@@ -37,6 +37,7 @@ namespace Warkey.Core
             _keyboardSender = new KeyboardSender();
             _gameWindow = new GameWindow();
             _gameSaves = new GameSaves();
+            Settings = new Settings();
         }
 
         public async Task InitializeAsync()

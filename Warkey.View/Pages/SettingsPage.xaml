@@ -22,7 +22,7 @@
 
             <StackPanel Margin="8">
                 <TextBlock Text="Screen Resolution: " />
-                <TextBlock Text="{Binding CurrentResolution, Converter={StaticResource ResolutionToStringConverter}}"
+                <TextBlock Text="{Binding CurrentResolution}"
                            FontSize="16" />
             </StackPanel>
 
@@ -33,7 +33,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel>
                     <TextBlock Text="Game Resolution: " />
-                    <TextBlock Text="{Binding GameResolution, Converter={StaticResource ResolutionToStringConverter}}"
+                    <TextBlock Text="{Binding GameResolution}"
                                FontSize="16" />
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">

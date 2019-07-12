@@ -18,7 +18,7 @@ namespace Warkey.Infrastructure
                 return result;
             }
 
-            return null;
+            return new List<TkokSave>();
         }
 
         private async Task<List<TkokSave>> LoadTkokSaveFilesAsync(int saveCount)
