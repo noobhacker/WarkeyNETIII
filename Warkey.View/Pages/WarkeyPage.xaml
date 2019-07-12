@@ -9,9 +9,6 @@
       d:DesignHeight="323"
       d:DesignWidth="388"
       Title="WarkeyPage">
-    <!--<Page.Resources>
-        <converters:HotkeyToStringConverter x:Key="HotkeyToStringConverter" />
-    </Page.Resources>-->
     <Grid>
         <Image Source="/Images/War3Inventory.png"
                Stretch="Fill"/>
@@ -51,7 +48,7 @@
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slot1, Converter={StaticResource HotkeyToStringConverter}}"
+                     Text="{Binding Slots[0]}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      TextAlignment="Center"
@@ -68,7 +65,7 @@
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slot2, Converter={StaticResource HotkeyToStringConverter}}"
+                     Text="{Binding Slots[1]}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      TextAlignment="Center"
@@ -85,7 +82,7 @@
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slot3, Converter={StaticResource HotkeyToStringConverter}}"
+                     Text="{Binding Slots[2]}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      TextAlignment="Center"
@@ -102,7 +99,7 @@
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slot4, Converter={StaticResource HotkeyToStringConverter}}"
+                     Text="{Binding Slots[3]}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      TextAlignment="Center"
@@ -119,7 +116,7 @@
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slot5, Converter={StaticResource HotkeyToStringConverter}}"
+                     Text="{Binding Slots[4]}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      TextAlignment="Center"
@@ -136,7 +133,7 @@
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slot6, Converter={StaticResource HotkeyToStringConverter}}"
+                     Text="{Binding Slots[5]}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      TextAlignment="Center"
