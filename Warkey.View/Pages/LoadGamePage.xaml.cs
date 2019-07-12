@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,9 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Warkey.View.Services;
-using Warkey.View.ViewModels;
+using Warkey.Core;
+using Warkey.Core.Presenter;
+using Warkey.Core.Queries;
 
 namespace Warkey.View.Pages
 {
@@ -23,12 +25,15 @@ namespace Warkey.View.Pages
     /// </summary>
     public partial class LoadGamePage : Page
     {
-        LoadGameViewModel vm = MainWindow.LoadGameViewModel;
-        public LoadGamePage()
+        private LoadGameViewModel _viewModel = new LoadGameViewModel();
+        GameSavesQuery _query = new GameSavesQuery();
+        public LoadGamePage(Services _services)
         {
             InitializeComponent();
-            this.DataContext = vm;
+            _viewModel.Saves = _services.Saves;
+            this.DataContext = _viewModel;
         }
+
         private void startAnimationByName(string name)
         {
             Storyboard sb = this.FindResource(name) as Storyboard;
@@ -37,16 +42,14 @@ namespace Warkey.View.Pages
 
         public async void LoadSaveFilesAsync(int count)
         {
-            vm.Saves.Clear();
-            var saves = await SaveFileService.LoadTkokSaveFilesAsync(count);
-
-            foreach (var item in saves)
-                vm.Saves.Add(item);
+            _viewModel.Saves.Clear();
+            var saves = await _query.GetTkokSaveFilesAsync(count);
+            _viewModel.Saves = new ObservableCollection<Infrastructure.GameSaves.TkokSave>(saves);
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            vm.ExtraCommandVisibility = Visibility.Collapsed;
+            //vm.ExtraCommandVisibility = Visibility.Collapsed;
             LoadSaveFilesAsync(5);
         }
 
@@ -63,7 +66,7 @@ namespace Warkey.View.Pages
         private void copyBtn_Click(object sender, RoutedEventArgs e)
         {
             var index = listBox.SelectedIndex;
-            var password = vm.Saves[index].Password;
+            var password = _viewModel.Saves[index].Password;
             System.Windows.Forms.Clipboard.SetDataObject(
                  password, //text to store in clipboard
                  false,       //do not keep after our app exits
@@ -81,7 +84,7 @@ namespace Warkey.View.Pages
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            vm.ExtraCommandVisibility = Visibility.Visible;
+            //vm.ExtraCommandVisibility = Visibility.Visible;
         }
     }
 }

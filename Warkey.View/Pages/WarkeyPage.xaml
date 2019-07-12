@@ -9,9 +9,9 @@
       d:DesignHeight="323"
       d:DesignWidth="388"
       Title="WarkeyPage">
-    <Page.Resources>
+    <!--<Page.Resources>
         <converters:HotkeyToStringConverter x:Key="HotkeyToStringConverter" />
-    </Page.Resources>
+    </Page.Resources>-->
     <Grid>
         <Image Source="/Images/War3Inventory.png"
                Stretch="Fill"/>

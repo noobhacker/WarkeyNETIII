@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Warkey.Core;
+using Warkey.Core.Presenter;
 
 namespace Warkey.View.Pages
 {
@@ -20,20 +22,25 @@ namespace Warkey.View.Pages
     /// </summary>
     public partial class EditAutoChatPage : Page
     {
-        EditAutoChatViewModel vm = new EditAutoChatViewModel();
+        private AutoChatViewModel _viewModel;
+        private Services _services;
         int? index;
 
-        public EditAutoChatPage()
+        public EditAutoChatPage(Services services)
         {
             InitializeComponent();
-            this.DataContext = vm;
+            _services = services;
+            _viewModel = new AutoChatViewModel();
+            this.DataContext = _viewModel;
         }
 
-        public EditAutoChatPage(AutoChatItem item, int index)
-            : this()
+        public EditAutoChatPage(Services services, AutoChatViewModel item, int index)
         {
-            vm.Key = item.Key;
-            vm.Message = item.Message;
+            InitializeComponent();
+            _services = services;
+            _viewModel = item;
+            this.DataContext = _viewModel;
+
             this.index = index;       
         }
 
@@ -44,29 +51,29 @@ namespace Warkey.View.Pages
 
         private void hotkeyTb_KeyDown(object sender, KeyEventArgs e)
         {
-            vm.Key = e.Key;
+            _viewModel.Key = e.Key;
         }
 
         private async void saveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(hotkeyTb.Text != "" && vm.Message != "")
+            if(hotkeyTb.Text != "" && _viewModel.Message != "")
             {
-                var list = MainWindow.AutoChatVm.ListOfAutoChats;
+                var list =_services.Autochats;
                 if (index == null)
                 {
-                    list.Add(new AutoChatItem()
+                    list.Add(new AutoChatViewModel()
                     {
-                        Key = vm.Key,
-                        Message = vm.Message
+                        Key = _viewModel.Key,
+                        Message = _viewModel.Message
                     });
                 }
                 else
                 {
-                    list[index.Value].Key = vm.Key;
-                    list[index.Value].Message = vm.Message;
+                    list[index.Value].Key = _viewModel.Key;
+                    list[index.Value].Message = _viewModel.Message;
                 }
 
-                await Settings.SaveSettingsAsync();
+                await _services.SaveSettingsAsync();
                 NavigationService.GoBack();
             }
         }

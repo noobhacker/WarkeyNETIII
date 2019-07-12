@@ -17,8 +17,7 @@ namespace Warkey.Core
 {
     public class Services : IDisposable
     {
-        private const int HWND_UPDATE_INTERVAL = 1;
-        private IntPtr war3Hwnd;
+        private const int HWND_UPDATE_INTERVAL = 1;      
         private bool IsWar3Foreground;
 
         private readonly KeyboardDetector _keyboardDetector;
@@ -26,6 +25,7 @@ namespace Warkey.Core
         private readonly GameWindow _gameWindow;
         private readonly GameSaves _gameSaves;
 
+        public IntPtr War3Hwnd { get; set; }
         public WarkeyViewModel Warkeys { get; set; }
         public ObservableCollection<AutoChatViewModel> Autochats { get; set; }
         public ObservableCollection<TkokSave> Saves { get; set; }
@@ -46,7 +46,7 @@ namespace Warkey.Core
             Warkeys = settings.Warkeys;
             Autochats = settings.Autochats;
 
-            var saves = await _gameSaves.GetTkokSaveFilesAsync();
+            var saves = await _gameSaves.GetTkokSaveFilesAsync(5);
             Saves = new ObservableCollection<TkokSave>(saves);
 
             if (Settings.IsAutoStartWar3 && File.Exists("war3.exe") && _gameWindow.GetWar3HWND() == null)
@@ -92,7 +92,7 @@ namespace Warkey.Core
             {
                 if (slots[i] != null && slots[i].Key == e.Key && slots[i].Alt == e.Alt)
                 {
-                    _keyboardSender.SendItemMessageToHwnd(war3Hwnd, i, e.Alt);
+                    _keyboardSender.SendItemMessageToHwnd(War3Hwnd, i, e.Alt);
                 }
             }
 
@@ -116,11 +116,11 @@ namespace Warkey.Core
             var hwnd = _gameWindow.GetWar3HWND();
             if (hwnd != null)
             {
-                war3Hwnd = hwnd.Value;
+                War3Hwnd = hwnd.Value;
                 WarcraftStatusChanged?.Invoke(this, true);
                 wentRunning = true;
 
-                IsWar3Foreground = _gameWindow.IsWar3Foreground(war3Hwnd);
+                IsWar3Foreground = _gameWindow.IsWar3Foreground(War3Hwnd);
             }
             else
             {

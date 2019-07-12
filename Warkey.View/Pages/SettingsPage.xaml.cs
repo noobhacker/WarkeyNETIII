@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Warkey.View.Services;
-using Warkey.View.ViewModels;
+using Warkey.Core;
+using Warkey.Core.Commands;
+using Warkey.Core.Presenter;
 
 namespace Warkey.View.Pages
 {
@@ -22,24 +23,26 @@ namespace Warkey.View.Pages
     /// </summary>
     public partial class SettingsPage : Page
     {
-        SettingsViewModel vm = new SettingsViewModel();
+        private SettingsViewModel _viewModel = new SettingsViewModel();
+        private Services _services;
+        private GameSettingsCommand _command = new GameSettingsCommand();
 
-        public SettingsPage()
+        public SettingsPage(Services services)
         {
             InitializeComponent();
-            this.DataContext = vm;
+            _services = services;
+            this.DataContext = _viewModel;
         }
 
         private void OptimizeGameResolutionbtn_Click(object sender, RoutedEventArgs e)
         {
-            setResolution(vm.CurrentResolution.Width, vm.CurrentResolution.Height);
+            setResolution(_viewModel.CurrentResolution.Width, _viewModel.CurrentResolution.Height);
         }
 
         private void OptimizeLockFbbtn_Click(object sender, RoutedEventArgs e)
         {
-            GameVideoSettingsService.WriteLockFb();
-            vm.LockFbStatus = "Optimized";
-            vm.IsLockFbNeedsOptimize = false;
+            _command.WriteLockFb();
+            _viewModel.IsLockFbNeedsOptimize = false;
         }
 
         private void FullHDGameResolutionbtn_Click(object sender, RoutedEventArgs e)
@@ -49,15 +52,15 @@ namespace Warkey.View.Pages
 
         private void setResolution(int width, int height)
         {
-            if (MainWindowHandleService.GetWar3HWND() == null)
+            if (_services.War3Hwnd == null)
             {
-                GameVideoSettingsService.WriteResolution(width, height);
-                vm.GameResolution.Width = width;
-                vm.GameResolution.Height = height;
+                _command.WriteResolution(width, height);
+                _viewModel.GameResolution.Width = width;
+                _viewModel.GameResolution.Height = height;
                 // trigger onpropertychanged
-                vm.GameResolution = vm.CurrentResolution;
+                _viewModel.GameResolution = _viewModel.CurrentResolution;
 
-                vm.IsGameResolutionNeedsOptimize = false;
+                _viewModel.IsGameResolutionNeedsOptimize = false;
             }
             else
             {

@@ -23,9 +23,9 @@ namespace Warkey.Core.Queries
         }
 
         // this should be served as viewmodel
-        //public async Task<List<TkokSave>> GetTkokSaveFilesAsync()
-        //{
-        //    return await _gameSaves.GetTkokSaveFilesAsync();
-        //}
+        public async Task<IEnumerable<TkokSave>> GetTkokSaveFilesAsync(int count)
+        {
+            return await _gameSaves.GetTkokSaveFilesAsync(count);
+        }
     }
 }

@@ -13,8 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Warkey.View.Items;
-using Warkey.View.ViewModels;
+using Warkey.Core.Presenter;
+using Warkey.Core;
+using static Warkey.Infrastructure.KeyboardDetector;
 
 namespace Warkey.View.Pages
 {
@@ -24,12 +25,14 @@ namespace Warkey.View.Pages
     public partial class WarkeyPage : Page
     {
         // by reference
-        WarkeyViewModel vm = MainWindow.WarkeyVm;
+        private readonly WarkeyViewModel _viewModel;
 
-        public WarkeyPage()
+
+        public WarkeyPage(Services services)
         {
             InitializeComponent();
-            this.DataContext = vm;
+            _viewModel = services.Warkeys;
+            this.DataContext = _viewModel;
         }
 
         private void itemSlots_Keydown(object sender, KeyEventArgs e)
@@ -40,8 +43,8 @@ namespace Warkey.View.Pages
             bool alt = Keyboard.IsKeyDown(Key.LeftAlt) ? true : false;
             var key = alt ? e.SystemKey : e.Key;
 
-            var prop = vm.GetType().GetProperty(tag);
-            prop.SetValue(vm, new HotkeyItem()
+            var prop = _viewModel.GetType().GetProperty(tag);
+            prop.SetValue(_viewModel, new HotkeyModel()
             {
                 Alt = alt,
                 Key = key

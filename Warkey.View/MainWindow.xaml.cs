@@ -56,7 +56,7 @@ namespace Warkey.View
                 loadBtn.Visibility = Visibility.Collapsed;
             }
 
-            navFrame.Navigate(new WarkeyPage());                  
+            navFrame.Navigate(new WarkeyPage(_services));                  
         }
 
         private void Services_ApplicationExitCommand(object sender, EventArgs e)

@@ -237,6 +237,10 @@
       <Project>{0ADB199C-B790-4AA6-BEFD-8D2AA0614A7A}</Project>
       <Name>Warkey.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Warkey.Infrastructure\Warkey.Infrastructure.csproj">
+      <Project>{2F88D9F7-A683-43D6-A9AA-23DDBB474404}</Project>
+      <Name>Warkey.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.5.1.1\build\Fody.targets" Condition="Exists('..\packages\Fody.5.1.1\build\Fody.targets')" />

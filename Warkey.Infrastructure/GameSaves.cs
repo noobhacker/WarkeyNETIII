@@ -10,11 +10,11 @@ namespace Warkey.Infrastructure
     public class GameSaves
     {
         private const string _tkokFolderName = "TKoK_Save_Files";
-        public async Task<IEnumerable<TkokSave>> GetTkokSaveFilesAsync()
+        public async Task<IEnumerable<TkokSave>> GetTkokSaveFilesAsync(int count)
         {
             if (IsLoadFunctionAvailable())
             {
-                var result = await LoadTkokSaveFilesAsync(5);
+                var result = await LoadTkokSaveFilesAsync(count);
                 return result;
             }
 
