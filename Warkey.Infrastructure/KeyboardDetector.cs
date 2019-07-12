@@ -48,12 +48,14 @@ namespace Warkey.Infrastructure
             UnhookWindowsHookEx(_hookID);
         }
 
+        private static LowLevelKeyboardProc callbackReference;
         private IntPtr SetHook(LowLevelKeyboardProc proc)
         {
             using (var curProcess = Process.GetCurrentProcess())
             using (var curModule = curProcess.MainModule)
             {
-                return SetWindowsHookEx(WH_KEYBOARD_LL, proc,
+                callbackReference = new LowLevelKeyboardProc(proc);
+                return SetWindowsHookEx(WH_KEYBOARD_LL, callbackReference,
                     GetModuleHandle(curModule.ModuleName), 0);
             }
         }
