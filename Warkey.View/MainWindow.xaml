@@ -4,15 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Warkey.View"
-        xmlns:converters="clr-namespace:Warkey.View.Converters"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
         Title="Warkey.NET III"
         Height="480"
         Width="720"
-                  TintOpacity="0.65"
-                  NoiseOpacity="0"
-                  ExtendViewIntoTitleBar="True" 
+        TintOpacity="0.65"
+        NoiseOpacity="0"
+        ExtendViewIntoTitleBar="True" 
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
         Closing="Window_Closing">
@@ -41,7 +40,7 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Name="hamMenu"
+        <Grid Name="hamMenu" 
               HorizontalAlignment="Left"
               fw:PointerTracker.Enabled="True">
             <Grid.RowDefinitions>

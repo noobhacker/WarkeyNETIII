@@ -17,6 +17,10 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.16"
                                       Value="70" />
             </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="listBox">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,50,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.16" Value="0,70,0,0" />
+            </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="BarClose">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
@@ -24,6 +28,10 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.16"
                                       Value="50" />
             </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="listBox">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,70,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.16" Value="0,50,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
         <converters:KeyToStringConverter x:Key="KeyToStringConverter" />
     </Page.Resources>
