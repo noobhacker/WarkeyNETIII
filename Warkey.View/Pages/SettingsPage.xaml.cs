@@ -40,10 +40,19 @@ namespace Warkey.View.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // refactor to CQRS handler in Warkey.Core in the fiuchiah
+
             _viewModel.ScreenResolution = _query.GetScreenResolution();
-            _viewModel.GameResolution = _query.GetGameResolution();
-            _viewModel.IsLockFbNeedsOptimize = _query.GetLockFb();
-            _viewModel.IsGameResolutionNeedsOptimize = CheckIfResolutionNeedsOptimize();
+            var gameResolutionQuery = _query.GetGameResolution();
+            if (gameResolutionQuery != null)
+            {
+                _viewModel.GameResolution = gameResolutionQuery;
+                _viewModel.IsGameResolutionNeedsOptimize = CheckIfResolutionNeedsOptimize();
+                _viewModel.IsLockFbNeedsOptimize = _query.GetLockFb();
+            }
+            else
+            {
+                MessageBox.Show("Please launch Warcraft III to initialize graphics settings, then perform optimization.");
+            }    
 
             _viewModel.IsStartMinimized = Settings.IsStartMinimized;
             _viewModel.IsAutoStartWar3 = Settings.IsAutoStartWar3;
@@ -100,6 +109,7 @@ namespace Warkey.View.Pages
 
         private void setResolution(int width, int height)
         {
+            _services.UpdateWar3Hwnd();
             if (_services.War3Hwnd == IntPtr.Zero)
             {
                 _command.WriteResolution(width, height);

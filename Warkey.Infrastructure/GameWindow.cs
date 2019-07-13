@@ -23,8 +23,6 @@ namespace Warkey.Infrastructure
             return false;
         }
 
-        private static readonly string[] _processNames = { "war3", "War3" };
-
         public IntPtr? GetWar3HWND()
         {
             var processes = Process.GetProcesses();

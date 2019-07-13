@@ -17,7 +17,7 @@ namespace Warkey.Core
 {
     public class Services : IDisposable
     {
-        private const int HWND_UPDATE_INTERVAL = 1;      
+        private bool sleep = false;
         private bool IsWar3Foreground;
 
         private readonly KeyboardDetector _keyboardDetector;
@@ -57,15 +57,21 @@ namespace Warkey.Core
 
             // cannot task.run on timer, won't hit breakpoint on timer event
             UpdateWar3Hwnd();
-            var hwndListener = new DispatcherTimer();
-            hwndListener.Interval = TimeSpan.FromSeconds(HWND_UPDATE_INTERVAL);
-            hwndListener.Tick += (sender, e) => UpdateWar3Hwnd();
-            hwndListener.Start();
+            var sleepTimer = new DispatcherTimer();
+            sleepTimer.Interval = TimeSpan.FromMilliseconds(1500);
+            sleepTimer.Tick += SleepTimer_Tick;
+            sleepTimer.Start();
 
             // cannot run in another thread
             // because windows API cannot return to task.run in another thread
             // !!! BECAREFUL! refactoring this to dynamic, not sure if system hook still works !!! 
             KeyboardDetector.GlobalKeyDown += KeyboardHookService_GlobalKeyDown;
+        }
+
+        // Sleep will keep adding the timer
+        private void SleepTimer_Tick(object sender, EventArgs e)
+        {
+            sleep = true;
         }
 
         public async Task SaveSettingsAsync()
@@ -81,6 +87,12 @@ namespace Warkey.Core
 
         private bool KeyboardDetectorPrecondition()
         {
+            if(sleep)
+            {
+                UpdateWar3Hwnd();
+                sleep = false;
+            }
+
             return IsWar3Foreground && !_keyboardSender.IsChatting;
         }
 
@@ -112,7 +124,7 @@ namespace Warkey.Core
         }
 
         private bool wentRunning = false;
-        private void UpdateWar3Hwnd()
+        public void UpdateWar3Hwnd()
         {
             var hwnd = _gameWindow.GetWar3HWND();
             if (hwnd != null)
