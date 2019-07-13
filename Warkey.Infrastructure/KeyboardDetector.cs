@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -40,6 +41,7 @@ namespace Warkey.Infrastructure
 
         public KeyboardDetector(Func<bool> precondition)
         {
+            if (_hookID != null) throw new InvalidOperationException("Can't hook more than once.");
             _hookID = SetHook(_proc);
             Precondition = precondition;
         }
