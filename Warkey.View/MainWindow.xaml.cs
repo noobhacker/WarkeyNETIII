@@ -131,7 +131,7 @@ namespace Warkey.View
                         break;
                     case "About":
                         navFrame.Navigate(new AboutPage());
-                        StartAnimationByName("FadeInWithMotion");
+                        StartAnimationByName("FadeIn");
                         break;
                 }
 
