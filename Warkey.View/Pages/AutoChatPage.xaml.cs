@@ -34,7 +34,7 @@ namespace Warkey.View.Pages
             DataContext = _viewModel;
 
             // do it here so navigate from another page will keep collapsed
-            //_viewModel.ExtraCommandVisibility = Visibility.Collapsed;
+            _viewModel.ExtraCommandVisibility = Visibility.Collapsed;
         
         }
 
@@ -60,10 +60,10 @@ namespace Warkey.View.Pages
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var listbox = (ListBox)sender;
-            //if (listbox.SelectedItems.Count != 0)
-            //    _viewModel.ExtraCommandVisibility = Visibility.Visible;
-            //else
-            //    _viewModel.ExtraCommandVisibility = Visibility.Collapsed;
+            if (listbox.SelectedItems.Count != 0)
+                _viewModel.ExtraCommandVisibility = Visibility.Visible;
+            else
+                _viewModel.ExtraCommandVisibility = Visibility.Collapsed;
         }
 
         private void editBtn_Click(object sender, RoutedEventArgs e)

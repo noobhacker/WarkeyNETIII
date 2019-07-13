@@ -41,7 +41,7 @@ namespace Warkey.Infrastructure
 
         public KeyboardDetector(Func<bool> precondition)
         {
-            if (_hookID != null) throw new InvalidOperationException("Can't hook more than once.");
+            if (_hookID != IntPtr.Zero) throw new InvalidOperationException("Can't hook more than once.");
             _hookID = SetHook(_proc);
             Precondition = precondition;
         }

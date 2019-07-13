@@ -7,7 +7,7 @@
         xmlns:converters="clr-namespace:Warkey.View.Converters"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
-        Title="{Binding Title}"
+        Title="Warkey.NET III"
         Height="480"
         Width="720"
                   TintOpacity="0.65"

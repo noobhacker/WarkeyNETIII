@@ -25,9 +25,9 @@ namespace Warkey.View
     /// </summary>
     public partial class MainWindow
     {
-        public MainViewModel _viewModel;
-        public Services _services = new Services();
-        public GameSavesQuery _gameSavesQuery = new GameSavesQuery();
+        private MainViewModel _viewModel;
+        private Services _services;
+        private GameSavesQuery _gameSavesQuery;
 
         public MainWindow()
         {
@@ -66,7 +66,7 @@ namespace Warkey.View
 
         private void Services_WarcraftStatusChanged(object sender, bool e)
         {
-            _viewModel.Title = e ? "WarkeyNETIII - Running" : "WarkeyNETIII";
+            _viewModel.Title = e ? "Warkey.NET III - Running" : "Warkey.NET III";
         }
 
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

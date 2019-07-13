@@ -127,6 +127,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\ToStringConverter.cs" />
     <Compile Include="Converters\IsOptimizedToStringConverter.cs" />
     <Compile Include="Converters\KeyToStringConverter.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">

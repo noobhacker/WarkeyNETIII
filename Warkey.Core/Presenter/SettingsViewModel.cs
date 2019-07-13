@@ -9,7 +9,7 @@ namespace Warkey.Core.Presenter
 {
     public class SettingsViewModel : BaseViewModel
     {
-        public ScreenResolution CurrentResolution { get; set; }
+        public ScreenResolution ScreenResolution { get; set; }
         public ScreenResolution GameResolution { get; set; }
         public bool IsGameResolutionNeedsOptimize { get; set; }
         public bool IsLockFbNeedsOptimize { get; set; }
@@ -19,20 +19,8 @@ namespace Warkey.Core.Presenter
 
         public SettingsViewModel()
         {
-            // move to frontend
-            //GameResolution = GameVideoSettingsService.ReadResolution();
-            //CurrentResolution = ScreenResolutionService.GetCurrentResolution();
-            //var lockfbValue = GameVideoSettingsService.ReadLockFb();
-           
-            //IsGameResolutionNeedsOptimize = !(
-            //    GameResolution.Width == CurrentResolution.Width && 
-            //    GameResolution.Height == CurrentResolution.Height);
-
-            //IsLockFbNeedsOptimize = Convert.ToBoolean(lockfbValue);
-
-            IsStartMinimized = Settings.IsStartMinimized;
-            IsAutoStartWar3 = Settings.IsAutoStartWar3;
-            IsAutoCloseWar3 = Settings.IsAutoCloseWithWar3;
+            ScreenResolution = new ScreenResolution();
+            GameResolution = new ScreenResolution();
         }
 
 

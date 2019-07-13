@@ -45,7 +45,8 @@ namespace Warkey.Core.Queries
 
         public bool GetLockFb()
         {
-            return (bool)_gameSettings.ReadVideoSettings("lockfb");
+            var query = _gameSettings.ReadVideoSettings("lockfb");
+            return Convert.ToBoolean(query);
         }
     }
 }

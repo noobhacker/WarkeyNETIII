@@ -9,6 +9,9 @@
       d:DesignHeight="323"
       d:DesignWidth="388"
       Title="WarkeyPage">
+    <Page.Resources>
+        <converters:ToStringConverter x:Key="ToStringConverter" />
+    </Page.Resources>
     <Grid>
         <Image Source="/Images/War3Inventory.png"
                Stretch="Fill" />
@@ -48,7 +51,7 @@
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slots[0]}"
+                     Text="{Binding Slots[0], Converter={StaticResource ToStringConverter}}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      TextAlignment="Center"
@@ -58,14 +61,14 @@
                      Grid.Row="1"
                      Grid.Column="1"
                      Margin="8"
-                     Tag="Slot1"
+                     Tag="0"
                      KeyDown="itemSlots_Keydown" />
 
             <TextBox Background="Transparent"
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slots[1]}"
+                     Text="{Binding Slots[1], Converter={StaticResource ToStringConverter}}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      TextAlignment="Center"
@@ -75,14 +78,14 @@
                      Grid.Column="3"
                      Grid.Row="1"
                      Margin="8"
-                     Tag="Slot2"
+                     Tag="1"
                      KeyDown="itemSlots_Keydown" />
 
             <TextBox Background="Transparent"
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slots[2]}"
+                     Text="{Binding Slots[2], Converter={StaticResource ToStringConverter}}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      TextAlignment="Center"
@@ -92,14 +95,14 @@
                      Grid.Row="3"
                      Grid.Column="1"
                      Margin="8"
-                     Tag="Slot3"
+                     Tag="2"
                      KeyDown="itemSlots_Keydown" />
 
             <TextBox Background="Transparent"
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slots[3]}"
+                     Text="{Binding Slots[3], Converter={StaticResource ToStringConverter}}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      TextAlignment="Center"
@@ -109,14 +112,14 @@
                      Grid.Column="3"
                      Grid.Row="3"
                      Margin="8"
-                     Tag="Slot4"
+                     Tag="3"
                      KeyDown="itemSlots_Keydown" />
 
             <TextBox Background="Transparent"
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slots[4]}"
+                     Text="{Binding Slots[4], Converter={StaticResource ToStringConverter}}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      TextAlignment="Center"
@@ -126,14 +129,14 @@
                      Grid.Row="5"
                      Grid.Column="1"
                      Margin="8"
-                     Tag="Slot5"
+                     Tag="4"
                      KeyDown="itemSlots_Keydown" />
 
             <TextBox Background="Transparent"
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"
-                     Text="{Binding Slots[5]}"
+                     Text="{Binding Slots[5], Converter={StaticResource ToStringConverter}}"
                      HorizontalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      TextAlignment="Center"
@@ -143,7 +146,7 @@
                      Grid.Row="5"
                      Grid.Column="3"
                      Margin="8"
-                     Tag="Slot6"
+                     Tag="5"
                      KeyDown="itemSlots_Keydown" />
 
         </Grid>

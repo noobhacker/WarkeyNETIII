@@ -12,6 +12,7 @@ namespace Warkey.Core.Presenter
     public class LoadGameViewModel : BaseViewModel
     {
         public ObservableCollection<TkokSave> Saves { get; set; }
+        public Visibility ExtraCommandVisibility { get; set; }
 
         public LoadGameViewModel()
         {

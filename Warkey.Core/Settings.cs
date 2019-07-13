@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Warkey.Core.Presenter;
 using Warkey.Infrastructure;
+using static Warkey.Infrastructure.KeyboardDetector;
 
 namespace Warkey.Core
 {
@@ -25,6 +26,13 @@ namespace Warkey.Core
 
             // try catch whole block to prevent broken json setting file
             var result = await _manager.GetAsync<SettingsModel>();
+            if(result.Warkeys.Slots.Count == 0)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    result.Warkeys.Slots.Add(new HotkeyModel());
+                }
+            }
 
             IsStartMinimized = result.IsStartMinimized;
             IsAutoStartWar3 = result.IsAutoStartWar3;

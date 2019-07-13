@@ -38,17 +38,16 @@ namespace Warkey.View.Pages
         private void itemSlots_Keydown(object sender, KeyEventArgs e)
         {
             var textbox = (TextBox)sender;
-            var tag = textbox.Tag.ToString();
+            var tag = Convert.ToInt32(textbox.Tag);
 
             bool alt = Keyboard.IsKeyDown(Key.LeftAlt) ? true : false;
             var key = alt ? e.SystemKey : e.Key;
 
-            var prop = _viewModel.GetType().GetProperty(tag);
-            prop.SetValue(_viewModel, new HotkeyModel()
+            _viewModel.Slots[tag] = new HotkeyModel()
             {
                 Alt = alt,
                 Key = key
-            }, null);
+            };
 
         }
         

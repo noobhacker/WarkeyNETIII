@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,7 @@ namespace Warkey.Core.Presenter
         public WarkeyViewModel()
         {
             Slots = new ObservableCollection<HotkeyModel>();
-            for(int i = 0; i < 6; i++)
-            {
-                Slots.Add(new HotkeyModel());
-            }
         }
+
     }
 }

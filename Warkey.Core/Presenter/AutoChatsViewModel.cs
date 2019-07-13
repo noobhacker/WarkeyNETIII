@@ -12,7 +12,7 @@ namespace Warkey.Core.Presenter
     public class AutoChatsViewModel : BaseViewModel
     {
         public ObservableCollection<AutoChatViewModel> ListOfAutoChats { get; set; }
-        
+        public Visibility ExtraCommandVisibility{ get; set; }
         public AutoChatsViewModel()
         {
             ListOfAutoChats = new ObservableCollection<AutoChatViewModel>();

@@ -9,7 +9,7 @@
       mc:Ignorable="d"
       d:DesignHeight="323"
       d:DesignWidth="388"
-      Title="SettingsPage">
+      Title="SettingsPage" Loaded="Page_Loaded">
     <Page.Resources>
         <converters:IsOptimizedToStringConverter x:Key="IsOptimizedToStringConverter" />
     </Page.Resources>
@@ -22,7 +22,7 @@
 
             <StackPanel Margin="8">
                 <TextBlock Text="Screen Resolution: " />
-                <TextBlock Text="{Binding CurrentResolution}"
+                <TextBlock Text="{Binding ScreenResolution}"
                            FontSize="16" />
             </StackPanel>
 
@@ -60,15 +60,12 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <StackPanel>
-                    <TextBlock Text="lockfb status: " />
-                    <TextBlock Text="{Binding LockFbStatus}"
-                               FontSize="16" />
-                </StackPanel>
-                <Button Grid.Column="1"
+                <TextBlock Text="Lockfb optimization: " VerticalAlignment="Center" />
+                    <Button Grid.Column="1"
                         Style="{StaticResource ButtonRevealStyle}"
                         Content="{Binding IsLockFbNeedsOptimize, Converter={StaticResource IsOptimizedToStringConverter} }"
                         Width="80"
+                            Height="30"
                         HorizontalAlignment="Right"
                         Margin="4"
                         IsEnabled="{Binding IsLockFbNeedsOptimize}"

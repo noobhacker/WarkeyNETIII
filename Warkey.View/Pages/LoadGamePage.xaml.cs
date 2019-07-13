@@ -49,7 +49,7 @@ namespace Warkey.View.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //vm.ExtraCommandVisibility = Visibility.Collapsed;
+            _viewModel.ExtraCommandVisibility = Visibility.Collapsed;
             LoadSaveFilesAsync(5);
         }
 
@@ -84,7 +84,7 @@ namespace Warkey.View.Pages
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //vm.ExtraCommandVisibility = Visibility.Visible;
+            _viewModel.ExtraCommandVisibility = Visibility.Visible;
         }
     }
 }
