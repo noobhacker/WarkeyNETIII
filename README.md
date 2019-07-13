@@ -2,14 +2,14 @@
 Warkey.NET III is an open source Warkey. It is designed to work and integrate with Windows 10 flawlessly. Of course, it's open source, no ads and user friendly.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/0000000009.png" width="400"/>
-  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/0000000011.png" width="400"/>
+  <img src="https://github.com/noobhacker/WarkeyNETIII/raw/master/Screenshots/1.png" width="400"/>
+  <img src="https://github.com/noobhacker/WarkeyNETIII/raw/master/Screenshots/2.png" width="400"/>
 </p>
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/0000000012.png" width="400"/>
-  <img src="https://raw.githubusercontent.com/noobhacker/WarkeyNETIII/screenshots/0000000013.png" width="400"/>
+  <img src="https://github.com/noobhacker/WarkeyNETIII/raw/master/Screenshots/3.png" width="400"/>
+  <img src="https://github.com/noobhacker/WarkeyNETIII/raw/master/Screenshots/4.png" width="400"/>
 </p>
 
 - Doesn't conflict with chat
