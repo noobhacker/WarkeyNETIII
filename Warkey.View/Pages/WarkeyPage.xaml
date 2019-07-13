@@ -47,7 +47,7 @@
                 <ColumnDefinition Width="0.66*" />
             </Grid.ColumnDefinitions>
 
-            <TextBox Background="Transparent"
+            <TextBox Background="Transparent" 
                      BorderThickness="0"
                      Foreground="White"
                      FontSize="28"

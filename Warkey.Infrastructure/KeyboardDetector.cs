@@ -110,7 +110,7 @@ namespace Warkey.Infrastructure
             {
                 var keyConverter = new KeyConverter();
                 var key = keyConverter.ConvertToString(Key);
-                var alt = Alt ? "ALT+" : "";
+                var alt = Alt ? "ALT + " : "";
 
                 return $"{alt}{key}";
             }
