@@ -125,12 +125,17 @@ namespace Warkey.Core
             }
             else
             {
-                if (wentRunning && Settings.IsAutoCloseWithWar3)
+                if (wentRunning)
                 {
-                    ApplicationExitCommand?.Invoke(this, null);
-                }
-
-                WarcraftStatusChanged?.Invoke(this, false);
+                    if (Settings.IsAutoCloseWithWar3)
+                    {
+                        ApplicationExitCommand?.Invoke(this, null);
+                    }
+                    else
+                    {
+                        WarcraftStatusChanged?.Invoke(this, false);
+                    }
+                }              
             }
         }
 

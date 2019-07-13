@@ -27,16 +27,31 @@ namespace Warkey.Infrastructure
 
         public IntPtr? GetWar3HWND()
         {
-            foreach (var name in _processNames)
+            var processes = Process.GetProcesses();
+            var process = processes.FirstOrDefault(x => x.ProcessName == "war3" || x.ProcessName == "War3");
+            if (process != null)
             {
-                var process = Process.GetProcessesByName(name);
-                if (process.Count() != 0)
-                {
-                    return process[0].MainWindowHandle;
-                }
+                return process.MainWindowHandle;
             }
 
             return null;
         }
+
+        // this is slower because calling GetProcessByName Twice
+        // Tested on project, 200 times, 1901ms vs 3422ms
+        // 269 vs 550 compute units in visual studio profiling tool
+        //public IntPtr? GetWar3HWND()
+        //{
+        //    foreach (var name in _processNames)
+        //    {
+        //        var process = Process.GetProcessesByName(name);
+        //        if (process.Count() != 0)
+        //        {
+        //            return process[0].MainWindowHandle;
+        //        }
+        //    }
+
+        //    return null;
+        //}
     }
 }

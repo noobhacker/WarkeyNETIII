@@ -37,6 +37,7 @@ namespace Warkey.View
             _gameSavesQuery = new GameSavesQuery();
             _viewModel = new MainViewModel();
             DataContext = _viewModel;
+            _viewModel.Title = "Warkey.NET III";
 
             _services.WarcraftStatusChanged += Services_WarcraftStatusChanged;
             _services.ApplicationExitCommand += Services_ApplicationExitCommand;
