@@ -130,28 +130,19 @@ namespace Warkey.Core
             if (hwnd != null)
             {
                 War3Hwnd = hwnd.Value;
-                WarcraftStatusChanged?.Invoke(this, true);
                 wentRunning = true;
 
                 IsWar3Foreground = _gameWindow.IsWar3Foreground(War3Hwnd);
             }
             else
             {
-                if (wentRunning)
+                if (wentRunning && Settings.IsAutoCloseWithWar3)
                 {
-                    if (Settings.IsAutoCloseWithWar3)
-                    {
-                        ApplicationExitCommand?.Invoke(this, null);
-                    }
-                    else
-                    {
-                        WarcraftStatusChanged?.Invoke(this, false);
-                    }
+                    ApplicationExitCommand?.Invoke(this, null);                  
                 }              
             }
         }
 
-        public event EventHandler<bool> WarcraftStatusChanged;
         public event EventHandler ApplicationExitCommand;
 
         public void Dispose()

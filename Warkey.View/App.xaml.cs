@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -16,40 +17,21 @@ namespace Warkey.View
     /// </summary>
     public partial class App : Application
     {
+        private static Mutex _mutex = null;
+
         protected override void OnStartup(StartupEventArgs e)
         {
-            var currentProcess = Process.GetCurrentProcess();
-            if (Process.GetProcessesByName(currentProcess.ProcessName).Length > 1)
+            const string appName = "WarkeyNETIII";
+            bool createdNew;
+
+            _mutex = new Mutex(true, appName, out createdNew);
+
+            if (!createdNew)
             {
+                //app is already running! Exiting the application  
                 Application.Current.Shutdown();
-                return;
             }
-
             base.OnStartup(e);
-
-            //if (!File.Exists("Newtonsoft.Json.dll"))
-            //{
-            //    try
-            //    {
-            //        var wb = new WebClient();
-            //        wb.DownloadFile("http://leesong.azurewebsites.net/Newtonsoft.Json.dll", "Newtonsoft.Json.dll");
-            //        wb.DownloadFileCompleted += (sender, _e) =>
-            //        {
-            //            base.OnStartup(e);
-            //        };
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Newtonsoft.Json.dll is missing and no internet connection available.");
-            //        Application.Current.Shutdown();
-            //        return;
-            //    }
-            //}
-            //else
-            //{
-            //    base.OnStartup(e);
-            //}
-
         }
     }
 }

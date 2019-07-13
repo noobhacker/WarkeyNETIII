@@ -25,7 +25,6 @@ namespace Warkey.View
     /// </summary>
     public partial class MainWindow
     {
-        private MainViewModel _viewModel;
         private Services _services;
         private GameSavesQuery _gameSavesQuery;
 
@@ -35,11 +34,6 @@ namespace Warkey.View
 
             _services = new Services();
             _gameSavesQuery = new GameSavesQuery();
-            _viewModel = new MainViewModel();
-            DataContext = _viewModel;
-            _viewModel.Title = "Warkey.NET III";
-
-            _services.WarcraftStatusChanged += Services_WarcraftStatusChanged;
             _services.ApplicationExitCommand += Services_ApplicationExitCommand;
         }
 
@@ -63,11 +57,6 @@ namespace Warkey.View
         private void Services_ApplicationExitCommand(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void Services_WarcraftStatusChanged(object sender, bool e)
-        {
-            _viewModel.Title = e ? "Warkey.NET III - Running" : "Warkey.NET III";
         }
 
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

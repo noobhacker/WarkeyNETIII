@@ -56,7 +56,6 @@
     <Compile Include="Presenter\AutoChatViewModel.cs" />
     <Compile Include="Presenter\BaseViewModel.cs" />
     <Compile Include="Presenter\LoadGameViewModel.cs" />
-    <Compile Include="Presenter\MainViewModel.cs" />
     <Compile Include="Presenter\SettingsViewModel.cs" />
     <Compile Include="Presenter\WarkeyViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

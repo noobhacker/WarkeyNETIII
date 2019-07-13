@@ -45,7 +45,7 @@
             <StackPanel>
                 <StackPanel Width="200"
                             Name="menuList">
-                    <TextBlock Margin="8" Text="{Binding Title}" />
+                    <TextBlock Margin="8" Text="Warkey.NET III" />
                     <Button Background="#FFBEE6FD"
                             Style="{StaticResource ButtonRevealStyle}"
                             HorizontalContentAlignment="Left"
