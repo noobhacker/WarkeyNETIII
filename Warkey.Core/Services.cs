@@ -136,6 +136,7 @@ namespace Warkey.Core
             }
             else
             {
+                War3Hwnd = IntPtr.Zero;
                 if (wentRunning && Settings.IsAutoCloseWithWar3)
                 {
                     ApplicationExitCommand?.Invoke(this, null);                  

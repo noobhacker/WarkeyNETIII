@@ -105,7 +105,7 @@
                     <Button FontFamily="Segoe MDL2 Assets"
                         Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
-                        Content=""
+                        Content=""
                         Background="Transparent"
                         FontSize="16"
                         Name="refreshBtn"

@@ -51,7 +51,8 @@ namespace Warkey.View
                 loadBtn.Visibility = Visibility.Collapsed;
             }
 
-            navFrame.Navigate(new WarkeyPage(_services));                  
+            navFrame.Navigate(new WarkeyPage(_services));
+            StartAnimationByName("FadeOnFirstLaunch");
         }
 
         private void Services_ApplicationExitCommand(object sender, EventArgs e)
