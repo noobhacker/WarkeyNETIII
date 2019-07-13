@@ -28,6 +28,9 @@ namespace Warkey.Core
             var result = await _manager.GetAsync<SettingsModel>();
             if(result.Warkeys.Slots.Count == 0)
             {
+                // to resolve this ugliness, perhaps in viewmodel do
+                // = new ObservableCollection<> {new HotkeyModel(), ...};
+                // six times
                 for (int i = 0; i < 6; i++)
                 {
                     result.Warkeys.Slots.Add(new HotkeyModel());
