@@ -9,7 +9,7 @@
         Title="Warkey.NET III"
         Height="480"
         Width="720"
-        TintOpacity="0.65"
+        TintOpacity="0.65" 
         NoiseOpacity="0"
         ExtendViewIntoTitleBar="True" 
         WindowStartupLocation="CenterScreen"
