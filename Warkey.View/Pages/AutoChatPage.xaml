@@ -9,7 +9,7 @@
       mc:Ignorable="d"
       d:DesignHeight="323"
       d:DesignWidth="388"
-      Title="AutoChatPage">
+      Title="AutoChatPage" Loaded="Page_Loaded">
     <Page.Resources>
         <Storyboard x:Key="BarOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
@@ -32,6 +32,18 @@
                 <EasingThicknessKeyFrame KeyTime="0" Value="0,70,0,0"/>
                 <EasingThicknessKeyFrame KeyTime="0:0:0.5" Value="0,50,0,0"/>
             </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="FadeInWithMotion">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="listBox">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.18" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.30" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="listBox"  AccelerationRatio="0.4" DecelerationRatio="0.6" >
+                <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.18" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.36" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <converters:KeyToStringConverter x:Key="KeyToStringConverter" />
     </Page.Resources>
@@ -59,6 +71,14 @@
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+                <ListBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </ListBox.RenderTransform>
             </ListBox>
 
             <Grid VerticalAlignment="Top"

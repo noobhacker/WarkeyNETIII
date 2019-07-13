@@ -51,6 +51,7 @@ namespace Warkey.View.Pages
         {
             _viewModel.ExtraCommandVisibility = Visibility.Collapsed;
             LoadSaveFilesAsync(5);
+            startAnimationByName("FadeInWithMotion");
         }
 
         private void refreshBtn_Click(object sender, RoutedEventArgs e)

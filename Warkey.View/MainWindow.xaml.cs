@@ -52,7 +52,7 @@ namespace Warkey.View
             }
 
             navFrame.Navigate(new WarkeyPage(_services));
-            StartAnimationByName("FadeOnFirstLaunch");
+            StartAnimationByName("FadeIn");
         }
 
         private void Services_ApplicationExitCommand(object sender, EventArgs e)
@@ -115,22 +115,26 @@ namespace Warkey.View
                 {
                     case "Warkey":
                         navFrame.Navigate(new WarkeyPage(_services));
+                        StartAnimationByName("FadeIn");
                         break;
                     case "AutoChat":
                         navFrame.Navigate(new AutoChatPage(_services));
+                        StartAnimationByName("FadeIn");
                         break;
                     case "LoadGame":
                         navFrame.Navigate(new LoadGamePage(_services));
+                        StartAnimationByName("FadeIn");
                         break;
                     case "Settings":
                         navFrame.Navigate(new SettingsPage(_services));
+                        StartAnimationByName("FadeInWithMotion");
                         break;
                     case "About":
                         navFrame.Navigate(new AboutPage());
+                        StartAnimationByName("FadeInWithMotion");
                         break;
                 }
 
-                StartAnimationByName("FadeIn");
             };
 
             fadeAwayAnimation.Begin();

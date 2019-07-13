@@ -22,16 +22,24 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.12" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <Storyboard x:Key="FadeIn">
+        <Storyboard x:Key="FadeInWithMotion">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="navFrame">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.00" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.12" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="navFrame"  AccelerationRatio="0.4" DecelerationRatio="0.6" >
+                <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.18" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <Storyboard x:Key="FadeOnFirstLaunch">
+        <Storyboard x:Key="FadeIn">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="navFrame">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.00" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.18" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="navFrame"  AccelerationRatio="0.4" DecelerationRatio="0.6" >
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.18" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </fw:AcrylicWindow.Resources>
@@ -149,7 +157,16 @@
         <Grid Grid.Column="1" Background="White" Opacity="0.2"/>
         <Grid Grid.Column="1">
             <Frame Name="navFrame"
-                   NavigationUIVisibility="Hidden" Opacity="0" />
+                   NavigationUIVisibility="Hidden" Opacity="0" RenderTransformOrigin="0.5,0.5" >
+                <Frame.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Frame.RenderTransform>
+            </Frame>
         </Grid>
     </Grid>
 </fw:AcrylicWindow>

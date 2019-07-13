@@ -86,5 +86,10 @@ namespace Warkey.View.Pages
                 await _services.SaveSettingsAsync();
             }           
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            startAnimationByName("FadeInWithMotion");
+        }
     }
 }
