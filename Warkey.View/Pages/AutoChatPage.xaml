@@ -1,0 +1,125 @@
+﻿<Page x:Class="Warkey.View.Pages.AutoChatPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Warkey.View.Pages"
+      xmlns:converters="clr-namespace:Warkey.View.Converters"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      mc:Ignorable="d"
+      d:DesignHeight="323"
+      d:DesignWidth="388"
+      Title="AutoChatPage">
+    <Page.Resources>
+        <Storyboard x:Key="BarOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                           Storyboard.TargetName="commandBar">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.16"
+                                      Value="70" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="BarClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                           Storyboard.TargetName="commandBar">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.16"
+                                      Value="50" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <converters:KeyToStringConverter x:Key="KeyToStringConverter" />
+    </Page.Resources>
+    <Grid>
+        <Grid Margin="0,32,0,0">
+            <ListBox ItemsSource="{Binding ListOfAutoChats}"
+                 BorderThickness="0"
+                 Margin="0,50,0,0"
+                 Name="listBox"
+                 SelectionChanged="listBox_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Key, Converter={StaticResource KeyToStringConverter}}"
+                                   Margin="16"
+                                   FontSize="12" />
+                            <TextBlock Grid.Column="1"
+                                   Text="{Binding Message}"
+                                   Margin="16"
+                                   FontSize="12" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Grid VerticalAlignment="Top"
+                fw:PointerTracker.Enabled="True"
+                Height="50"
+                Name="commandBar">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+                <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                    <Button FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonRevealStyle}"
+                        Width="60"
+                        Content=""
+                        Background="Transparent"
+                        FontSize="16" 
+                        Name="addBtn"
+                        Click="addBtn_Click"/>
+
+                    <Button FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonRevealStyle}"
+                        Width="60"
+                        Content=""
+                        Background="Transparent"
+                        FontSize="16"
+                        Visibility="{Binding ExtraCommandVisibility}"
+                        Name="editBtn"
+                        Click="editBtn_Click"/>
+
+                    <Button FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonRevealStyle}"
+                        Width="60"
+                        Content=""
+                        Background="Transparent"
+                        FontSize="20"
+                        Visibility="{Binding ExtraCommandVisibility}"
+                        Name="deleteBtn"
+                        Click="deleteBtn_Click" />
+
+                    <Button FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonRevealStyle}"
+                        Width="60"
+                        Content=""
+                        Background="Transparent"
+                        FontSize="16"
+                        Name="moreBtn"
+                        Click="moreBtn_Click" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal"
+                        Grid.Row="1">
+                    <TextBlock Width="60"
+                           Text="Add"
+                           TextAlignment="Center" />
+                    <TextBlock Width="60"
+                           Text="Edit"
+                           TextAlignment="Center"
+                           Visibility="{Binding ExtraCommandVisibility}" />
+                    <TextBlock Width="60"
+                           Text="Delete"
+                           TextAlignment="Center"
+                           Visibility="{Binding ExtraCommandVisibility}" />
+                    <TextBlock Width="60"
+                           Text="" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
