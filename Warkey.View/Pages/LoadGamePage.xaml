@@ -21,6 +21,10 @@
                 <EasingThicknessKeyFrame KeyTime="0" Value="0,50,0,0"/>
                 <EasingThicknessKeyFrame KeyTime="0:0:0.5" Value="0,70,0,0" />
             </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="WhiteGrid" AccelerationRatio="0.4" DecelerationRatio="0.6" >
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,50,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.5" Value="0,70,0,0" />
+            </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="BarClose">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
@@ -29,6 +33,10 @@
                                       Value="50" />
             </DoubleAnimationUsingKeyFrames>
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="listBox" AccelerationRatio="0.4" DecelerationRatio="0.6" >
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,70,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.5" Value="0,50,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="WhiteGrid" AccelerationRatio="0.4" DecelerationRatio="0.6" >
                 <EasingThicknessKeyFrame KeyTime="0" Value="0,70,0,0"/>
                 <EasingThicknessKeyFrame KeyTime="0:0:0.5" Value="0,50,0,0"/>
             </ThicknessAnimationUsingKeyFrames>
@@ -48,7 +56,7 @@
     </Page.Resources>
     <Grid>
         <Grid Margin="0,32,0,0">
-            <Grid Background="White" Margin="0,50,0,0"/>
+            <Grid Name="WhiteGrid" Background="White" Margin="0,50,0,0"/>
             <ListBox ItemsSource="{Binding Saves}"
                  BorderThickness="0"
                  Margin="0,50,0,0"
