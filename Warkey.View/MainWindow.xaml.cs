@@ -27,37 +27,25 @@ namespace Warkey.View
     public partial class MainWindow
     {
         private Services _services;
-        private GameSavesQuery _gameSavesQuery;
 
-        private static Stopwatch _stopwatch = new Stopwatch();
         public MainWindow()
         {
-            _stopwatch.Start();
-            InitializeComponent();
-
-            _services = new Services();
-            _gameSavesQuery = new GameSavesQuery();
-            _services.ApplicationExitCommand += Services_ApplicationExitCommand;
-            Debug.Print(_stopwatch.ElapsedMilliseconds.ToString() + "ms");
-            _stopwatch.Stop();
+            InitializeComponent();           
         }
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        protected override async void OnContentRendered(EventArgs e)
         {
-            await _services.InitializeAsync();          
+            _services = new Services();
+            _services.ApplicationExitCommand += Services_ApplicationExitCommand;
+            await _services.InitializeAsync();
 
             if (Settings.IsStartMinimized)
             {
                 WindowState = WindowState.Minimized;
             }
 
-            if (!_gameSavesQuery.IsLoadFunctionAvailable())
-            {
-                loadBtn.Visibility = Visibility.Collapsed;
-            }
-
-            navFrame.Navigate(new WarkeyPage(_services));
-            StartAnimationByName("FadeIn");
+            MainFrame.Navigate(new MainPage(_services));
+            base.OnContentRendered(e);
         }
 
         private void Services_ApplicationExitCommand(object sender, EventArgs e)
@@ -68,81 +56,8 @@ namespace Warkey.View
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             await _services.SaveSettingsAsync();
-
-            // disposing will unhook windows api
             _services.Dispose();
         }
-
-        private void RemoveUIElementsHighlights(UIElementCollection items)
-        {
-            foreach (var item in items)
-            {
-                if (item.GetType() == typeof(Button))
-                {
-                    var button = (Button)item;
-                    if (button.Tag != null)
-                    {
-                        button.Background = new SolidColorBrush(Colors.Transparent);
-                    }
-                }
-            }
-        }
-
-        private void RemoveMenuItemHighlights()
-        {
-            RemoveUIElementsHighlights(hamMenu.Children);
-            RemoveUIElementsHighlights(menuList.Children);
-        }
-
-        private void StartAnimationByName(string name)
-        {
-            Storyboard sb = this.FindResource(name) as Storyboard;
-            sb.Begin();
-        }
-
-        private readonly SolidColorBrush _menuHighlightedColor = 
-            new SolidColorBrush(Color.FromArgb(255, 190, 230, 253));
-
-        private void MenuItems_Click(object sender, RoutedEventArgs e)
-        {            
-            RemoveMenuItemHighlights();
-
-            var button = (Button)sender;
-            button.Background = _menuHighlightedColor;
-
-            // this must be done manually, because the animation might be completed
-            // before the registration of the Completed event
-            var fadeAwayAnimation = this.FindResource("FadeAway") as Storyboard;
-
-            fadeAwayAnimation.Completed += (s, _e) =>
-            {
-                switch (button.Tag.ToString())
-                {
-                    case "Warkey":
-                        navFrame.Navigate(new WarkeyPage(_services));
-                        StartAnimationByName("FadeIn");
-                        break;
-                    case "AutoChat":
-                        navFrame.Navigate(new AutoChatPage(_services));
-                        StartAnimationByName("FadeIn");
-                        break;
-                    case "LoadGame":
-                        navFrame.Navigate(new LoadGamePage(_services));
-                        StartAnimationByName("FadeIn");
-                        break;
-                    case "Settings":
-                        navFrame.Navigate(new SettingsPage(_services));
-                        StartAnimationByName("FadeInWithMotion");
-                        break;
-                    case "About":
-                        navFrame.Navigate(new AboutPage());
-                        StartAnimationByName("FadeIn");
-                        break;
-                }
-
-            };
-
-            fadeAwayAnimation.Begin();
-        }
+    
     }
 }
