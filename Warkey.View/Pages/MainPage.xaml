@@ -28,11 +28,11 @@
         <Storyboard x:Key="FadeIn">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="navFrame">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.00" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.18" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.24" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="navFrame"  AccelerationRatio="0.4" DecelerationRatio="0.6" >
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.18" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.24" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Page.Resources>
