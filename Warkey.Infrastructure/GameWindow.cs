@@ -38,6 +38,8 @@ namespace Warkey.Infrastructure
         // this is slower because calling GetProcessByName Twice
         // Tested on project, 200 times, 1901ms vs 3422ms
         // 269 vs 550 compute units in visual studio profiling tool
+        // my assumption is GetProcessByName loops through whole list
+        // to retrieve array, while the new algorithm uses FirstOrDefault
         //public IntPtr? GetWar3HWND()
         //{
         //    foreach (var name in _processNames)
