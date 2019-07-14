@@ -48,6 +48,7 @@
     </Page.Resources>
     <Grid>
         <Grid Margin="0,32,0,0">
+            <Grid Background="White" Margin="0,50,0,0"/>
             <ListBox ItemsSource="{Binding Saves}"
                  BorderThickness="0"
                  Margin="0,50,0,0"

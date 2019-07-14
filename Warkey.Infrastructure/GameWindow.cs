@@ -23,6 +23,8 @@ namespace Warkey.Infrastructure
             return false;
         }
 
+        // if use StringComparison.IgnoreCase, performance is similar, but lack of self explainary
+        // use this for better intention to support Warcraft III 1.24e and 1.26
         public IntPtr? GetWar3HWND()
         {
             var processes = Process.GetProcesses();

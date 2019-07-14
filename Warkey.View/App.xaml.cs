@@ -18,7 +18,6 @@ namespace Warkey.View
     public partial class App : Application
     {
         private static Mutex _mutex = null;
-
         protected override void OnStartup(StartupEventArgs e)
         {
             const string appName = "WarkeyNETIII";

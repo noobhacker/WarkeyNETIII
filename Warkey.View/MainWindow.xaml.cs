@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,13 +29,17 @@ namespace Warkey.View
         private Services _services;
         private GameSavesQuery _gameSavesQuery;
 
+        private static Stopwatch _stopwatch = new Stopwatch();
         public MainWindow()
         {
+            _stopwatch.Start();
             InitializeComponent();
 
             _services = new Services();
             _gameSavesQuery = new GameSavesQuery();
             _services.ApplicationExitCommand += Services_ApplicationExitCommand;
+            Debug.Print(_stopwatch.ElapsedMilliseconds.ToString() + "ms");
+            _stopwatch.Stop();
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
