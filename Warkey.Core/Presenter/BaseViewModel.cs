@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Warkey.Core.Presenter
 {
-    public class BaseViewModel : INotifyPropertyChanged 
+    [AddINotifyPropertyChangedInterface]
+    public class BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
     }    
 }
