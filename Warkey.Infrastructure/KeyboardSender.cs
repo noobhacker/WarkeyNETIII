@@ -10,8 +10,11 @@ namespace Warkey.Infrastructure
 {
     public class KeyboardSender
     {
-        [DllImport("user32.dll", EntryPoint = "SendMessageA")]
-        static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
+        internal class NativeMethods
+        {
+            [DllImport("user32.dll", EntryPoint = "SendMessageA")]
+            internal static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
+        }
 
         const uint WM_KEYDOWN = 0x0100;
         const uint WM_KEYUP = 0x0101;
@@ -33,13 +36,13 @@ namespace Warkey.Infrastructure
         public void SendItemMessageToHwnd(IntPtr hwnd, int slotNumber, bool isAlt)
         {
             if (isAlt)
-                PostMessage(hwnd, WM_KEYUP, VK_MENU, 0);
+                NativeMethods.PostMessage(hwnd, WM_KEYUP, VK_MENU, 0);
 
-            PostMessage(hwnd, WM_KEYDOWN, (int)VKeys[slotNumber], 0);
-            PostMessage(hwnd, WM_KEYUP, (int)VKeys[slotNumber], 0);
+            NativeMethods.PostMessage(hwnd, WM_KEYDOWN, (int)VKeys[slotNumber], 0);
+            NativeMethods.PostMessage(hwnd, WM_KEYUP, (int)VKeys[slotNumber], 0);
 
             if (isAlt)
-                PostMessage(hwnd, WM_SYSKEYDOWN, VK_MENU, 0);
+                NativeMethods.PostMessage(hwnd, WM_SYSKEYDOWN, VK_MENU, 0);
         }
 
         public bool IsChatting = false;

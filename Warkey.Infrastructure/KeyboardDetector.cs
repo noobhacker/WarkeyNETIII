@@ -12,18 +12,21 @@ namespace Warkey.Infrastructure
 {
     public class KeyboardDetector : IDisposable
     {
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
+        internal class NativeMethods
+        {
+            [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+            internal static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
 
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool UnhookWindowsHookEx(IntPtr hhk);
+            [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            internal static extern bool UnhookWindowsHookEx(IntPtr hhk);
 
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
+            [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+            internal static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
 
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        private static extern IntPtr GetModuleHandle(string lpModuleName);
+            [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+            internal static extern IntPtr GetModuleHandle(string lpModuleName);
+        }
 
         private const int WH_KEYBOARD_LL = 13;
 
@@ -31,10 +34,10 @@ namespace Warkey.Infrastructure
         private const int VK_LMENU = 0x00A4;
 
         private const int WM_KEYDOWN = 0x0100;
-        private const int WM_KEYUP = 0x0101;
+        //private const int WM_KEYUP = 0x0101;
         private const int WM_SYSKEYDOWN = 0x0104;
 
-        private static LowLevelKeyboardProc _proc = HookCallback;
+        private static readonly LowLevelKeyboardProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
 
         public static Func<bool> Precondition { get; set; }
@@ -48,7 +51,7 @@ namespace Warkey.Infrastructure
 
         public void Dispose()
         {
-            UnhookWindowsHookEx(_hookID);
+            NativeMethods.UnhookWindowsHookEx(_hookID);
         }
 
         private IntPtr SetHook(LowLevelKeyboardProc proc)
@@ -56,12 +59,12 @@ namespace Warkey.Infrastructure
             using (var curProcess = Process.GetCurrentProcess())
             using (var curModule = curProcess.MainModule)
             {
-                return SetWindowsHookEx(WH_KEYBOARD_LL, proc,
-                    GetModuleHandle(curModule.ModuleName), 0);
+                return NativeMethods.SetWindowsHookEx(WH_KEYBOARD_LL, proc,
+                    NativeMethods.GetModuleHandle(curModule.ModuleName), 0);
             }
         }
 
-        private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
+        internal delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
 
         //preprocess: check iswar3forground and ischatting
         private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
@@ -96,7 +99,7 @@ namespace Warkey.Infrastructure
                 }
 
             }
-            return CallNextHookEx(_hookID, nCode, wParam, lParam);
+            return NativeMethods.CallNextHookEx(_hookID, nCode, wParam, lParam);
         }
 
         public static event EventHandler<HotkeyModel> GlobalKeyDown;

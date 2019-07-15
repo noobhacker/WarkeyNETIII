@@ -10,12 +10,15 @@ namespace Warkey.Infrastructure
 {
     public class GameWindow
     {
-        [DllImport("user32.dll")]
-        private static extern IntPtr GetForegroundWindow();
+        internal class NativeMethods
+        {
+            [DllImport("user32.dll")]
+            internal static extern IntPtr GetForegroundWindow();
+        }
 
         public bool IsWar3Foreground(IntPtr hwnd)
         {
-            if (GetForegroundWindow() == hwnd)
+            if (NativeMethods.GetForegroundWindow() == hwnd)
             {
                 return true;
             }
