@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,7 +10,8 @@ using static Warkey.Infrastructure.GameSaves;
 
 namespace Warkey.Core.Presenter
 {
-    public class LoadGameViewModel : BaseViewModel
+    [AddINotifyPropertyChangedInterface]
+    public class LoadGameViewModel
     {
         public ObservableCollection<TkokSave> Saves { get; set; }
         public Visibility ExtraCommandVisibility { get; set; }

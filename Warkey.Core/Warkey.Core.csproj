@@ -54,7 +54,6 @@
     <Compile Include="Queries\GameSettingsQuery.cs" />
     <Compile Include="Presenter\AutoChatsViewModel.cs" />
     <Compile Include="Presenter\AutoChatViewModel.cs" />
-    <Compile Include="Presenter\BaseViewModel.cs" />
     <Compile Include="Presenter\LoadGameViewModel.cs" />
     <Compile Include="Presenter\SettingsViewModel.cs" />
     <Compile Include="Presenter\WarkeyViewModel.cs" />

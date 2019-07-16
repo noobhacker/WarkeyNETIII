@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,8 @@ using System.Windows.Input;
 
 namespace Warkey.Core.Presenter
 {
-    public class AutoChatViewModel : BaseViewModel
+    [AddINotifyPropertyChangedInterface]
+    public class AutoChatViewModel
     {
         public Key Key { get; set; }
         public string Message { get; set; }

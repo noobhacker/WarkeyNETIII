@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -9,7 +10,8 @@ using static Warkey.Infrastructure.KeyboardDetector;
 
 namespace Warkey.Core.Presenter
 {
-    public class WarkeyViewModel : BaseViewModel
+    [AddINotifyPropertyChangedInterface]
+    public class WarkeyViewModel
     {
         public ObservableCollection<HotkeyModel> Slots { get; set; }
         public WarkeyViewModel()
