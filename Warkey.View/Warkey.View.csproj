@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1488DA79-160C-432C-955E-AE32CF4780A7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WarkeyNETIII</RootNamespace>
+    <RootNamespace>Warkey.View</RootNamespace>
     <AssemblyName>WarkeyNETIII</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
