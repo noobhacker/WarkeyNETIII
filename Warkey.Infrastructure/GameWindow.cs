@@ -28,10 +28,11 @@ namespace Warkey.Infrastructure
 
         // if use StringComparison.IgnoreCase, performance is similar, but lack of self explainary
         // use this for better intention to support Warcraft III 1.24e and 1.26
+        // 1.30 or above is Warcraft III.exe
         public IntPtr? GetWar3HWND()
         {
             var processes = Process.GetProcesses();
-            var process = processes.FirstOrDefault(x => x.ProcessName == "war3" || x.ProcessName == "War3");
+            var process = processes.FirstOrDefault(x => x.ProcessName == "war3" || x.ProcessName == "War3" || x.ProcessName == "Warcraft III");
             if (process != null)
             {
                 return process.MainWindowHandle;
