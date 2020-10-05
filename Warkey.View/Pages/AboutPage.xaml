@@ -28,13 +28,15 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <TextBlock Text="Designed for Windows 10"
+            <TextBlock Foreground="White" 
+                       Text="Designed for Windows 10"
                        FontSize="20"
                        FontWeight="Thin"
                        HorizontalAlignment="Center"
                        Margin="0,24,0,0" />
         </StackPanel>
-        <TextBlock Text="2019 Fluent Release"
+        <TextBlock Foreground="White" 
+                   Text="2019 Fluent Release"
                    FontWeight="Thin"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Bottom"

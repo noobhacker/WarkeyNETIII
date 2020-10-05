@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,25 +46,13 @@ namespace Warkey.View.Pages
             StartAnimationByName("FadeIn");
         }
 
-        private void RemoveUIElementsHighlights(UIElementCollection items)
-        {
-            foreach (var item in items)
-            {
-                if (item.GetType() == typeof(Button))
-                {
-                    var button = (Button)item;
-                    if (button.Tag != null)
-                    {
-                        button.Background = new SolidColorBrush(Colors.Transparent);
-                    }
-                }
-            }
-        }
-
         private void RemoveMenuItemHighlights()
         {
-            RemoveUIElementsHighlights(hamMenu.Children);
-            RemoveUIElementsHighlights(menuList.Children);
+            WarkeyHighlighter.Visibility = Visibility.Hidden;
+            OptimizeHighlighter.Visibility = Visibility.Hidden;
+            LoadGameHighlighter.Visibility = Visibility.Hidden;
+            AutochatHighlighter.Visibility = Visibility.Hidden;
+            AboutHighlighter.Visibility = Visibility.Hidden;
         }
 
         private void StartAnimationByName(string name)
@@ -72,16 +61,11 @@ namespace Warkey.View.Pages
             sb.Begin();
         }
 
-        private readonly SolidColorBrush _menuHighlightedColor =
-            new SolidColorBrush(Color.FromArgb(255, 190, 230, 253));
-
         private void MenuItems_Click(object sender, RoutedEventArgs e)
         {
             RemoveMenuItemHighlights();
 
             var button = (Button)sender;
-            button.Background = _menuHighlightedColor;
-
             // this must be done manually, because the animation might be completed
             // before the registration of the Completed event
             var fadeAwayAnimation = this.FindResource("FadeAway") as Storyboard;
@@ -91,22 +75,27 @@ namespace Warkey.View.Pages
                 switch (button.Tag.ToString())
                 {
                     case "Warkey":
+                        WarkeyHighlighter.Visibility = Visibility.Visible;
                         navFrame.Navigate(new WarkeyPage(_services));
                         StartAnimationByName("FadeIn");
                         break;
                     case "AutoChat":
+                        AutochatHighlighter.Visibility = Visibility.Visible;
                         navFrame.Navigate(new AutoChatPage(_services));
                         StartAnimationByName("FadeIn");
                         break;
                     case "LoadGame":
+                        LoadGameHighlighter.Visibility = Visibility.Visible;
                         navFrame.Navigate(new LoadGamePage(_services));
                         StartAnimationByName("FadeIn");
                         break;
                     case "Settings":
+                        OptimizeHighlighter.Visibility = Visibility.Visible;
                         navFrame.Navigate(new SettingsPage(_services));
                         StartAnimationByName("FadeInWithMotion");
                         break;
                     case "About":
+                        AboutHighlighter.Visibility = Visibility.Visible;
                         navFrame.Navigate(new AboutPage());
                         StartAnimationByName("FadeIn");
                         break;

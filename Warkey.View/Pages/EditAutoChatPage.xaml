@@ -21,7 +21,8 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <StackPanel>
-                <TextBlock Text="Hotkey (Alt is disabled in auto chat)"
+                <TextBlock Foreground="White" 
+                           Text="Hotkey (Alt is disabled in auto chat)"
                            Margin="8,4"
                            FontSize="16" />
                 <TextBox  Style="{StaticResource TextBoxRevealStyle}"
@@ -31,7 +32,8 @@
                          Text="{Binding Key, Converter={StaticResource KeyToStringConverter}}"
                          Name="hotkeyTb"
                          KeyDown="hotkeyTb_KeyDown"/>
-                <TextBlock Text="Message"
+                <TextBlock Foreground="White" 
+                           Text="Message"
                            Margin="8,4"
                            FontSize="16" />
             </StackPanel>

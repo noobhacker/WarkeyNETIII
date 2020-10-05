@@ -100,7 +100,8 @@
                 </Grid.RowDefinitions>
                 <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal">
-                    <Button FontFamily="Segoe MDL2 Assets"
+                    <Button Foreground="White" 
+                            FontFamily="Segoe MDL2 Assets"
                         Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
@@ -109,7 +110,8 @@
                         Name="addBtn"
                         Click="addBtn_Click"/>
 
-                    <Button FontFamily="Segoe MDL2 Assets"
+                    <Button Foreground="White" 
+                            FontFamily="Segoe MDL2 Assets"
                         Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
@@ -119,7 +121,8 @@
                         Name="editBtn"
                         Click="editBtn_Click"/>
 
-                    <Button FontFamily="Segoe MDL2 Assets"
+                    <Button Foreground="White" 
+                            FontFamily="Segoe MDL2 Assets"
                         Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
@@ -129,7 +132,8 @@
                         Name="deleteBtn"
                         Click="deleteBtn_Click" />
 
-                    <Button FontFamily="Segoe MDL2 Assets"
+                    <Button Foreground="White" 
+                            FontFamily="Segoe MDL2 Assets"
                         Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""

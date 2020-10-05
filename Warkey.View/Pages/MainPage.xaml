@@ -51,21 +51,22 @@
             <StackPanel>
                 <StackPanel Width="200"
                             Name="menuList">
-                    <TextBlock Margin="8" Text="Warkey.NET III" />
-                    <Button Background="#FFBEE6FD"
-                            Style="{StaticResource ButtonRevealStyle}"
+                    <TextBlock Foreground="White" Margin="8" Text="Warkey.NET III" />
+                    <Button Style="{StaticResource ButtonRevealStyle}"
                             HorizontalContentAlignment="Left"
                             Click="MenuItems_Click"
                             Tag="Warkey">
                         <StackPanel Orientation="Horizontal"
-                                    Height="50"
-                                    Margin="4,0">
-                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                                    Height="50">
+                            <Grid Name="WarkeyHighlighter" Background="#0078d7" Width="5" Height="20" Margin="-2,0,0,0"/>
+                            <TextBlock Foreground="White"
+                                       FontFamily="Segoe MDL2 Assets"
                                        Text=""
                                        FontSize="16"
                                        VerticalAlignment="Center"
                                        Margin="12" />
-                            <TextBlock Text="Warkey"
+                            <TextBlock Foreground="White"
+                                       Text="Warkey"
                                        VerticalAlignment="Center"
                                        Margin="8" />
                         </StackPanel>
@@ -76,14 +77,16 @@
                             Click="MenuItems_Click"
                             Tag="AutoChat">
                         <StackPanel Orientation="Horizontal"
-                                    Height="50"
-                                    Margin="4,0">
-                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                                    Height="50">
+                            <Grid Name="AutochatHighlighter" Background="#0078d7" Width="5" Height="20" Margin="-2,0,0,0"/>
+                            <TextBlock Foreground="White"
+                                       FontFamily="Segoe MDL2 Assets"
                                        Text=""
                                        FontSize="16"
                                        VerticalAlignment="Center"
                                        Margin="12" />
-                            <TextBlock Text="Auto-chat"
+                            <TextBlock Foreground="White"
+                                       Text="Auto-chat"
                                        VerticalAlignment="Center"
                                        Margin="8" />
                         </StackPanel>
@@ -95,14 +98,16 @@
                             Tag="LoadGame"
                             Name="loadBtn">
                         <StackPanel Orientation="Horizontal"
-                                    Height="50"
-                                    Margin="4,0">
-                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                                    Height="50">
+                            <Grid Name="LoadGameHighlighter" Background="#0078d7" Width="5" Height="20" Margin="-2,0,0,0"/>
+                            <TextBlock Foreground="White"
+                                       FontFamily="Segoe MDL2 Assets"
                                        Text=""
                                        FontSize="16"
                                        VerticalAlignment="Center"
                                        Margin="12" />
-                            <TextBlock Text="Load game"
+                            <TextBlock Foreground="White"
+                                       Text="Load game"
                                        VerticalAlignment="Center"
                                        Margin="8" />
                         </StackPanel>
@@ -113,14 +118,16 @@
                             Click="MenuItems_Click"
                             Tag="Settings">
                         <StackPanel Orientation="Horizontal"
-                                    Height="50"
-                                    Margin="4,0">
-                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                                    Height="50">
+                            <Grid Name="OptimizeHighlighter" Background="#0078d7" Width="5" Height="20" Margin="-2,0,0,0"/>
+                            <TextBlock Foreground="White"
+                                       FontFamily="Segoe MDL2 Assets"
                                        Text=""
                                        FontSize="16"
                                        VerticalAlignment="Center"
                                        Margin="12" />
-                            <TextBlock Text="Optimize"
+                            <TextBlock Foreground="White"
+                                       Text="Optimize"
                                        VerticalAlignment="Center"
                                        Margin="8" />
                         </StackPanel>
@@ -134,14 +141,16 @@
                     Click="MenuItems_Click"
                     Tag="About">
                 <StackPanel Orientation="Horizontal"
-                            Height="50"
-                            Margin="4,0">
-                    <TextBlock FontFamily="Segoe MDL2 Assets"
+                            Height="50">
+                    <Grid Name="AboutHighlighter" Background="#0078d7" Width="5" Height="20" Margin="-2,0,0,0"/>
+                    <TextBlock Foreground="White"
+                               FontFamily="Segoe MDL2 Assets"
                                Text=""
                                FontSize="16"
                                VerticalAlignment="Center"
                                Margin="12" />
-                    <TextBlock Text="About"
+                    <TextBlock Foreground="White"
+                               Text="About"
                                VerticalAlignment="Center"
                                Margin="8" />
                 </StackPanel>

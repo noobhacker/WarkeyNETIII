@@ -15,14 +15,17 @@
     </Page.Resources>
     <Grid>
         <StackPanel Margin="8" fw:PointerTracker.Enabled="True">
-            <TextBlock Text="Warcraft III"
+            <TextBlock Foreground="White" 
+                       Text="Warcraft III"
                        FontSize="28"
                        FontWeight="Light"
                        Margin="8,0" />
 
             <StackPanel Margin="8">
-                <TextBlock Text="Screen Resolution: " />
-                <TextBlock Text="{Binding ScreenResolution}"
+                <TextBlock Foreground="White" 
+                           Text="Screen Resolution: " />
+                <TextBlock Foreground="White" 
+                           Text="{Binding ScreenResolution}"
                            FontSize="16" />
             </StackPanel>
 
@@ -32,8 +35,10 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel>
-                    <TextBlock Text="Game Resolution: " />
-                    <TextBlock Text="{Binding GameResolution}"
+                    <TextBlock Foreground="White" 
+                               Text="Game Resolution: " />
+                    <TextBlock Foreground="White" 
+                               Text="{Binding GameResolution}"
                                FontSize="16" />
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -60,7 +65,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Lockfb optimization: " VerticalAlignment="Center" />
+                <TextBlock Foreground="White" 
+                           Text="Lockfb optimization: " VerticalAlignment="Center" />
                     <Button Grid.Column="1"
                         Style="{StaticResource ButtonRevealStyle}"
                         Content="{Binding IsLockFbNeedsOptimize, Converter={StaticResource IsOptimizedToStringConverter} }"
@@ -73,13 +79,16 @@
                         Click="OptimizeLockFbbtn_Click" />
             </Grid>
             <Grid Margin="8" />
-            <CheckBox Content="Start minimized"
+            <CheckBox Foreground="White" 
+                      Content="Start minimized"
                       Margin="8"
                       IsChecked="{Binding IsStartMinimized}" />
-            <CheckBox Content="Automatically starts Warcraft III if exists"
+            <CheckBox Foreground="White" 
+                      Content="Automatically starts Warcraft III if exists"
                       Margin="8"
                       IsChecked="{Binding IsAutoStartWar3}" />
-            <CheckBox Content="Automatically closes with Warcraft III"
+            <CheckBox Foreground="White" 
+                      Content="Automatically closes with Warcraft III"
                       Margin="8"
                       IsChecked="{Binding IsAutoCloseWar3}" />
 

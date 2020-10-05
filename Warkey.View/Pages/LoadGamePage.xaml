@@ -139,7 +139,8 @@
                 <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal">
 
-                    <Button FontFamily="Segoe MDL2 Assets"
+                    <Button Foreground="White" 
+                            FontFamily="Segoe MDL2 Assets"
                         Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
@@ -147,7 +148,8 @@
                         FontSize="16"
                         Name="refreshBtn"
                         Click="refreshBtn_Click" />
-                    <Button FontFamily="Segoe MDL2 Assets"
+                    <Button Foreground="White" 
+                            FontFamily="Segoe MDL2 Assets"
                         Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
@@ -155,7 +157,8 @@
                         FontSize="16"
                         Name="allBtn"
                         Click="allBtn_Click" />
-                    <Button FontFamily="Segoe MDL2 Assets"
+                    <Button Foreground="White" 
+                            FontFamily="Segoe MDL2 Assets"
                         Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
@@ -165,7 +168,8 @@
                         Name="copyBtn"
                         Click="copyBtn_Click" />
 
-                    <TextBlock FontFamily="Segoe MDL2 Assets"
+                    <TextBlock Foreground="White" 
+                               FontFamily="Segoe MDL2 Assets"
                            Width="60"
                            Text=""
                            Background="Transparent"
@@ -174,7 +178,8 @@
                            TextAlignment="Center"
                            FontSize="16" />
 
-                    <Button FontFamily="Segoe MDL2 Assets"
+                    <Button Foreground="White" 
+                            FontFamily="Segoe MDL2 Assets"
                         Style="{StaticResource ButtonRevealStyle}"
                         Width="60"
                         Content=""
